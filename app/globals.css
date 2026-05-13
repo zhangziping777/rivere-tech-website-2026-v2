@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-brand-bg text-text-primary font-sans;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    @apply bg-accent-green/30 text-text-primary;
+  }
+}
+
+@layer components {
+  /* Thin border utility */
+  .border-subtle {
+    @apply border border-brand-border;
+  }
+
+  .border-subtle-b {
+    @apply border-b border-brand-border;
+  }
+
+  /* Nav link with hover accent */
+  .nav-link {
+    @apply text-text-secondary hover:text-text-primary transition-colors duration-200 text-sm font-medium cursor-pointer;
+  }
+
+  /* Dropdown container */
+  .dropdown-panel {
+    @apply absolute top-full left-0 mt-2 bg-brand-elevated border border-brand-border rounded-sm shadow-2xl shadow-black/40 backdrop-blur-xl min-w-[200px] py-2 z-50;
+  }
+
+  .dropdown-item {
+    @apply block w-full text-left px-4 py-2 text-sm text-text-secondary hover:text-accent-green hover:bg-brand-bg/50 transition-colors duration-150;
+  }
+}
+
+@layer utilities {
+  .text-gradient-accent {
+    @apply bg-gradient-to-r from-accent-green to-accent-yellow bg-clip-text text-transparent;
+  }
+}
