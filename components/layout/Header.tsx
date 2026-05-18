@@ -21,36 +21,26 @@ const navItems: NavItem[] = [
   {
     label: "核心产品",
     children: [
-      { label: "AnyTXN (信贷核心)", href: "/products/anytxn" },
-      { label: "AnyEAST (实时决策)", href: "/products/anyeast" },
-      { label: "AnyTASK (流程自动化)", href: "/products/anytask" },
-      { label: "AnyGateway (统一网关平台)", href: "/products/anygateway" },
+      { label: "AnyTXN 信用卡及零售信贷核心", href: "/products#anytxn" },
+      { label: "AnyEAST 智能风控/营销决策核心", href: "/products#anyeast" },
+      { label: "AnyTASK 流程自动化管理核心", href: "/products#anytask" },
+      { label: "AnyGateway 融合支付网关核心", href: "/products#anygateway" },
     ],
   },
   {
     label: "解决方案",
     children: [
-      { label: "收单业务解决方案", href: "/solutions/acquirer" },
-      { label: "发卡业务解决方案", href: "/solutions/issuer" },
+      { label: "发卡业务解决方案", href: "/solutions/issuing" },
+      { label: "收单业务解决方案", href: "/solutions/acquiring" },
       { label: "零售信贷业务解决方案", href: "/solutions/retail-credit" },
+      { label: "交易反欺诈解决方案", href: "/solutions/risk-control" },
       { label: "实时智能催收解决方案", href: "/solutions/collection" },
-      { label: "反欺诈业务解决方案", href: "/solutions/anti-fraud" },
       { label: "智能营销解决方案", href: "/solutions/marketing" },
       { label: "Gateway 网关解决方案", href: "/solutions/gateway" },
     ],
   },
-  {
-    label: "公司介绍",
-    children: [
-      { label: "公司概况", href: "/company/about" },
-      { label: "发展历史", href: "/company/history" },
-      { label: "核心能力", href: "/company/capabilities" },
-      { label: "公司资质", href: "/company/qualifications" },
-      { label: "合作伙伴", href: "/company/partners" },
-      { label: "人才发展", href: "/company/careers" },
-    ],
-  },
-  { label: "联系我们", href: "/contact" },
+  { label: "关于我们", href: "/about" },
+  { label: "联系我们", href: "/about#contact" },
 ];
 
 function Dropdown({ items }: { items: SubItem[] }) {
@@ -142,7 +132,7 @@ export default function Header() {
 
         {/* CTA */}
         <Link
-          href="/contact"
+          href="/about#contact"
           className="hidden md:inline-flex items-center px-4 py-2 rounded-sm border border-accent-green/50 text-accent-green text-sm font-medium hover:bg-accent-green/10 transition-colors duration-200"
         >
           立即咨询

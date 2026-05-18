@@ -44,11 +44,11 @@
 
   /* Dropdown container */
   .dropdown-panel {
-    @apply absolute top-full left-0 mt-2 bg-brand-elevated border border-brand-border rounded-sm shadow-2xl shadow-black/40 backdrop-blur-xl min-w-[200px] py-2 z-50;
+    @apply absolute top-full left-0 mt-2 bg-brand-elevated border border-brand-border rounded-sm shadow-2xl shadow-black/40 backdrop-blur-xl w-max py-2 z-50;
   }
 
   .dropdown-item {
-    @apply block w-full text-left px-4 py-2 text-sm text-text-secondary hover:text-accent-green hover:bg-brand-bg/50 transition-colors duration-150;
+    @apply block w-full text-left px-4 py-2 text-sm text-text-secondary hover:text-accent-green hover:bg-brand-bg/50 transition-colors duration-150 whitespace-nowrap;
   }
 }
 

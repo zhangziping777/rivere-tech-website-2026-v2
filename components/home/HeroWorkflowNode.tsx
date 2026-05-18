@@ -21,9 +21,9 @@ interface EdgeDef {
 /* ── Layout constants (viewBox 0 0 520 340) ── */
 const NODES: NodeDef[] = [
   { id: "Client",   label: "Client",   sub: "终端接入",  x: 28,  y: 24,  w: 110, h: 56 },
-  { id: "Gateway",  label: "AnyGateway",sub: "统一网关",  x: 210, y: 24,  w: 130, h: 56 },
-  { id: "EAST",     label: "AnyEAST",   sub: "实时决策",  x: 210, y: 240, w: 130, h: 56 },
-  { id: "TXN",      label: "AnyTXN",    sub: "信贷核心",  x: 28,  y: 240, w: 110, h: 56 },
+  { id: "Gateway",  label: "AnyGateway",sub: "融合支付网关核心",  x: 210, y: 24,  w: 130, h: 56 },
+  { id: "EAST",     label: "AnyEAST",   sub: "智能风控营销决策",  x: 210, y: 240, w: 130, h: 56 },
+  { id: "TXN",      label: "AnyTXN",    sub: "信用卡零售信贷核心",  x: 28,  y: 240, w: 110, h: 56 },
 ];
 
 const EDGES: EdgeDef[] = [

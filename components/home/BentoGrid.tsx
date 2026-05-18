@@ -13,13 +13,13 @@ const logLines = [
 
 function TechLog() {
   return (
-    <div className="mt-6 rounded-sm border border-accent-green/15 bg-brand-bg/70 px-4 py-3 font-mono text-[10px] leading-relaxed tracking-tight select-none pointer-events-none">
+    <div className="mt-6 rounded-sm border border-accent-green/15 bg-brand-bg/70 px-4 py-3 font-mono text-[clamp(8px,1vw,10px)] leading-relaxed tracking-tight select-none pointer-events-none overflow-hidden">
       {/* header bar */}
       <div className="flex items-center gap-2 mb-2 pb-2 border-b border-brand-border/60">
-        <span className="w-2 h-2 rounded-full bg-red-500/60" />
-        <span className="w-2 h-2 rounded-full bg-yellow-500/60" />
-        <span className="w-2 h-2 rounded-full bg-green-500/60" />
-        <span className="ml-2 text-text-muted text-[9px]">txn-stream — 256-bit TLS</span>
+        <span className="w-2 h-2 rounded-full bg-red-500/60 shrink-0" />
+        <span className="w-2 h-2 rounded-full bg-yellow-500/60 shrink-0" />
+        <span className="w-2 h-2 rounded-full bg-green-500/60 shrink-0" />
+        <span className="ml-2 text-text-muted text-[clamp(7px,0.9vw,9px)]">txn-stream — 256-bit TLS</span>
       </div>
 
       {/* log entries */}
@@ -34,7 +34,7 @@ function TechLog() {
           <span className="text-accent-green/60 shrink-0">&gt;</span>
           <span className="text-text-muted w-14 shrink-0">{line.label}</span>
           <span className="text-accent-green/40 w-16 shrink-0">{line.status}</span>
-          <span className="text-brand-border-light flex-1 text-right">
+          <span className="text-brand-border-light flex-1 text-right truncate">
             {"─".repeat(20 - i * 3)}
           </span>
           <span className="text-text-muted/60 shrink-0 w-[6.5rem] text-right">{line.time}</span>
@@ -47,7 +47,7 @@ function TechLog() {
         animate={{ opacity: [0.4, 1, 0.4] }}
         transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
       >
-        <span className="text-accent-green/80 text-[10px]">$</span>
+        <span className="text-accent-green/80 text-[clamp(8px,1vw,10px)]">$</span>
         <span className="w-2.5 h-3 bg-accent-green/70" />
       </motion.div>
     </div>
@@ -63,7 +63,7 @@ function CapabilityTags() {
       {tags.map((tag) => (
         <span
           key={tag}
-          className="inline-flex items-center px-2.5 py-1 rounded-sm border border-brand-border/60 bg-brand-bg/40 text-text-muted text-[11px] tracking-wide"
+          className="inline-flex items-center px-2.5 py-1 rounded-sm border border-brand-border/60 bg-brand-bg/40 text-text-muted text-[clamp(9px,1.1vw,11px)] tracking-wide"
         >
           <span className="w-1 h-1 rounded-full bg-accent-green/50 mr-1.5" />
           {tag}
@@ -85,7 +85,7 @@ const cards = [
   },
   {
     icon: Building2,
-    title: "零售信贷一体化",
+    title: "零售信贷一体化解决方案",
     desc: `为区域银行打造"以客户为中心"的智能零售信贷解决方案，构建"生态+运营+科技"体系。`,
     highlight: `依托金融云/场景云/数据云，助力客户"0门槛"搭建顶尖科技能力。`,
     span: "lg:col-span-1",
@@ -119,15 +119,15 @@ function BentoCard({
         className="pointer-events-none absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{
           boxShadow:
-            "inset 0 0 40px rgba(0,229,153,0.06), 0 0 30px rgba(0,229,153,0.08)",
+            "inset 0 0 50px rgba(0,229,153,0.08), 0 0 30px rgba(0,229,153,0.12)",
         }}
       />
 
       <div className="relative z-10">
         {/* header */}
         <Icon size={28} className="text-accent-green mb-4" strokeWidth={1.5} />
-        <h3 className="text-lg font-semibold text-text-primary mb-2">{title}</h3>
-        <p className="text-text-secondary text-sm leading-relaxed">{desc}</p>
+        <h3 className="text-[clamp(15px,1.8vw,18px)] font-semibold text-text-primary mb-2">{title}</h3>
+        <p className="text-text-secondary text-[clamp(12px,1.4vw,14px)] leading-relaxed">{desc}</p>
 
         {/* decorative element — only for the hero card */}
         {decorator === "log" && <TechLog />}
@@ -135,7 +135,7 @@ function BentoCard({
 
         {/* highlight */}
         <p
-          className={`text-accent-green/80 text-xs leading-relaxed border-l-2 border-accent-green/50 pl-3 ${
+          className={`text-accent-green/80 text-[clamp(10px,1.2vw,12px)] leading-relaxed border-l-2 border-accent-green/50 pl-3 ${
             decorator === "log" ? "mt-5" : "mt-4"
           }`}
         >
@@ -151,10 +151,10 @@ export default function BentoGrid() {
   return (
     <section className="mx-auto max-w-[1280px] px-6 py-24">
       <div className="mb-12">
-        <p className="text-accent-green text-xs font-medium tracking-widest uppercase mb-3">
+        <p className="text-accent-green text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-3">
           Our Businesses
         </p>
-        <h2 className="text-3xl font-bold text-text-primary">三大核心业务</h2>
+        <h2 className="text-[clamp(22px,3vw,30px)] font-bold text-text-primary">三大核心业务</h2>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

@@ -1,0 +1,32 @@
+"use client";
+
+import CountUpMetric from "@/components/ui/CountUpMetric";
+
+interface MetricBadgeProps {
+  value: string;
+  unit: string;
+  label: string;
+}
+
+export default function MetricBadge({ value, unit, label }: MetricBadgeProps) {
+  return (
+    <div className="group relative flex flex-col items-center px-6 py-5 rounded-sm border border-brand-border bg-brand-surface/40 hover:border-accent-green/40 hover:-translate-y-0.5 transition-all duration-500 ease-out">
+      {/* glow on hover */}
+      <div className="pointer-events-none absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={{ boxShadow: "inset 0 0 24px rgba(0,229,153,0.06), 0 0 18px rgba(0,229,153,0.08)" }}
+      />
+      <div className="relative z-10 flex items-baseline gap-0.5">
+        <span className="text-4xl md:text-5xl font-bold text-accent-green"
+          style={{ textShadow: "0 0 32px rgba(0,229,153,0.25), 0 0 8px rgba(0,229,153,0.15)" }}>
+          <CountUpMetric value={value} />
+        </span>
+        <span className="text-lg md:text-xl font-semibold text-accent-green/70">
+          {unit}
+        </span>
+      </div>
+      <span className="relative z-10 mt-2 text-xs text-text-muted tracking-wide text-center">
+        {label}
+      </span>
+    </div>
+  );
+}

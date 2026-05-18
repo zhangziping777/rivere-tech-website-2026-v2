@@ -3,9 +3,8 @@ import { MapPin, Phone, Mail } from "lucide-react";
 
 const quickLinks = [
   { label: "首页", href: "/" },
-  { label: "核心产品", href: "/products" },
-  { label: "解决方案", href: "/solutions" },
-  { label: "公司介绍", href: "/company/about" },
+  { label: "解决方案", href: "/solutions/issuing" },
+  { label: "关于我们", href: "/about" },
 ];
 
 const contactInfo = [
