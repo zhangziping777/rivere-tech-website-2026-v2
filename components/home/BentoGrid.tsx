@@ -1,166 +1,251 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CreditCard, Building2, Users } from "lucide-react";
+import { CreditCard, Building2, Users, ArrowUpRight } from "lucide-react";
 
-/* ── Simulated transaction log lines ── */
-const logLines = [
-  { id: "L1", label: "TXN-4A2F",  status: "incoming",  time: "14:32:01.003" },
-  { id: "L2", label: "AUTH",      status: "verified",  time: "14:32:01.047" },
-  { id: "L3", label: "EAST",      status: "scoring",   time: "14:32:01.128" },
-  { id: "L4", label: "CORE",      status: "settled",   time: "14:32:01.203" },
-];
-
-function TechLog() {
+/* ── SVG Area Chart ── */
+function AreaChart() {
   return (
-    <div className="mt-6 rounded-sm border border-accent-green/15 bg-brand-bg/70 px-4 py-3 font-mono text-[clamp(8px,1vw,10px)] leading-relaxed tracking-tight select-none pointer-events-none overflow-hidden">
-      {/* header bar */}
-      <div className="flex items-center gap-2 mb-2 pb-2 border-b border-brand-border/60">
-        <span className="w-2 h-2 rounded-full bg-red-500/60 shrink-0" />
-        <span className="w-2 h-2 rounded-full bg-yellow-500/60 shrink-0" />
-        <span className="w-2 h-2 rounded-full bg-green-500/60 shrink-0" />
-        <span className="ml-2 text-text-muted text-[clamp(7px,0.9vw,9px)]">txn-stream — 256-bit TLS</span>
-      </div>
+    <svg
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      className="absolute right-0 bottom-0 w-full h-[65%] pointer-events-none"
+    >
+      <defs>
+        {/* Main area gradient — visible green to transparent */}
+        <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#00E599" stopOpacity="0.28" />
+          <stop offset="35%" stopColor="#00E599" stopOpacity="0.12" />
+          <stop offset="70%" stopColor="#00E599" stopOpacity="0.03" />
+          <stop offset="100%" stopColor="#00E599" stopOpacity="0" />
+        </linearGradient>
+        {/* Upper highlight — brighter band just below the line */}
+        <linearGradient id="areaHighlight" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#00E599" stopOpacity="0.15" />
+          <stop offset="100%" stopColor="#00E599" stopOpacity="0" />
+        </linearGradient>
+        <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#00E599" stopOpacity="0.4" />
+          <stop offset="50%" stopColor="#00E599" stopOpacity="1" />
+          <stop offset="100%" stopColor="#0284C7" stopOpacity="0.9" />
+        </linearGradient>
+      </defs>
 
-      {/* log entries */}
-      {logLines.map((line, i) => (
-        <motion.div
-          key={line.id}
-          initial={{ opacity: 0, x: -6 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2 + i * 0.15, duration: 0.35, ease: "easeOut" }}
-          className="flex items-center gap-2"
-        >
-          <span className="text-accent-green/60 shrink-0">&gt;</span>
-          <span className="text-text-muted w-14 shrink-0">{line.label}</span>
-          <span className="text-accent-green/40 w-16 shrink-0">{line.status}</span>
-          <span className="text-brand-border-light flex-1 text-right truncate">
-            {"─".repeat(20 - i * 3)}
-          </span>
-          <span className="text-text-muted/60 shrink-0 w-[6.5rem] text-right">{line.time}</span>
-        </motion.div>
+      {/* Subtle horizontal grid lines */}
+      {[20, 40, 60, 80].map((y) => (
+        <line
+          key={y}
+          x1="0" y1={y} x2="100" y2={y}
+          stroke="rgba(255,255,255,0.025)"
+          strokeWidth="0.3"
+        />
       ))}
 
-      {/* blinking prompt */}
-      <motion.div
-        className="flex items-center gap-1 mt-2"
-        animate={{ opacity: [0.4, 1, 0.4] }}
-        transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <span className="text-accent-green/80 text-[clamp(8px,1vw,10px)]">$</span>
-        <span className="w-2.5 h-3 bg-accent-green/70" />
-      </motion.div>
+      {/* Area fill — main gradient body */}
+      <path
+        d="M 0 78
+           C 4 78, 8 74, 12 72
+           C 18 69, 22 77, 28 75
+           C 34 73, 38 62, 44 58
+           C 50 54, 54 65, 60 60
+           C 66 55, 70 44, 76 42
+           C 82 40, 86 48, 92 38
+           C 96 32, 98 28, 100 25
+           L 100 100 L 0 100 Z"
+        fill="url(#areaGrad)"
+      />
+
+      {/* Area highlight — thin bright band under the line */}
+      <path
+        d="M 0 78
+           C 4 78, 8 74, 12 72
+           C 18 69, 22 77, 28 75
+           C 34 73, 38 62, 44 58
+           C 50 54, 54 65, 60 60
+           C 66 55, 70 44, 76 42
+           C 82 40, 86 48, 92 38
+           C 96 32, 98 28, 100 25
+           L 100 32 L 0 85 Z"
+        fill="url(#areaHighlight)"
+      />
+
+      {/* Main line */}
+      <path
+        d="M 0 78
+           C 4 78, 8 74, 12 72
+           C 18 69, 22 77, 28 75
+           C 34 73, 38 62, 44 58
+           C 50 54, 54 65, 60 60
+           C 66 55, 70 44, 76 42
+           C 82 40, 86 48, 92 38
+           C 96 32, 98 28, 100 25"
+        fill="none"
+        stroke="url(#lineGrad)"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+      />
+
+      {/* Glow line (wider, soft) */}
+      <path
+        d="M 0 78
+           C 4 78, 8 74, 12 72
+           C 18 69, 22 77, 28 75
+           C 34 73, 38 62, 44 58
+           C 50 54, 54 65, 60 60
+           C 66 55, 70 44, 76 42
+           C 82 40, 86 48, 92 38
+           C 96 32, 98 28, 100 25"
+        fill="none"
+        stroke="#00E599"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+        opacity="0.12"
+      />
+
+      {/* Data point — latest value highlight */}
+      <circle cx="100" cy="25" r="1.5" fill="#00E599" opacity="0.95" />
+      <circle cx="100" cy="25" r="3.5" fill="#00E599" opacity="0.18" />
+    </svg>
+  );
+}
+
+/* ── Stat badge ── */
+function StatBadge({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex items-center gap-2">
+      <span className="text-[clamp(18px,2vw,24px)] font-bold text-text-primary tabular-nums">
+        {value}
+      </span>
+      <span className="text-text-muted text-[clamp(9px,1vw,11px)]">{label}</span>
     </div>
   );
 }
 
-/* ── System capability tags ── */
-const tags = ["微服务架构", "千万级 TPS", "秒级核算", "云原生部署"];
-
-function CapabilityTags() {
-  return (
-    <div className="mt-4 flex flex-wrap gap-2 pointer-events-none select-none">
-      {tags.map((tag) => (
-        <span
-          key={tag}
-          className="inline-flex items-center px-2.5 py-1 rounded-sm border border-brand-border/60 bg-brand-bg/40 text-text-muted text-[clamp(9px,1.1vw,11px)] tracking-wide"
-        >
-          <span className="w-1 h-1 rounded-full bg-accent-green/50 mr-1.5" />
-          {tag}
-        </span>
-      ))}
-    </div>
-  );
-}
-
-/* ── Card data ── */
-const cards = [
-  {
-    icon: CreditCard,
-    title: "信用卡核心系统与实施交付",
-    desc: `助力客户完成"以客户为中心"的数字核心建设及升级；提供全新搭建、升级、迁移全流程服务。`,
-    highlight: "凭借先进技术和标准化设计，提供多样化的专业系统解决方案。",
-    span: "lg:col-span-2 lg:row-span-2",
-    decorator: "log",
-  },
-  {
-    icon: Building2,
-    title: "零售信贷一体化解决方案",
-    desc: `为区域银行打造"以客户为中心"的智能零售信贷解决方案，构建"生态+运营+科技"体系。`,
-    highlight: `依托金融云/场景云/数据云，助力客户"0门槛"搭建顶尖科技能力。`,
-    span: "lg:col-span-1",
-  },
-  {
-    icon: Users,
-    title: "专业咨询服务",
-    desc: "汇聚国际金融企业专家、国内大行资深人士及 IT 技术大咖。",
-    highlight: "丰富的架构设计与项目交付实战经验，确保方案可落地。",
-    span: "lg:col-span-1",
-  },
-];
-
-/* ── Card component ── */
-function BentoCard({
+/* ── Right-hand small card ── */
+function SideCard({
   icon: Icon,
   title,
   desc,
-  highlight,
-  span,
-  decorator,
-}: (typeof cards)[number] & { decorator?: string }) {
+}: {
+  icon: React.ElementType;
+  title: string;
+  desc: string;
+}) {
   return (
     <motion.div
-      className={`${span} group relative overflow-hidden rounded-sm border border-brand-border bg-brand-surface/60 p-6 md:p-8 transition-colors duration-300 hover:border-accent-green/50`}
+      className="group flex flex-col bg-[#0B0F19]/50 border border-white/5 rounded-3xl p-6 transition-all duration-500 cursor-default backdrop-blur-xl
+                 hover:border-[#00E599]/30 hover:bg-[#0B0F19]/80 hover:-translate-y-1"
       whileHover={{ y: -2 }}
       transition={{ duration: 0.2 }}
     >
-      {/* neon glow on hover */}
-      <div
-        className="pointer-events-none absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{
-          boxShadow:
-            "inset 0 0 50px rgba(0,229,153,0.08), 0 0 30px rgba(0,229,153,0.12)",
-        }}
+      {/* Glow on hover */}
+      <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{ boxShadow: "inset 0 0 40px rgba(0,229,153,0.04)" }}
       />
 
-      <div className="relative z-10">
-        {/* header */}
-        <Icon size={28} className="text-accent-green mb-4" strokeWidth={1.5} />
-        <h3 className="text-[clamp(15px,1.8vw,18px)] font-semibold text-text-primary mb-2">{title}</h3>
-        <p className="text-text-secondary text-[clamp(12px,1.4vw,14px)] leading-relaxed">{desc}</p>
-
-        {/* decorative element — only for the hero card */}
-        {decorator === "log" && <TechLog />}
-        {decorator === "log" && <CapabilityTags />}
-
-        {/* highlight */}
-        <p
-          className={`text-accent-green/80 text-[clamp(10px,1.2vw,12px)] leading-relaxed border-l-2 border-accent-green/50 pl-3 ${
-            decorator === "log" ? "mt-5" : "mt-4"
-          }`}
-        >
-          {highlight}
+      <div className="relative z-10 flex flex-col h-full">
+        <div className="w-9 h-9 rounded-lg bg-[#00E599]/10 border border-[#00E599]/20 flex items-center justify-center mb-4">
+          <Icon size={18} className="text-[#00E599]" strokeWidth={1.5} />
+        </div>
+        <h3 className="text-[clamp(14px,1.5vw,16px)] font-semibold text-text-primary mb-2">
+          {title}
+        </h3>
+        <p className="text-text-secondary text-[clamp(11px,1.2vw,13px)] leading-relaxed flex-1">
+          {desc}
         </p>
+        <span className="inline-flex text-[#00E599]/50 group-hover:text-[#00E599] group-hover:translate-x-1 transition-all duration-300 text-lg mt-3">
+          &rarr;
+        </span>
       </div>
     </motion.div>
   );
 }
 
-/* ── Grid ── */
+/* ── Main grid ── */
 export default function BentoGrid() {
   return (
-    <section className="mx-auto max-w-[1280px] px-6 py-24">
+    <section className="mx-auto max-w-[1280px] px-6 py-20">
+      {/* Section header */}
       <div className="mb-12">
         <p className="text-accent-green text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-3">
           Our Businesses
         </p>
-        <h2 className="text-[clamp(22px,3vw,30px)] font-bold text-text-primary">三大核心业务</h2>
+        <h2 className="text-[clamp(22px,3vw,30px)] font-bold text-text-primary">
+          三大核心业务
+        </h2>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {cards.map((card) => (
-          <BentoCard key={card.title} {...card} />
-        ))}
+      {/* Asymmetric Bento Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-16">
+        {/* ── Left hero card (span 8): 信用卡核心系统 ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="col-span-1 lg:col-span-8 relative overflow-hidden bg-[#0B0F19]/80 border border-white/5 rounded-3xl p-8 min-h-[380px] flex flex-col backdrop-blur-xl group hover:border-[#00E599]/30 transition-colors duration-500"
+        >
+          {/* Subtle grid pattern background */}
+          <div
+            className="absolute inset-0 opacity-[0.03] pointer-events-none"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+            }}
+          />
+
+          {/* Top-left content */}
+          <div className="relative z-10 max-w-[55%]">
+            <div className="w-10 h-10 rounded-lg bg-[#00E599]/10 border border-[#00E599]/20 flex items-center justify-center mb-5">
+              <CreditCard size={20} className="text-[#00E599]" strokeWidth={1.5} />
+            </div>
+            <h3 className="text-[clamp(18px,2vw,24px)] font-bold text-text-primary mb-3">
+              信用卡 / 零售信贷核心系统
+            </h3>
+            <p className="text-text-secondary text-[clamp(12px,1.4vw,14px)] leading-relaxed">
+              助力客户完成「以客户为中心」的数字核心建设及升级；提供全新搭建、升级、迁移全流程服务。
+            </p>
+
+            {/* Stats row */}
+            <div className="flex gap-8 mt-6">
+              <StatBadge label="系统可用性" value="99.99%" />
+              <StatBadge label="日均交易" value="10M+" />
+            </div>
+          </div>
+
+          {/* Area chart — fills bottom half */}
+          <AreaChart />
+        </motion.div>
+
+        {/* ── Right column (span 4): two stacked cards ── */}
+        <div className="col-span-1 lg:col-span-4 flex flex-col gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+          >
+            <SideCard
+              icon={Building2}
+              title="零售信贷一体化方案"
+              desc="为区域银行打造「以客户为中心」的智能零售信贷解决方案，构建「生态+运营+科技」体系。"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          >
+            <SideCard
+              icon={Users}
+              title="专业咨询与交付"
+              desc="汇聚国际金融企业专家、国内大行资深人士及 IT 技术大咖，确保方案可落地。"
+            />
+          </motion.div>
+        </div>
       </div>
     </section>
   );

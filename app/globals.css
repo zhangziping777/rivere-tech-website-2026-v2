@@ -15,6 +15,7 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #030b14;
   }
 
   body {
@@ -54,6 +55,23 @@
 
 @layer utilities {
   .text-gradient-accent {
-    @apply bg-gradient-to-r from-accent-green to-accent-yellow bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-accent-green to-accent-cyan bg-clip-text text-transparent;
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 8s ease-in-out infinite;
+  }
+
+  @keyframes starfield-drift {
+    0%   { transform: translate(0, 0); opacity: 0.4; }
+    50%  { opacity: 0.7; }
+    100% { transform: translate(-2%, -3%); opacity: 0.4; }
+  }
+  .animate-starfield {
+    animation: starfield-drift 20s ease-in-out infinite;
   }
 }

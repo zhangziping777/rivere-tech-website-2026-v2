@@ -6,7 +6,7 @@ const partners = [
 
 export default function StrategicPartners() {
   return (
-    <section className="mx-auto max-w-[1280px] px-6 py-24 mt-24 border-t border-brand-border">
+    <section className="mx-auto max-w-[1280px] px-6 py-20 border-t border-brand-border">
       <div className="mb-16 text-center">
         <p className="text-accent-green text-xs font-medium tracking-widest uppercase mb-3">
           Strategic Partners

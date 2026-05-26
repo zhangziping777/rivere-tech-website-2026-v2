@@ -50,7 +50,7 @@ function LogoImg({ file }: { file: string }) {
 
 export default function Partners() {
   return (
-    <section className="mx-auto max-w-[1280px] px-6 py-24 border-t border-brand-border">
+    <section className="mx-auto max-w-[1280px] px-6 py-20 border-t border-brand-border">
       <div className="mb-12 text-center">
         <p className="text-accent-green text-xs font-medium tracking-widest uppercase mb-3">
           Our Clients
@@ -68,7 +68,7 @@ export default function Partners() {
       </div>
 
       {/* Row 2 — scrolls right */}
-      <div className="relative w-full overflow-hidden mt-10">
+      <div className="relative w-full overflow-hidden mt-4">
         <div className="flex animate-marquee-reverse">
           {[...ROW2, ...ROW2].map((file, i) => (
             <LogoImg key={`r2-${file}-${i}`} file={file} />

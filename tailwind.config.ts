@@ -10,15 +10,15 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          bg: "#0B0D17",
-          surface: "#131620",
-          elevated: "#1A1D2A",
-          border: "#2A2D3A",
-          "border-light": "#363A4A",
+          bg: "#070B14",
+          surface: "#0C1120",
+          elevated: "#111827",
+          border: "#1E2538",
+          "border-light": "#2A3146",
         },
         accent: {
           green: "#00E599",
-          yellow: "#FFD600",
+          cyan: "#0284C7",
           DEFAULT: "#00E599",
         },
         text: {

@@ -1,33 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Database, Brain, Workflow, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 const products = [
   {
-    icon: Shield,
     title: "AnyGateway",
     subtitle: "融合支付网关核心",
     desc: "三层纵深管控、协议自转换与智能路由，构建安全高效的金融级数据连接中枢。",
     href: "/products#anygateway",
   },
   {
-    icon: Database,
     title: "AnyTXN",
     subtitle: "信用卡及零售信贷核心",
     desc: "独创 TXA 理念，统一账户与交易建模，驱动业务持续创新的极速金融底座。",
     href: "/products#anytxn",
   },
   {
-    icon: Brain,
     title: "AnyEAST",
     subtitle: "智能风控/营销决策核心",
     desc: "毫秒级事中决策，全生命周期信贷风险管控与智能营销的大脑中心。",
     href: "/products#anyeast",
   },
   {
-    icon: Workflow,
     title: "AnyTASK",
     subtitle: "流程自动化管理核心",
     desc: "可视化全链路任务编排，实现从策略决策到落地执行的无缝闭环。",
@@ -35,17 +30,60 @@ const products = [
   },
 ];
 
+/* Dummy code lines for geek-texture background */
+const codeLines = Array.from({ length: 18 }, (_, i) => {
+  const snippets = [
+    "fn process_txn(amt: f64) -> Result<Txn>",
+    "  let account = ledger::fetch(id)?;",
+    "  let risk   = east::score(&ctx)?;",
+    "  let route  = gateway::resolve(iso);",
+    "  account.apply(amt)?;",
+    "  txn.commit().map_err(|e| e.into())",
+    "pub struct AuthRequest { mcc: u16, pin: [u8; 6] }",
+    "impl From<Payload> for Settlement { … }",
+    "const MAX_RETRY: u8 = 3;",
+    "#[wasm_bindgen] pub fn reconcile(batch: &[Txn])",
+    "use anytask::pipeline::{Orch, Task};",
+    "cache.invalidate(&keys).await?;",
+    "tracing::info!(%latency, \"txn settled\");",
+    "let proof = merkle::prove(&leaves, idx);",
+    "select * from events where ts > now() - 5m",
+    "kubectl rollout restart deploy/txn-engine",
+    "│  └─ POST /v2/authorize   [201] 44ms",
+    "│  ├─ anygateway::route    [OK]   2ms",
+  ];
+  return snippets[i % snippets.length];
+});
+
+function CodeBackground() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none select-none opacity-[0.06] blur-[1px]">
+      <div className="font-mono text-[clamp(7px,0.9vw,10px)] text-gray-400 leading-relaxed whitespace-pre">
+        {codeLines.map((line, i) => (
+          <div key={i} className="ml-[clamp(4%,8vw,10%)]">
+            <span className="text-[#00E599]/30 mr-3">{String(i + 1).padStart(2, "0")}</span>
+            {line}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function CoreProducts() {
   return (
-    <section className="mx-auto max-w-[1280px] px-6 py-24 border-t border-brand-border">
+    <section className="relative mx-auto max-w-[1280px] px-6 py-20 border-t border-white/5 overflow-hidden">
+      <CodeBackground />
+
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
+        className="relative z-10"
       >
-        <p className="text-accent-green text-[clamp(10px,1.2vw,12px)] font-bold tracking-widest uppercase mb-3">
+        <p className="text-[#00E599] text-[clamp(10px,1.2vw,12px)] font-bold tracking-widest uppercase mb-3">
           Core Products
         </p>
         <h2 className="text-[clamp(22px,3vw,30px)] md:text-[clamp(28px,3.5vw,36px)] font-bold text-text-primary">
@@ -53,48 +91,37 @@ export default function CoreProducts() {
         </h2>
       </motion.div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+      {/* 4-col grid */}
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
         {products.map((p, i) => (
           <motion.div
             key={p.title}
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ delay: i * 0.1, duration: 0.55, ease: "easeOut" }}
+            transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
           >
             <Link href={p.href}>
-              <div className="group relative p-8 bg-white/[0.02] border border-white/10 rounded-2xl transition-all duration-500 hover:bg-white/[0.04] hover:border-[#00E599]/50 hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col">
-                {/* Glow on hover */}
-                <div className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ boxShadow: "inset 0 0 40px rgba(0,229,153,0.04), 0 0 30px rgba(0,229,153,0.08)" }}
-                />
+              <div className="group relative bg-transparent border border-white/5 rounded-2xl p-8 backdrop-blur-xl transition-all duration-400 hover:border-[#00E599]/30 hover:-translate-y-1 cursor-pointer h-full flex flex-col">
+                {/* Cross star + */}
+                <span className="text-[#00E599]/30 text-[clamp(14px,1.6vw,18px)] font-light mb-6 block leading-none select-none group-hover:text-[#00E599]/60 transition-colors duration-400">
+                  +
+                </span>
 
-                <div className="relative z-10 flex flex-col h-full">
-                  {/* Icon + Arrow */}
-                  <div className="flex items-start justify-between mb-5">
-                    <div className="w-10 h-10 rounded-lg bg-[#00E599]/10 border border-[#00E599]/20 flex items-center justify-center">
-                      <p.icon size={20} className="text-[#00E599]" strokeWidth={1.5} />
-                    </div>
-                    <ArrowUpRight
-                      size={18}
-                      className="text-text-muted/30 group-hover:text-[#00E599] group-hover:opacity-100 transition-all duration-300 shrink-0 mt-1"
-                    />
-                  </div>
+                {/* Title */}
+                <h3 className="text-[clamp(16px,1.8vw,20px)] font-bold text-text-primary mb-1.5 leading-tight">
+                  {p.title}
+                </h3>
 
-                  {/* Title */}
-                  <h3 className="text-[clamp(16px,1.8vw,18px)] font-bold text-text-primary mb-1">
-                    {p.title}
-                  </h3>
-                  <p className="text-[clamp(10px,1.1vw,11px)] text-text-muted font-medium tracking-wide mb-3">
-                    {p.subtitle}
-                  </p>
+                {/* Subtitle */}
+                <p className="text-[clamp(10px,1.1vw,11px)] text-[#00E599]/60 font-medium tracking-wide mb-3">
+                  {p.subtitle}
+                </p>
 
-                  {/* Description */}
-                  <p className="text-text-secondary text-[clamp(12px,1.4vw,14px)] leading-relaxed mt-auto">
-                    {p.desc}
-                  </p>
-                </div>
+                {/* Description */}
+                <p className="text-text-secondary text-[clamp(12px,1.4vw,14px)] leading-relaxed mt-auto">
+                  {p.desc}
+                </p>
               </div>
             </Link>
           </motion.div>
