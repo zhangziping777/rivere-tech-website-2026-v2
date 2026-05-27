@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
-/* ── Orbit constants ── */
+/* ── Orbit constants (elliptical: wide × short) ── */
 const CX = 300;
 const CY = 300;
-const R  = 250;
+const RX = 280;
+const RY = 160;
 
 interface OrbitNode {
   label: string;
@@ -23,20 +23,20 @@ const orbitNodes: OrbitNode[] = [
   { label: "零售产品",   angleDeg: 180 },
 ];
 
-/* SVG pixel endpoint (600×600 viewBox) */
+/* SVG pixel endpoint (600×600 viewBox, elliptical orbit) */
 function svgEnd(angleDeg: number) {
   const rad = (angleDeg * Math.PI) / 180;
   return {
-    x: Math.round(CX + R * Math.cos(rad)),
-    y: Math.round(CY + R * Math.sin(rad)),
+    x: Math.round(CX + RX * Math.cos(rad)),
+    y: Math.round(CY + RY * Math.sin(rad)),
   };
 }
 
 /* CSS % offset from center — matches SVG coordinate system at any scale */
 function cssOff(angleDeg: number) {
   const rad = (angleDeg * Math.PI) / 180;
-  const dx = ((R * Math.cos(rad)) / 6).toFixed(3);
-  const dy = ((R * Math.sin(rad)) / 6).toFixed(3);
+  const dx = ((RX * Math.cos(rad)) / 6).toFixed(3);
+  const dy = ((RY * Math.sin(rad)) / 6).toFixed(3);
   return { dx, dy };
 }
 
@@ -150,7 +150,7 @@ export default function HeroOrbitGraphic() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="w-[106px] h-[74px] rounded-[50%] bg-[#0B0F19]/60 border-2 backdrop-blur-md flex items-center justify-center text-[13px] font-bold cursor-default transition-all duration-300 hover:scale-110"
+                className="w-[90px] h-[62px] rounded-[50%] bg-[#0B0F19]/60 border-2 backdrop-blur-md flex items-center justify-center text-[12px] font-bold cursor-default transition-all duration-300 hover:scale-110"
                 style={{
                   borderColor: "rgba(0, 255, 170, 0.55)",
                   color: "#00FFAA",
@@ -180,24 +180,22 @@ export default function HeroOrbitGraphic() {
         >
           <motion.div
             animate={mounted ? { boxShadow: [
-              "0 0 40px rgba(0,229,153,0.10)",
-              "0 0 70px rgba(0,229,153,0.20)",
-              "0 0 40px rgba(0,229,153,0.10)",
+              "0 0 40px -10px rgba(0,255,170,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
+              "0 0 40px -10px rgba(0,255,170,0.15), 0 8px 32px 0 rgba(0,0,0,0.40), inset 0 1px 0 0 rgba(255,255,255,0.08)",
+              "0 0 40px -10px rgba(0,255,170,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
             ]} : false}
-            transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-            className="bg-[#0B0F19]/50 backdrop-blur-xl border rounded-2xl px-10 py-8 flex flex-col items-center gap-5"
-            style={{ borderColor: "rgba(0, 229, 153, 0.2)" }}
+            transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+            className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-xl px-8 py-6 max-w-[280px] w-fit mx-auto flex flex-col items-center"
+            style={{
+              boxShadow: "0 0 40px -10px rgba(0,255,170,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
+            }}
           >
-            <Image
-              src="/images/logo.png"
-              alt="江融信科技 RIVERE TECH"
-              width={180}
-              height={45}
-              className="h-auto w-[clamp(130px,15vw,200px)]"
-              priority
-            />
-            <p className="text-[#00E599]/60 text-[clamp(11px,1.2vw,13px)] tracking-[0.18em] font-light">
-              There will be solutions.
+            <h2 className="text-xl font-extrabold tracking-widest text-center whitespace-nowrap bg-gradient-to-r from-white via-teal-100 to-teal-400 bg-clip-text text-transparent">
+              信用卡 · 智能零售信贷
+            </h2>
+            <div className="h-[1px] w-4/5 bg-gradient-to-r from-transparent via-teal-500/50 to-transparent my-5" />
+            <p className="text-sm font-medium tracking-wide text-slate-400">
+              科技 & 运营服务商
             </p>
           </motion.div>
         </motion.div>
