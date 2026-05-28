@@ -102,7 +102,7 @@ export default function CoreProducts() {
             transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
           >
             <Link href={p.href}>
-              <div className="group relative bg-white/[0.02] border-l-2 border-cyan-500/20 hover:border-cyan-400 rounded-r-2xl pl-6 pr-6 py-6 backdrop-blur-xl transition-all duration-400 hover:-translate-y-1 cursor-pointer h-full flex flex-col">
+              <div className="group relative bg-blue-950/10 backdrop-blur-sm border border-blue-900/30 border-t-2 border-t-blue-600/50 rounded-2xl p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-cyan-500/50 hover:bg-gradient-to-br hover:from-blue-900/30 hover:to-cyan-900/10 hover:shadow-[0_15px_30px_-15px_rgba(6,182,212,0.25)] cursor-pointer h-full flex flex-col">
                 {/* Title */}
                 <h3 className="text-[clamp(16px,1.8vw,20px)] font-bold bg-gradient-to-r from-blue-500 via-cyan-400 to-cyan-300 bg-clip-text text-transparent mb-1.5 leading-tight">
                   {p.title}
