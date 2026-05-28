@@ -1,6 +1,6 @@
 import HeroOrbitGraphic from "@/components/home/HeroOrbitGraphic";
 import HeroCanvasBackground from "@/components/home/HeroCanvasBackground";
-import HeroTicker from "@/components/home/HeroTicker";
+import NewsTicker from "@/components/home/NewsTicker";
 import BentoGrid from "@/components/home/BentoGrid";
 import CoreProducts from "@/components/home/CoreProducts";
 import Solutions from "@/components/home/Solutions";
@@ -63,8 +63,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Hero Ticker Bar ── */}
-      <HeroTicker />
+      {/* ── News Ticker Bar ── */}
+      <NewsTicker />
 
       {/* ── Three Major Businesses ── */}
       <BentoGrid />

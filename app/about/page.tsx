@@ -7,7 +7,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen">
       {/* ── Hero ── */}
-      <section className="mx-auto max-w-[1280px] px-6 pt-28 pb-20 md:pt-40 md:pb-32 text-center">
+      <section className="mx-auto max-w-7xl px-6 pt-28 pb-20 md:pt-40 md:pb-32 text-center">
         <ScrollReveal>
           <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-6">
             About Us
@@ -34,8 +34,8 @@ export default function AboutPage() {
       </section>
 
       {/* ── Commit Timeline ── */}
-      <section className="mx-auto max-w-[1280px] px-6 pb-24">
-        <ScrollReveal className="mb-12">
+      <section className="pb-24">
+        <ScrollReveal className="mb-12 w-full text-center flex flex-col items-center mx-auto">
           <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-3">
             Our Journey
           </p>
@@ -45,7 +45,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Values Bento ── */}
-      <section className="mx-auto max-w-[1280px] px-6 pb-24">
+      <section className="mx-auto max-w-7xl px-6 pb-24">
         <ScrollReveal className="mb-12">
           <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-3">
             Core Values
@@ -72,7 +72,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Coordinate Card ── */}
-      <section id="contact" className="scroll-mt-24 mx-auto max-w-[1280px] px-6 pb-24">
+      <section id="contact" className="scroll-mt-24 mx-auto max-w-7xl px-6 pb-24">
         <ScrollReveal className="mb-12">
           <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-3">
             Contact Us

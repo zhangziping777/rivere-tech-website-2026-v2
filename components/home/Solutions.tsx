@@ -26,7 +26,7 @@ const solutions = [
 
 export default function Solutions() {
   return (
-    <section className="mx-auto max-w-[1280px] px-6 py-24 md:py-32">
+    <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}

@@ -82,7 +82,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-brand-bg/80 backdrop-blur-xl border-subtle-b">
-      <div className="mx-auto max-w-[1280px] flex items-center justify-between px-6 h-16">
+      <div className="mx-auto max-w-7xl flex items-center justify-between px-6 h-16">
         {/* Logo */}
         <Link href="/" className="shrink-0">
           <img

@@ -72,7 +72,7 @@ function CodeBackground() {
 
 export default function CoreProducts() {
   return (
-    <section className="relative mx-auto max-w-[1280px] px-6 py-24 md:py-32 border-t border-white/5 overflow-hidden bg-[#0A1018]/60">
+    <section className="relative mx-auto max-w-7xl px-6 py-24 md:py-32 border-t border-white/5 overflow-hidden bg-[#0A1018]/60">
       <CodeBackground />
 
       {/* Header */}

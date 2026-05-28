@@ -177,7 +177,7 @@ export default function BusinessOperationsPage() {
         />
 
         {/* Content */}
-        <div className="relative z-10 mx-auto max-w-[1280px] px-6 pt-44 pb-28 md:pt-52 md:pb-32 text-center">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 pt-44 pb-28 md:pt-52 md:pb-32 text-center">
           <ScrollReveal>
             <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-6">
               Business Operations
@@ -202,7 +202,7 @@ export default function BusinessOperationsPage() {
       {/* ═══════════════════════════════════════════════════════════
           Core Services Matrix
           ═══════════════════════════════════════════════════════════ */}
-      <section className="mx-auto max-w-[1280px] px-6 py-20 md:py-28">
+      <section className="mx-auto max-w-7xl px-6 py-20 md:py-28">
         {/* Section header */}
         <div className="mb-14">
           <p className="text-cyan-500 text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-3">
@@ -231,7 +231,7 @@ export default function BusinessOperationsPage() {
         {/* Subtle radial glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-cyan-500/4 blur-[100px] rounded-full pointer-events-none" />
 
-        <div className="relative z-10 mx-auto max-w-[1280px] px-6 py-20 md:py-28">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:py-28">
           {/* Section header */}
           <div className="text-center mb-16">
             <ScrollReveal>
@@ -285,7 +285,7 @@ export default function BusinessOperationsPage() {
       {/* ═══════════════════════════════════════════════════════════
           CTA Section
           ═══════════════════════════════════════════════════════════ */}
-      <section className="mx-auto max-w-[1280px] px-6 py-20 md:py-28 text-center">
+      <section className="mx-auto max-w-7xl px-6 py-20 md:py-28 text-center">
         <ScrollReveal>
           <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-4">
             Let&apos;s Collaborate

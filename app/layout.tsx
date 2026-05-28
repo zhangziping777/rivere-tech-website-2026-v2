@@ -1,7 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: 1280,
+};
 
 export const metadata: Metadata = {
   title: "江融信科技 | 信用卡与零售信贷领域金融科技服务商",
@@ -19,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-CN" className="scroll-smooth">
-      <body className="flex flex-col min-h-screen relative">
+      <body className="flex flex-col min-h-screen relative w-full overflow-x-hidden">
         {/* Deep space ambient glow — fixed background orbs */}
         <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
           <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-blue-900/15 blur-[120px] rounded-full" />

@@ -96,7 +96,6 @@ function TimelineCard({
   children: React.ReactNode;
   side: "left" | "right";
 }) {
-  const hoverClass = side === "left" ? "md:hover:-translate-x-1.5" : "md:hover:translate-x-1.5";
   const alignClass =
     side === "left"
       ? "flex flex-col items-end text-right"
@@ -104,7 +103,7 @@ function TimelineCard({
 
   return (
     <div
-      className={`bg-white/[0.02] border border-white/[0.05] rounded-2xl p-5 md:p-6 transition-transform duration-300 ${alignClass} ${hoverClass}`}
+      className={`bg-white/[0.02] border border-white/[0.05] rounded-2xl p-5 md:p-6 ${alignClass}`}
     >
       {children}
     </div>
@@ -113,12 +112,9 @@ function TimelineCard({
 
 export default function CommitTimeline() {
   return (
-    <div className="relative">
-      {/* Center vertical line — desktop only */}
-      <div className="hidden md:block absolute left-1/2 top-3 bottom-3 w-px -translate-x-px bg-brand-border" />
-
-      {/* Mobile vertical line */}
-      <div className="md:hidden absolute left-[13px] top-3 bottom-3 w-px bg-brand-border" />
+    <div className="relative max-w-7xl mx-auto w-full px-4">
+      {/* Center vertical line */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-brand-border" />
 
       <div className="space-y-0">
         {milestones.map((m, i) => {
@@ -128,93 +124,61 @@ export default function CommitTimeline() {
           const isFirst = i === 0;
 
           return (
-            <div key={m.year}>
-              {/* ────────── Mobile: left-aligned ────────── */}
-              <div className="md:hidden relative pl-12 pb-8 last:pb-0">
-                <div className="absolute left-0 top-1 flex items-center justify-center w-7 h-7 rounded-full bg-brand-bg border-2 border-cyan-500/50 z-10">
-                  <Icon size={13} className="text-cyan-500" />
-                </div>
-
-                <div className="bg-white/[0.02] border border-white/[0.05] rounded-2xl p-5">
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-sm bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 text-2xs font-mono tracking-wider mb-3">
-                    {m.year}
-                  </span>
-                  <h3 className="text-base font-semibold text-text-primary mb-2">{m.title}</h3>
-                  <p className="text-text-secondary text-sm leading-relaxed">{m.body}</p>
-                </div>
-
-                {/* Mobile connector between nodes */}
-                {!isLast && (
-                  <div className="absolute left-[13px] top-[28px] w-px h-[calc(100%-20px)] bg-brand-border" />
+            <div
+              key={m.year}
+              className="relative flex items-start pb-14 last:pb-0"
+            >
+              {/* ── Left half ── */}
+              <div className="w-1/2 pr-12">
+                {isLeft && (
+                  <TimelineCard side="left">
+                    <div className="flex items-center gap-3 mb-2">
+                      <h3 className="text-base font-semibold text-text-primary">
+                        {m.title}
+                      </h3>
+                      <span className="inline-flex px-2 py-0.5 rounded-sm bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 text-2xs font-mono tracking-wider shrink-0">
+                        {m.year}
+                      </span>
+                    </div>
+                    <p className="text-text-secondary text-sm leading-relaxed max-w-md">
+                      {m.body}
+                    </p>
+                  </TimelineCard>
                 )}
               </div>
 
-              {/* ────────── Desktop: centered alternating ────────── */}
-              <div className="hidden md:grid md:grid-cols-[1fr_32px_1fr] md:items-start md:pb-14 last:md:pb-0">
-                {/* LEFT COLUMN */}
-                <div
-                  className={
-                    isLeft
-                      ? "pr-4"
-                      : "invisible pointer-events-none"
-                  }
-                >
-                  {isLeft && (
-                    <TimelineCard side="left">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-base font-semibold text-text-primary">
-                          {m.title}
-                        </h3>
-                        <span className="inline-flex px-2 py-0.5 rounded-sm bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 text-2xs font-mono tracking-wider shrink-0">
-                          {m.year}
-                        </span>
-                      </div>
-                      <p className="text-text-secondary text-sm leading-relaxed">
-                        {m.body}
-                      </p>
-                    </TimelineCard>
-                  )}
-                </div>
+              {/* ── Right half ── */}
+              <div className="w-1/2 pl-12">
+                {!isLeft && (
+                  <TimelineCard side="right">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="inline-flex px-2 py-0.5 rounded-sm bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 text-2xs font-mono tracking-wider shrink-0">
+                        {m.year}
+                      </span>
+                      <h3 className="text-base font-semibold text-text-primary">
+                        {m.title}
+                      </h3>
+                    </div>
+                    <p className="text-text-secondary text-sm leading-relaxed max-w-md">
+                      {m.body}
+                    </p>
+                  </TimelineCard>
+                )}
+              </div>
 
-                {/* CENTER NODE */}
-                <div className="relative flex justify-center">
-                  <div
-                    className={`relative z-10 flex items-center justify-center w-7 h-7 rounded-full border-2 shrink-0 ${
-                      isFirst
-                        ? "bg-cyan-500/15 border-cyan-500 shadow-[0_0_12px_rgba(6,182,212,0.3)]"
-                        : "bg-brand-bg border-cyan-500/50"
-                    }`}
-                  >
-                    <Icon
-                      size={13}
-                      className={isFirst ? "text-cyan-500" : "text-cyan-500"}
-                    />
-                  </div>
-                </div>
-
-                {/* RIGHT COLUMN */}
+              {/* ── Center node (absolute) ── */}
+              <div className="absolute left-1/2 top-0 flex items-center justify-center -translate-x-1/2 z-10">
                 <div
-                  className={
-                    !isLeft
-                      ? "pl-4"
-                      : "invisible pointer-events-none"
-                  }
+                  className={`flex items-center justify-center w-7 h-7 rounded-full border-2 shrink-0 ${
+                    isFirst
+                      ? "bg-cyan-500/15 border-cyan-500 shadow-[0_0_12px_rgba(6,182,212,0.3)]"
+                      : "bg-brand-bg border-cyan-500/50"
+                  }`}
                 >
-                  {!isLeft && (
-                    <TimelineCard side="right">
-                      <div className="flex items-center gap-3 mb-2">
-                        <span className="inline-flex px-2 py-0.5 rounded-sm bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 text-2xs font-mono tracking-wider shrink-0">
-                          {m.year}
-                        </span>
-                        <h3 className="text-base font-semibold text-text-primary">
-                          {m.title}
-                        </h3>
-                      </div>
-                      <p className="text-text-secondary text-sm leading-relaxed">
-                        {m.body}
-                      </p>
-                    </TimelineCard>
-                  )}
+                  <Icon
+                    size={13}
+                    className="text-cyan-500"
+                  />
                 </div>
               </div>
             </div>

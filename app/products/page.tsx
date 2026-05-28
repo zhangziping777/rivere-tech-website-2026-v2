@@ -74,7 +74,7 @@ export default function ProductsPage() {
   return (
     <main className="min-h-screen">
       {/* ── Hero ── */}
-      <section className="mx-auto max-w-[1280px] px-6 pt-28 pb-16 md:pt-44 md:pb-24 text-center">
+      <section className="mx-auto max-w-7xl px-6 pt-28 pb-16 md:pt-44 md:pb-24 text-center">
         <ScrollReveal>
           <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-6">
             Products
@@ -103,7 +103,7 @@ export default function ProductsPage() {
       </section>
 
       {/* ── Architecture Map ── */}
-      <section className="mx-auto max-w-[1280px] px-6 pb-20 md:pb-28">
+      <section className="mx-auto max-w-7xl px-6 pb-20 md:pb-28">
         <ScrollReveal>
           <ArchitectureMap />
         </ScrollReveal>
@@ -119,7 +119,7 @@ export default function ProductsPage() {
             id={exhibit.id}
             className="scroll-mt-24"
           >
-            <div className="mx-auto max-w-[1280px] px-6 py-24 md:py-32">
+            <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
               <div
                 className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${
                   isReversed ? "" : ""

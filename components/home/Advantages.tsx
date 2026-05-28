@@ -31,7 +31,7 @@ const advantages = [
 
 export default function Advantages() {
   return (
-    <section className="mx-auto max-w-[1280px] px-6 py-24 md:py-32 border-t border-white/5 bg-[#0A1018]/60">
+    <section className="mx-auto max-w-7xl px-6 py-24 md:py-32 border-t border-white/5 bg-[#0A1018]/60">
       <ScrollReveal className="mb-12">
         <p className="text-cyan-500 text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-3">
           Why Choose Us

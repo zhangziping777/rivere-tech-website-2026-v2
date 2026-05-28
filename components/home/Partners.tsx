@@ -50,7 +50,7 @@ function LogoImg({ file }: { file: string }) {
 
 export default function Partners() {
   return (
-    <section className="mx-auto max-w-[1280px] px-6 py-24 md:py-32 border-t border-white/5">
+    <section className="mx-auto max-w-7xl px-6 py-24 md:py-32 border-t border-white/5">
       <div className="mb-12 text-center">
         <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-3">
           Our Clients

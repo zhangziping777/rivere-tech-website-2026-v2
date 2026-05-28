@@ -31,12 +31,12 @@ export default async function SolutionPage({ params }: PageProps) {
       />
 
       {/* ── TXA Concept Highlight ── */}
-      <section className="mx-auto max-w-[1280px] px-6 pb-20">
+      <section className="mx-auto max-w-7xl px-6 pb-20">
         <ConceptHighlight title={data.txaTitle} points={data.txaPoints} />
       </section>
 
       {/* ── Architecture Topology ── */}
-      <section className="mx-auto max-w-[1280px] px-6 pb-20">
+      <section className="mx-auto max-w-7xl px-6 pb-20">
         <div className="mb-8">
           <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-2">
             System Architecture
@@ -47,12 +47,12 @@ export default async function SolutionPage({ params }: PageProps) {
       </section>
 
       {/* ── ScrollSpy Content ── */}
-      <section className="mx-auto max-w-[1280px] px-6 pb-20">
+      <section className="mx-auto max-w-7xl px-6 pb-20">
         <ScrollSpyLayout sections={data.sections} />
       </section>
 
       {/* ── Comparison Table ── */}
-      <section className="mx-auto max-w-[1280px] px-6 pb-24">
+      <section className="mx-auto max-w-7xl px-6 pb-24">
         <div className="mb-8">
           <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-2">
             Solution Comparison

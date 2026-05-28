@@ -58,7 +58,7 @@ function SideCard({
 /* ── Main grid ── */
 export default function BentoGrid() {
   return (
-    <section className="mx-auto max-w-[1280px] px-6 py-24 md:py-32">
+    <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
       {/* Section header */}
       <div className="mb-12">
         <p className="text-cyan-500 text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-3">
