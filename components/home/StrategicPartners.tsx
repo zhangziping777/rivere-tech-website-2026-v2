@@ -6,9 +6,9 @@ const partners = [
 
 export default function StrategicPartners() {
   return (
-    <section className="mx-auto max-w-[1280px] px-6 py-20 border-t border-brand-border">
+    <section className="mx-auto max-w-[1280px] px-6 py-24 md:py-32 border-t border-white/5 bg-[#0A1018]/60">
       <div className="mb-16 text-center">
-        <p className="text-accent-green text-xs font-medium tracking-widest uppercase mb-3">
+        <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-3">
           Strategic Partners
         </p>
         <h2 className="text-3xl font-bold text-text-primary mb-4">
@@ -19,16 +19,16 @@ export default function StrategicPartners() {
         </p>
       </div>
 
-      <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-24">
+      <div className="flex flex-wrap justify-center items-center gap-16 lg:gap-24">
         {partners.map((p) => (
           <div
             key={p.file}
-            className="flex items-center justify-center h-24 w-48"
+            className="flex items-center justify-center"
           >
             <img
               src={`/images/partners/${p.file}`}
               alt={p.alt}
-              className="h-14 w-auto max-w-[160px] object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+              className="h-10 w-auto max-w-[160px] object-contain grayscale opacity-50 contrast-125 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
             />
           </div>
         ))}

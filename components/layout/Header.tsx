@@ -39,6 +39,7 @@ const navItems: NavItem[] = [
       { label: "Gateway 网关解决方案", href: "/solutions/gateway" },
     ],
   },
+  { label: "业务合作运营", href: "/business-operations" },
   { label: "关于我们", href: "/about" },
   { label: "联系我们", href: "/about#contact" },
 ];
@@ -133,7 +134,7 @@ export default function Header() {
         {/* CTA */}
         <Link
           href="/about#contact"
-          className="hidden md:inline-flex items-center px-4 py-2 rounded-sm border border-accent-green/50 text-accent-green text-sm font-medium hover:bg-accent-green/10 transition-colors duration-200"
+          className="hidden md:inline-flex items-center px-4 py-2 rounded-sm border border-cyan-500/50 text-cyan-500 text-sm font-medium hover:bg-cyan-500/10 transition-colors duration-200"
         >
           立即咨询
         </Link>

@@ -21,7 +21,7 @@ export default function Home() {
           {/* Left: Hero text — 1/2 */}
           <div className="w-1/2">
             <ScrollReveal>
-              <p className="text-accent-green text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-4">
+              <p className="text-cyan-500 text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-4">
                 Riveretech Technology
               </p>
             </ScrollReveal>
@@ -32,7 +32,7 @@ export default function Home() {
               </h1>
             </ScrollReveal>
             <ScrollReveal delay={0.14}>
-              <p className="mt-6 text-[clamp(14px,1.6vw,18px)] text-text-secondary max-w-lg leading-relaxed">
+              <p className="mt-6 text-[clamp(14px,1.6vw,18px)] text-slate-200 max-w-lg leading-relaxed tracking-wide">
                 致力于打造商业银行信用卡、零售信贷领域最具价值合作伙伴
               </p>
             </ScrollReveal>
@@ -40,13 +40,13 @@ export default function Home() {
               <div className="flex gap-4 mt-8">
                 <a
                   href="/products"
-                  className="inline-flex items-center px-6 py-3 rounded-sm bg-[#00E599] text-black text-[clamp(12px,1.3vw,14px)] font-bold hover:bg-[#00E599]/90 transition-colors duration-200"
+                  className="inline-flex items-center px-6 py-3 rounded-sm bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[clamp(12px,1.3vw,14px)] font-bold hover:bg-cyan-500/20 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-300"
                 >
                   探索产品
                 </a>
                 <a
                   href="/about#contact"
-                  className="inline-flex items-center px-6 py-3 rounded-sm border border-white/20 text-white text-[clamp(12px,1.3vw,14px)] font-medium hover:bg-white/5 transition-colors duration-200"
+                  className="inline-flex items-center px-6 py-3 rounded-sm border border-white/20 text-white text-[clamp(12px,1.3vw,14px)] font-medium hover:border-cyan-500/40 hover:bg-white/5 transition-all duration-300"
                 >
                   联系我们
                 </a>

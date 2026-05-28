@@ -61,7 +61,7 @@ function CodeBackground() {
       <div className="font-mono text-[clamp(7px,0.9vw,10px)] text-gray-400 leading-relaxed whitespace-pre">
         {codeLines.map((line, i) => (
           <div key={i} className="ml-[clamp(4%,8vw,10%)]">
-            <span className="text-[#00E599]/30 mr-3">{String(i + 1).padStart(2, "0")}</span>
+            <span className="text-cyan-500/30 mr-3">{String(i + 1).padStart(2, "0")}</span>
             {line}
           </div>
         ))}
@@ -72,7 +72,7 @@ function CodeBackground() {
 
 export default function CoreProducts() {
   return (
-    <section className="relative mx-auto max-w-[1280px] px-6 py-20 border-t border-white/5 overflow-hidden">
+    <section className="relative mx-auto max-w-[1280px] px-6 py-24 md:py-32 border-t border-white/5 overflow-hidden bg-[#0A1018]/60">
       <CodeBackground />
 
       {/* Header */}
@@ -81,9 +81,9 @@ export default function CoreProducts() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="relative z-10"
+        className="relative z-10 mb-12"
       >
-        <p className="text-[#00E599] text-[clamp(10px,1.2vw,12px)] font-bold tracking-widest uppercase mb-3">
+        <p className="text-cyan-500 text-[clamp(10px,1.2vw,12px)] font-bold tracking-widest uppercase mb-3">
           Core Products
         </p>
         <h2 className="text-[clamp(22px,3vw,30px)] md:text-[clamp(28px,3.5vw,36px)] font-bold text-text-primary">
@@ -102,24 +102,19 @@ export default function CoreProducts() {
             transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
           >
             <Link href={p.href}>
-              <div className="group relative bg-transparent border border-white/5 rounded-2xl p-8 backdrop-blur-xl transition-all duration-400 hover:border-[#00E599]/30 hover:-translate-y-1 cursor-pointer h-full flex flex-col">
-                {/* Cross star + */}
-                <span className="text-[#00E599]/30 text-[clamp(14px,1.6vw,18px)] font-light mb-6 block leading-none select-none group-hover:text-[#00E599]/60 transition-colors duration-400">
-                  +
-                </span>
-
+              <div className="group relative bg-white/[0.02] border-l-2 border-cyan-500/20 hover:border-cyan-400 rounded-r-2xl pl-6 pr-6 py-6 backdrop-blur-xl transition-all duration-400 hover:-translate-y-1 cursor-pointer h-full flex flex-col">
                 {/* Title */}
-                <h3 className="text-[clamp(16px,1.8vw,20px)] font-bold text-text-primary mb-1.5 leading-tight">
+                <h3 className="text-[clamp(16px,1.8vw,20px)] font-bold bg-gradient-to-r from-blue-500 via-cyan-400 to-cyan-300 bg-clip-text text-transparent mb-1.5 leading-tight">
                   {p.title}
                 </h3>
 
                 {/* Subtitle */}
-                <p className="text-[clamp(10px,1.1vw,11px)] text-[#00E599]/60 font-medium tracking-wide mb-3">
+                <p className="text-sm text-blue-400 font-medium tracking-wide mb-3">
                   {p.subtitle}
                 </p>
 
                 {/* Description */}
-                <p className="text-text-secondary text-[clamp(12px,1.4vw,14px)] leading-relaxed mt-auto">
+                <p className="text-slate-300 text-[clamp(12px,1.4vw,14px)] leading-relaxed mt-auto">
                   {p.desc}
                 </p>
               </div>

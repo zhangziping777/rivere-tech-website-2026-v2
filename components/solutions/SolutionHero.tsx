@@ -20,7 +20,7 @@ export default function SolutionHero({
   return (
     <section className="mx-auto max-w-[1280px] px-6 pt-28 pb-16 md:pt-36 md:pb-24">
       <ScrollReveal>
-        <p className="text-accent-green text-xs font-medium tracking-widest uppercase mb-4">
+        <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-4">
           Solutions
         </p>
       </ScrollReveal>
@@ -32,7 +32,7 @@ export default function SolutionHero({
       </ScrollReveal>
 
       <ScrollReveal delay={0.15}>
-        <p className="text-lg md:text-xl text-accent-green/80 font-medium mb-6">
+        <p className="text-lg md:text-xl text-cyan-500/80 font-medium mb-6">
           {tagline}
         </p>
       </ScrollReveal>

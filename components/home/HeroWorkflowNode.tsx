@@ -102,7 +102,7 @@ function parsePath(d: string) {
 function Particle({
   pathD,
   delay,
-  color = "#00E599",
+  color = "#06B6D4",
 }: {
   pathD: string;
   delay: number;
@@ -151,7 +151,7 @@ function NodeCard({ node }: { node: NodeDef }) {
         height={node.h + 2}
         rx={6}
         fill="none"
-        stroke="#00E599"
+        stroke="#06B6D4"
         strokeWidth={0.6}
         opacity={0.35}
       />
@@ -243,7 +243,7 @@ export default function HeroWorkflowNode() {
         <path
           key={`flow-${p.id}`}
           d={p.d}
-          stroke="#00E599"
+          stroke="#06B6D4"
           strokeWidth={1.2}
           strokeDasharray="6 12"
           fill="none"

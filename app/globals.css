@@ -15,7 +15,7 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #030b14;
+    background-color: #030712;
   }
 
   body {
@@ -24,7 +24,7 @@
   }
 
   ::selection {
-    @apply bg-accent-green/30 text-text-primary;
+    @apply bg-cyan-500/30 text-text-primary;
   }
 }
 
@@ -49,13 +49,13 @@
   }
 
   .dropdown-item {
-    @apply block w-full text-left px-4 py-2 text-sm text-text-secondary hover:text-accent-green hover:bg-brand-bg/50 transition-colors duration-150 whitespace-nowrap;
+    @apply block w-full text-left px-4 py-2 text-sm text-text-secondary hover:text-cyan-500 hover:bg-brand-bg/50 transition-colors duration-150 whitespace-nowrap;
   }
 }
 
 @layer utilities {
   .text-gradient-accent {
-    @apply bg-gradient-to-r from-accent-green to-accent-cyan bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blue-500 via-cyan-400 to-cyan-300 bg-clip-text text-transparent;
   }
 
   @keyframes pulse-slow {

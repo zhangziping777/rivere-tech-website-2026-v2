@@ -9,14 +9,14 @@ export default function AboutPage() {
       {/* ── Hero ── */}
       <section className="mx-auto max-w-[1280px] px-6 pt-28 pb-20 md:pt-40 md:pb-32 text-center">
         <ScrollReveal>
-          <p className="text-accent-green text-xs font-medium tracking-widest uppercase mb-6">
+          <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-6">
             About Us
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.08}>
           <h1
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-text-primary leading-tight tracking-tight mb-8"
-            style={{ textShadow: "0 0 80px rgba(0,229,153,0.12), 0 0 16px rgba(0,229,153,0.06)" }}
+            style={{ textShadow: "0 0 80px rgba(6,182,212,0.12), 0 0 16px rgba(6,182,212,0.06)" }}
           >
             创造价值，共同成长
           </h1>
@@ -36,7 +36,7 @@ export default function AboutPage() {
       {/* ── Commit Timeline ── */}
       <section className="mx-auto max-w-[1280px] px-6 pb-24">
         <ScrollReveal className="mb-12">
-          <p className="text-accent-green text-xs font-medium tracking-widest uppercase mb-3">
+          <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-3">
             Our Journey
           </p>
           <h2 className="text-3xl font-bold text-text-primary">发展历程</h2>
@@ -47,7 +47,7 @@ export default function AboutPage() {
       {/* ── Values Bento ── */}
       <section className="mx-auto max-w-[1280px] px-6 pb-24">
         <ScrollReveal className="mb-12">
-          <p className="text-accent-green text-xs font-medium tracking-widest uppercase mb-3">
+          <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-3">
             Core Values
           </p>
           <h2 className="text-3xl font-bold text-text-primary">核心价值观</h2>
@@ -56,7 +56,7 @@ export default function AboutPage() {
         {/* Brand Manifesto */}
         <ScrollReveal delay={0.1}>
           <div className="max-w-2xl mx-auto mb-16 flex flex-col items-center gap-4 text-center">
-            <span className="px-4 py-1 text-xs font-mono text-[#00E599] bg-[#00E599]/10 rounded-full border border-[#00E599]/20 tracking-wider">
+            <span className="px-4 py-1 text-xs font-mono text-cyan-500 bg-cyan-500/10 rounded-full border border-cyan-500/20 tracking-wider">
               数字信用卡 · 智慧零售信贷 · 场景生态科技与运营服务商
             </span>
             <p className="text-2xl lg:text-3xl font-bold text-white leading-tight">
@@ -74,7 +74,7 @@ export default function AboutPage() {
       {/* ── Coordinate Card ── */}
       <section id="contact" className="scroll-mt-24 mx-auto max-w-[1280px] px-6 pb-24">
         <ScrollReveal className="mb-12">
-          <p className="text-accent-green text-xs font-medium tracking-widest uppercase mb-3">
+          <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-3">
             Contact Us
           </p>
           <h2 className="text-3xl font-bold text-text-primary">联系我们</h2>

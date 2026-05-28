@@ -16,7 +16,7 @@ export default function NewsTicker() {
             key={i}
             className="inline-flex items-center mx-8 text-sm text-text-secondary"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-green mr-3 shrink-0" />
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 mr-3 shrink-0" />
             {item}
           </span>
         ))}

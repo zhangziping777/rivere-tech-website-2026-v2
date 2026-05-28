@@ -58,7 +58,7 @@ export default function ScrollSpyLayout({ sections }: ScrollSpyLayoutProps) {
               onClick={() => handleClick(s.id)}
               className={`block w-full text-left py-2 pl-4 text-sm transition-colors duration-200 border-l-2 -ml-0.5 ${
                 active === s.id
-                  ? "text-accent-green border-accent-green"
+                  ? "text-cyan-500 border-cyan-500"
                   : "text-text-muted border-transparent hover:text-text-secondary hover:border-brand-border-light"
               }`}
             >

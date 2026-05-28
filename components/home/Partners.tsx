@@ -38,11 +38,11 @@ const ROW2 = clients.slice(mid);
 
 function LogoImg({ file }: { file: string }) {
   return (
-    <div className="flex items-center justify-center h-20 w-36 shrink-0">
+    <div className="flex items-center justify-center shrink-0 px-6">
       <img
         src={`/images/clients/${file}`}
         alt={file.replace(/\.[^.]+$/, "")}
-        className="h-10 w-auto max-w-[120px] object-contain opacity-90 hover:opacity-100 transition-opacity duration-300"
+        className="h-8 w-auto max-w-[120px] object-contain grayscale opacity-50 contrast-125 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
       />
     </div>
   );
@@ -50,9 +50,9 @@ function LogoImg({ file }: { file: string }) {
 
 export default function Partners() {
   return (
-    <section className="mx-auto max-w-[1280px] px-6 py-20 border-t border-brand-border">
+    <section className="mx-auto max-w-[1280px] px-6 py-24 md:py-32 border-t border-white/5">
       <div className="mb-12 text-center">
-        <p className="text-accent-green text-xs font-medium tracking-widest uppercase mb-3">
+        <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-3">
           Our Clients
         </p>
         <h2 className="text-3xl font-bold text-text-primary">合作客户</h2>

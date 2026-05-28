@@ -7,8 +7,8 @@ export default function CoordinateCard() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
         {/* ── Address ── */}
         <div className="flex items-start gap-4">
-          <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-accent-green/5 shrink-0 mt-0.5">
-            <MapPin size={16} className="text-accent-green/70" />
+          <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-cyan-500/5 shrink-0 mt-0.5">
+            <MapPin size={16} className="text-cyan-500/70" />
           </div>
           <div>
             <p className="text-text-muted text-2xs font-mono tracking-widest uppercase mb-2">
@@ -25,8 +25,8 @@ export default function CoordinateCard() {
 
         {/* ── Contact ── */}
         <div className="flex items-start gap-4">
-          <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-accent-green/5 shrink-0 mt-0.5">
-            <Mail size={16} className="text-accent-green/70" />
+          <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-cyan-500/5 shrink-0 mt-0.5">
+            <Mail size={16} className="text-cyan-500/70" />
           </div>
           <div>
             <p className="text-text-muted text-2xs font-mono tracking-widest uppercase mb-2">
@@ -34,7 +34,7 @@ export default function CoordinateCard() {
             </p>
             <a
               href="mailto:market@riveretech.com"
-              className="text-accent-green text-sm font-semibold hover:underline underline-offset-4 transition-all"
+              className="text-cyan-500 text-sm font-semibold hover:underline underline-offset-4 transition-all"
             >
               market@riveretech.com
             </a>

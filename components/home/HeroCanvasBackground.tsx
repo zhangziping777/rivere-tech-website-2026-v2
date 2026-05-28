@@ -62,9 +62,9 @@ export default function HeroCanvasBackground() {
     function draw() {
       /* ── Deep abyss background ── */
       const grad = ctx!.createRadialGradient(w * 0.5, h * 0.45, 0, w * 0.5, h * 0.5, Math.max(w, h) * 0.7);
-      grad.addColorStop(0, "#08101C");
-      grad.addColorStop(0.5, "#040A14");
-      grad.addColorStop(1, "#010306");
+      grad.addColorStop(0, "#050D1A");
+      grad.addColorStop(0.5, "#030914");
+      grad.addColorStop(1, "#02050A");
       ctx!.fillStyle = grad;
       ctx!.fillRect(0, 0, w, h);
 
@@ -101,7 +101,7 @@ export default function HeroCanvasBackground() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < MAX_DIST) {
             const alpha = (1 - dist / MAX_DIST) * 0.08;
-            ctx!.strokeStyle = `rgba(0,255,170,${alpha.toFixed(3)})`;
+            ctx!.strokeStyle = `rgba(34,211,238,${alpha.toFixed(3)})`;
             ctx!.lineWidth = 0.5;
             ctx!.beginPath();
             ctx!.moveTo(a.x, a.y);
@@ -113,13 +113,13 @@ export default function HeroCanvasBackground() {
 
       /* ── Draw particles ── */
       for (const p of particles) {
-        ctx!.fillStyle = "rgba(0,255,170,0.55)";
+        ctx!.fillStyle = "rgba(34,211,238,0.55)";
         ctx!.beginPath();
         ctx!.arc(p.x, p.y, 1.6, 0, Math.PI * 2);
         ctx!.fill();
 
         /* Inner bright core */
-        ctx!.fillStyle = "rgba(0,255,170,0.85)";
+        ctx!.fillStyle = "rgba(34,211,238,0.85)";
         ctx!.beginPath();
         ctx!.arc(p.x, p.y, 0.55, 0, Math.PI * 2);
         ctx!.fill();

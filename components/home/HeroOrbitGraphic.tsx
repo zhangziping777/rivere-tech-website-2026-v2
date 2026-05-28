@@ -67,7 +67,7 @@ export default function HeroOrbitGraphic() {
       >
         <defs>
           <linearGradient id="orbitLineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(0,229,153,0.45)" />
+            <stop offset="0%" stopColor="rgba(6,182,212,0.45)" />
             <stop offset="100%" stopColor="rgba(2,132,199,0.12)" />
           </linearGradient>
           <filter id="orbitGlow">
@@ -93,7 +93,7 @@ export default function HeroOrbitGraphic() {
               {mounted && (
                 <motion.path
                   d={curveTo(ex, ey, bows[i])}
-                  stroke="rgba(0,229,153,0.45)"
+                  stroke="rgba(6,182,212,0.45)"
                   strokeWidth="2"
                   fill="none"
                   strokeLinecap="round"
@@ -137,9 +137,9 @@ export default function HeroOrbitGraphic() {
                   mounted
                     ? {
                         boxShadow: [
-                          "0 0 20px rgba(0,255,170,0.35), 0 0 50px rgba(0,255,170,0.12), 0 0 80px rgba(0,229,153,0.06), 0 4px 20px rgba(0,0,0,0.4)",
-                          "0 0 36px rgba(0,255,170,0.65), 0 0 80px rgba(0,255,170,0.28), 0 0 120px rgba(0,229,153,0.14), 0 4px 24px rgba(0,0,0,0.5)",
-                          "0 0 20px rgba(0,255,170,0.35), 0 0 50px rgba(0,255,170,0.12), 0 0 80px rgba(0,229,153,0.06), 0 4px 20px rgba(0,0,0,0.4)",
+                          "0 0 20px rgba(34,211,238,0.35), 0 0 50px rgba(34,211,238,0.12), 0 0 80px rgba(6,182,212,0.06), 0 4px 20px rgba(0,0,0,0.4)",
+                          "0 0 36px rgba(34,211,238,0.65), 0 0 80px rgba(34,211,238,0.28), 0 0 120px rgba(6,182,212,0.14), 0 4px 24px rgba(0,0,0,0.5)",
+                          "0 0 20px rgba(34,211,238,0.35), 0 0 50px rgba(34,211,238,0.12), 0 0 80px rgba(6,182,212,0.06), 0 4px 20px rgba(0,0,0,0.4)",
                         ],
                       }
                     : false
@@ -152,9 +152,9 @@ export default function HeroOrbitGraphic() {
                 }}
                 className="w-[90px] h-[62px] rounded-[50%] bg-[#0B0F19]/60 border-2 backdrop-blur-md flex items-center justify-center text-[12px] font-bold cursor-default transition-all duration-300 hover:scale-110"
                 style={{
-                  borderColor: "rgba(0, 255, 170, 0.55)",
-                  color: "#00FFAA",
-                  textShadow: "0 0 8px rgba(0,255,170,0.6), 0 0 20px rgba(0,255,170,0.3)",
+                  borderColor: "rgba(34,211,238,0.55)",
+                  color: "#22D3EE",
+                  textShadow: "0 0 8px rgba(34,211,238,0.6), 0 0 20px rgba(34,211,238,0.3)",
                 }}
               >
                 {n.label}
@@ -180,21 +180,21 @@ export default function HeroOrbitGraphic() {
         >
           <motion.div
             animate={mounted ? { boxShadow: [
-              "0 0 40px -10px rgba(0,255,170,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
-              "0 0 40px -10px rgba(0,255,170,0.15), 0 8px 32px 0 rgba(0,0,0,0.40), inset 0 1px 0 0 rgba(255,255,255,0.08)",
-              "0 0 40px -10px rgba(0,255,170,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
+              "0 0 40px -10px rgba(34,211,238,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
+              "0 0 40px -10px rgba(34,211,238,0.15), 0 8px 32px 0 rgba(0,0,0,0.40), inset 0 1px 0 0 rgba(255,255,255,0.08)",
+              "0 0 40px -10px rgba(34,211,238,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
             ]} : false}
             transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
             className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-xl px-8 py-6 max-w-[280px] w-fit mx-auto flex flex-col items-center"
             style={{
-              boxShadow: "0 0 40px -10px rgba(0,255,170,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
+              boxShadow: "0 0 40px -10px rgba(34,211,238,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
             }}
           >
-            <h2 className="text-xl font-extrabold tracking-widest text-center whitespace-nowrap bg-gradient-to-r from-white via-teal-100 to-teal-400 bg-clip-text text-transparent">
+            <h2 className="text-xl font-extrabold tracking-widest text-center whitespace-nowrap bg-gradient-to-r from-blue-500 via-cyan-400 to-cyan-300 bg-clip-text text-transparent">
               信用卡 · 智能零售信贷
             </h2>
-            <div className="h-[1px] w-4/5 bg-gradient-to-r from-transparent via-teal-500/50 to-transparent my-5" />
-            <p className="text-sm font-medium tracking-wide text-slate-400">
+            <div className="h-[1px] w-4/5 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent my-5" />
+            <p className="text-sm font-medium tracking-wide text-white/70">
               科技 & 运营服务商
             </p>
           </motion.div>

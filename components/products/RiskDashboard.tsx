@@ -1,8 +1,8 @@
 export default function RiskDashboard() {
   const gauges = [
-    { label: "FRAUD", value: 0.12, color: "#00E599" },
+    { label: "FRAUD", value: 0.12, color: "#06B6D4" },
     { label: "CREDIT", value: 0.68, color: "#f59e0b" },
-    { label: "APPROVAL", value: 0.91, color: "#00E599" },
+    { label: "APPROVAL", value: 0.91, color: "#06B6D4" },
     { label: "LATENCY", value: 0.22, color: "#ef4444" },
   ];
 
@@ -11,12 +11,12 @@ export default function RiskDashboard() {
       <div className="rounded-xl border border-brand-border bg-brand-surface/30 p-6">
         {/* Dashboard header */}
         <div className="flex items-center justify-between mb-6">
-          <span className="text-accent-green text-2xs font-mono tracking-widest uppercase">
+          <span className="text-cyan-500 text-2xs font-mono tracking-widest uppercase">
             Live Risk Monitor
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse" />
-            <span className="text-accent-green text-2xs font-mono">ONLINE</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
+            <span className="text-cyan-500 text-2xs font-mono">ONLINE</span>
           </span>
         </div>
 
@@ -54,7 +54,7 @@ export default function RiskDashboard() {
             <div
               key={i}
               className={`w-1.5 h-1.5 rounded-full ${
-                i <= 6 ? "bg-accent-green/60" : "bg-red-500/40"
+                i <= 6 ? "bg-cyan-500/60" : "bg-red-500/40"
               }`}
             />
           ))}
@@ -70,13 +70,13 @@ export default function RiskDashboard() {
               </span>
               <div className="flex-1 h-1 rounded-full bg-brand-border overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-accent-green/25"
+                  className="h-full rounded-full bg-cyan-500/25"
                   style={{ width: `${w}%` }}
                 />
               </div>
               <span className="text-text-muted text-2xs font-mono w-8 text-right tabular-nums">
                 {w > 60 ? (
-                  <span className="text-accent-green/60">{w}ms</span>
+                  <span className="text-cyan-500/60">{w}ms</span>
                 ) : (
                   <span>{w}ms</span>
                 )}
@@ -87,7 +87,7 @@ export default function RiskDashboard() {
 
         {/* Animated rotating ring in corner */}
         <svg className="absolute top-3 right-3 w-12 h-12 opacity-30" viewBox="0 0 48 48" fill="none">
-          <circle cx="24" cy="24" r="20" stroke="#00E599" strokeWidth="1" strokeDasharray="4 6">
+          <circle cx="24" cy="24" r="20" stroke="#06B6D4" strokeWidth="1" strokeDasharray="4 6">
             <animateTransform
               attributeName="transform"
               type="rotate"

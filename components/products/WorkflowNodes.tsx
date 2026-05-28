@@ -25,9 +25,9 @@ export default function WorkflowNodes() {
       >
         <defs>
           <linearGradient id="flowLine" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#00E599" stopOpacity="0.15" />
-            <stop offset="50%" stopColor="#00E599" stopOpacity="0.8" />
-            <stop offset="100%" stopColor="#00E599" stopOpacity="0.15" />
+            <stop offset="0%" stopColor="#06B6D4" stopOpacity="0.15" />
+            <stop offset="50%" stopColor="#06B6D4" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="#06B6D4" stopOpacity="0.15" />
           </linearGradient>
           <filter id="nodeGlow">
             <feGaussianBlur stdDeviation="3" result="blur" />
@@ -60,13 +60,13 @@ export default function WorkflowNodes() {
               {/* Static edge — much brighter */}
               <path
                 d={`M${fromX},${fromY} C${(fromX + toX) / 2},${fromY} ${(fromX + toX) / 2},${toY} ${toX},${toY}`}
-                stroke="#00E599"
+                stroke="#06B6D4"
                 strokeWidth="1"
                 fill="none"
                 opacity="0.35"
               />
               {/* Flowing dot — larger, brighter */}
-              <circle r="3.5" fill="#00E599" opacity="0.8" filter="url(#dotGlow)">
+              <circle r="3.5" fill="#06B6D4" opacity="0.8" filter="url(#dotGlow)">
                 <animateMotion
                   dur={2 + i * 0.5}
                   repeatCount="indefinite"
@@ -86,9 +86,9 @@ export default function WorkflowNodes() {
               width="96"
               height="36"
               rx="6"
-              fill={n.active ? "#00E599" : "none"}
+              fill={n.active ? "#06B6D4" : "none"}
               fillOpacity={n.active ? 0.08 : 0}
-              stroke="#00E599"
+              stroke="#06B6D4"
               strokeWidth={n.active ? "1" : "0.6"}
             />
             {n.active && (
@@ -99,7 +99,7 @@ export default function WorkflowNodes() {
                 height="36"
                 rx="6"
                 fill="none"
-                stroke="#00E599"
+                stroke="#06B6D4"
                 strokeWidth="0.5"
                 opacity="0.5"
               >
@@ -114,7 +114,7 @@ export default function WorkflowNodes() {
             <text
               x={n.x + 48}
               y={n.y + 22}
-              fill="#00E599"
+              fill="#06B6D4"
               fontSize="9.5"
               fontFamily="monospace"
               textAnchor="middle"
@@ -130,11 +130,11 @@ export default function WorkflowNodes() {
       {/* Legend bar */}
       <div className="flex items-center justify-center gap-5 mt-4">
         <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[#00E599] animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-cyan-500 animate-pulse" />
           <span className="text-gray-400 text-[10px] font-mono">ACTIVE PIPELINE</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[#00E599]/30" />
+          <span className="w-2 h-2 rounded-full bg-cyan-500/30" />
           <span className="text-gray-400 text-[10px] font-mono">PENDING QUEUE</span>
         </div>
       </div>

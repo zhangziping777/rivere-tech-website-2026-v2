@@ -38,7 +38,7 @@ export default async function SolutionPage({ params }: PageProps) {
       {/* ── Architecture Topology ── */}
       <section className="mx-auto max-w-[1280px] px-6 pb-20">
         <div className="mb-8">
-          <p className="text-accent-green text-xs font-medium tracking-widest uppercase mb-2">
+          <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-2">
             System Architecture
           </p>
           <h2 className="text-2xl font-bold text-text-primary">系统分层架构</h2>
@@ -54,7 +54,7 @@ export default async function SolutionPage({ params }: PageProps) {
       {/* ── Comparison Table ── */}
       <section className="mx-auto max-w-[1280px] px-6 pb-24">
         <div className="mb-8">
-          <p className="text-accent-green text-xs font-medium tracking-widest uppercase mb-2">
+          <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-2">
             Solution Comparison
           </p>
           <h2 className="text-2xl font-bold text-text-primary">方案对比</h2>

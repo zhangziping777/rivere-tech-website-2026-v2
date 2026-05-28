@@ -131,12 +131,12 @@ export default function CommitTimeline() {
             <div key={m.year}>
               {/* ────────── Mobile: left-aligned ────────── */}
               <div className="md:hidden relative pl-12 pb-8 last:pb-0">
-                <div className="absolute left-0 top-1 flex items-center justify-center w-7 h-7 rounded-full bg-brand-bg border-2 border-accent-green/50 z-10">
-                  <Icon size={13} className="text-accent-green" />
+                <div className="absolute left-0 top-1 flex items-center justify-center w-7 h-7 rounded-full bg-brand-bg border-2 border-cyan-500/50 z-10">
+                  <Icon size={13} className="text-cyan-500" />
                 </div>
 
                 <div className="bg-white/[0.02] border border-white/[0.05] rounded-2xl p-5">
-                  <span className="inline-flex items-center px-2 py-0.5 rounded-sm bg-accent-green/10 border border-accent-green/20 text-accent-green text-2xs font-mono tracking-wider mb-3">
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-sm bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 text-2xs font-mono tracking-wider mb-3">
                     {m.year}
                   </span>
                   <h3 className="text-base font-semibold text-text-primary mb-2">{m.title}</h3>
@@ -165,7 +165,7 @@ export default function CommitTimeline() {
                         <h3 className="text-base font-semibold text-text-primary">
                           {m.title}
                         </h3>
-                        <span className="inline-flex px-2 py-0.5 rounded-sm bg-accent-green/10 border border-accent-green/20 text-accent-green text-2xs font-mono tracking-wider shrink-0">
+                        <span className="inline-flex px-2 py-0.5 rounded-sm bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 text-2xs font-mono tracking-wider shrink-0">
                           {m.year}
                         </span>
                       </div>
@@ -181,13 +181,13 @@ export default function CommitTimeline() {
                   <div
                     className={`relative z-10 flex items-center justify-center w-7 h-7 rounded-full border-2 shrink-0 ${
                       isFirst
-                        ? "bg-accent-green/15 border-accent-green shadow-[0_0_12px_rgba(0,229,153,0.3)]"
-                        : "bg-brand-bg border-accent-green/50"
+                        ? "bg-cyan-500/15 border-cyan-500 shadow-[0_0_12px_rgba(6,182,212,0.3)]"
+                        : "bg-brand-bg border-cyan-500/50"
                     }`}
                   >
                     <Icon
                       size={13}
-                      className={isFirst ? "text-accent-green" : "text-accent-green"}
+                      className={isFirst ? "text-cyan-500" : "text-cyan-500"}
                     />
                   </div>
                 </div>
@@ -203,7 +203,7 @@ export default function CommitTimeline() {
                   {!isLeft && (
                     <TimelineCard side="right">
                       <div className="flex items-center gap-3 mb-2">
-                        <span className="inline-flex px-2 py-0.5 rounded-sm bg-accent-green/10 border border-accent-green/20 text-accent-green text-2xs font-mono tracking-wider shrink-0">
+                        <span className="inline-flex px-2 py-0.5 rounded-sm bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 text-2xs font-mono tracking-wider shrink-0">
                           {m.year}
                         </span>
                         <h3 className="text-base font-semibold text-text-primary">

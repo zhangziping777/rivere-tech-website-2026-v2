@@ -17,19 +17,19 @@ export default function Logo({ height = 36 }: { height?: number }) {
         width="34"
         height="34"
         rx="6"
-        stroke="#00E599"
+        stroke="#06B6D4"
         strokeWidth="1.2"
         fill="none"
         opacity="0.4"
       />
       <path
         d="M10 12H26M10 18H26M10 24H18"
-        stroke="#00E599"
+        stroke="#06B6D4"
         strokeWidth="2.2"
         strokeLinecap="round"
       />
       {/* accent dot */}
-      <circle cx="28" cy="24" r="2.5" fill="#00E599" />
+      <circle cx="28" cy="24" r="2.5" fill="#06B6D4" />
 
       {/* company name — Chinese */}
       <text

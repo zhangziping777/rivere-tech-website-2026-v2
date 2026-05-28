@@ -214,7 +214,7 @@ function FlowParticle({ pathD, delay, idx, active }: { pathD: string; delay: num
     <circle
       ref={circleRef}
       r={size}
-      fill="#00E599"
+      fill="#06B6D4"
       opacity={active ? 0.85 : 0.15}
       style={{ transition: "opacity 0.4s", filter: active ? "url(#archParticleGlow)" : "none" }}
     />
@@ -232,7 +232,7 @@ function FlowEdge({ path, active }: { path: PathData; active: boolean }) {
           <path d={d} stroke="#374151" strokeWidth={si === 1 ? 1.4 : 0.7} fill="none" />
           <motion.path
             d={d}
-            stroke="#00E599"
+            stroke="#06B6D4"
             strokeWidth={si === 1 ? (active ? 2 : 0.8) : (active ? 1.2 : 0.5)}
             strokeDasharray="6 16"
             fill="none"
@@ -411,21 +411,21 @@ export default function ArchitectureMap() {
             <motion.div
               className={`rounded-lg border transition-colors duration-300 cursor-default ${
                 isHovered
-                  ? "border-[#00E599]/40 bg-[#00E599]/[0.06]"
+                  ? "border-cyan-500/40 bg-cyan-500/[0.06]"
                   : "border-white/25 bg-black/70"
               }`}
               style={{ padding: "clamp(6px, 0.8vw, 12px) clamp(8px, 1vw, 14px)" }}
               animate={{
                 boxShadow: isHovered
-                  ? "0 0 24px rgba(0,229,153,0.14), inset 0 0 20px rgba(0,229,153,0.04)"
-                  : "0 0 0px rgba(0,229,153,0)",
+                  ? "0 0 24px rgba(6,182,212,0.14), inset 0 0 20px rgba(6,182,212,0.04)"
+                  : "0 0 0px rgba(6,182,212,0)",
               }}
               transition={{ duration: 0.3 }}
             >
               <div className="flex items-center gap-2 mb-2">
                 <Icon
                   size={18}
-                  className={`shrink-0 transition-colors duration-300 ${isHovered ? "text-[#00E599]" : "text-[#00E599]/70"}`}
+                  className={`shrink-0 transition-colors duration-300 ${isHovered ? "text-cyan-500" : "text-cyan-500/70"}`}
                   strokeWidth={1.5}
                 />
                 <div className="min-w-0">
@@ -439,8 +439,8 @@ export default function ArchitectureMap() {
                     key={b}
                     className={`inline-block leading-none rounded-sm border transition-colors duration-300 text-[clamp(6px,0.7vw,8px)] whitespace-nowrap ${
                       isHovered
-                        ? "border-[#00E599]/25 text-[#00E599]/70 bg-[#00E599]/[0.04]"
-                        : "border-[#00E599]/25 text-[#00E599] bg-[#00E599]/5"
+                        ? "border-cyan-500/25 text-cyan-500/70 bg-cyan-500/[0.04]"
+                        : "border-cyan-500/25 text-cyan-500 bg-cyan-500/5"
                     }`}
                     style={{ padding: "clamp(1px, 0.15vw, 2px) clamp(3px, 0.4vw, 6px)" }}
                   >

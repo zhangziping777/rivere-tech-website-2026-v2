@@ -9,12 +9,12 @@ export default function GatewayRadar() {
       >
         <defs>
           <radialGradient id="radarGlow">
-            <stop offset="0%" stopColor="#00E599" stopOpacity="0.12" />
-            <stop offset="100%" stopColor="#00E599" stopOpacity="0" />
+            <stop offset="0%" stopColor="#06B6D4" stopOpacity="0.12" />
+            <stop offset="100%" stopColor="#06B6D4" stopOpacity="0" />
           </radialGradient>
           <linearGradient id="shieldGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#00E599" stopOpacity="0.12" />
-            <stop offset="100%" stopColor="#00E599" stopOpacity="0.03" />
+            <stop offset="0%" stopColor="#06B6D4" stopOpacity="0.12" />
+            <stop offset="100%" stopColor="#06B6D4" stopOpacity="0.03" />
           </linearGradient>
         </defs>
 
@@ -28,7 +28,7 @@ export default function GatewayRadar() {
             cx="200"
             cy="180"
             r={r}
-            stroke="#00E599"
+            stroke="#06B6D4"
             strokeWidth={0.5 - i * 0.08}
             opacity={0.25 - i * 0.04}
             strokeDasharray={i === 3 ? "4 6" : undefined}
@@ -41,7 +41,7 @@ export default function GatewayRadar() {
           y1="180"
           x2="200"
           y2="60"
-          stroke="#00E599"
+          stroke="#06B6D4"
           strokeWidth="0.6"
           opacity="0.5"
         >
@@ -58,7 +58,7 @@ export default function GatewayRadar() {
         {/* Scan arc fade */}
         <path
           d="M200 180 L320 180 A120 120 0 0 1 200 60 Z"
-          fill="#00E599"
+          fill="#06B6D4"
           opacity="0.04"
         >
           <animateTransform
@@ -75,7 +75,7 @@ export default function GatewayRadar() {
         <path
           d="M200 140 L250 160 L250 230 Q250 280 200 310 Q150 280 150 230 L150 160 Z"
           fill="url(#shieldGrad)"
-          stroke="#00E599"
+          stroke="#06B6D4"
           strokeWidth="1"
           opacity="0.7"
         />
@@ -83,7 +83,7 @@ export default function GatewayRadar() {
         {/* Shield inner checkmark */}
         <path
           d="M180 210 L193 223 L222 188"
-          stroke="#00E599"
+          stroke="#06B6D4"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -98,14 +98,14 @@ export default function GatewayRadar() {
           { x: 60, y: 260 },
         ].map((p, i) => (
           <g key={i} opacity="0.3">
-            <circle cx={p.x} cy={p.y} r="4" fill="none" stroke="#00E599" strokeWidth="0.6" />
-            <circle cx={p.x} cy={p.y} r="1.5" fill="#00E599" />
+            <circle cx={p.x} cy={p.y} r="4" fill="none" stroke="#06B6D4" strokeWidth="0.6" />
+            <circle cx={p.x} cy={p.y} r="1.5" fill="#06B6D4" />
             <line
               x1={p.x}
               y1={p.y}
               x2="200"
               y2="180"
-              stroke="#00E599"
+              stroke="#06B6D4"
               strokeWidth="0.3"
               strokeDasharray="2 4"
             />
@@ -115,24 +115,24 @@ export default function GatewayRadar() {
         {/* Incoming signal arcs */}
         <path
           d="M50 120 Q120 40 180 60"
-          stroke="#00E599"
+          stroke="#06B6D4"
           strokeWidth="0.4"
           fill="none"
           opacity="0.15"
         />
         <path
           d="M350 90 Q310 30 250 45"
-          stroke="#00E599"
+          stroke="#06B6D4"
           strokeWidth="0.4"
           fill="none"
           opacity="0.15"
         />
 
         {/* Data packet dots on arcs */}
-        <circle r="2" fill="#00E599" opacity="0.5">
+        <circle r="2" fill="#06B6D4" opacity="0.5">
           <animateMotion dur="4s" repeatCount="indefinite" path="M50,120 Q120,40 180,60" />
         </circle>
-        <circle r="2" fill="#00E599" opacity="0.5">
+        <circle r="2" fill="#06B6D4" opacity="0.5">
           <animateMotion dur="4s" repeatCount="indefinite" begin="2s" path="M350,90 Q310,30 250,45" />
         </circle>
       </svg>

@@ -20,7 +20,7 @@ export default function ComparisonTable({ headers, rows }: ComparisonTableProps)
                     ? "text-text-muted"
                     : i === 1
                       ? "text-text-secondary"
-                      : "text-accent-green"
+                      : "text-cyan-500"
                 }`}
               >
                 {h}
@@ -41,7 +41,7 @@ export default function ComparisonTable({ headers, rows }: ComparisonTableProps)
               <td className="px-4 py-3 text-sm text-text-muted border-b border-brand-border/60 leading-relaxed">
                 {row.traditional}
               </td>
-              <td className="px-4 py-3 text-sm text-accent-green/80 border-b border-brand-border/60 leading-relaxed group-hover:text-accent-green transition-colors duration-150">
+              <td className="px-4 py-3 text-sm text-cyan-500/80 border-b border-brand-border/60 leading-relaxed group-hover:text-cyan-500 transition-colors duration-150">
                 {row.riveretech}
               </td>
             </tr>

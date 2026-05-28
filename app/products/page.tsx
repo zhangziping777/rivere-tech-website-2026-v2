@@ -76,14 +76,14 @@ export default function ProductsPage() {
       {/* ── Hero ── */}
       <section className="mx-auto max-w-[1280px] px-6 pt-28 pb-16 md:pt-44 md:pb-24 text-center">
         <ScrollReveal>
-          <p className="text-accent-green text-xs font-medium tracking-widest uppercase mb-6">
+          <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-6">
             Products
           </p>
         </ScrollReveal>
         <ScrollReveal delay={0.08}>
           <h1
             className="text-3xl md:text-5xl lg:text-6xl font-bold text-text-primary leading-tight tracking-tight mb-6 max-w-5xl mx-auto"
-            style={{ textShadow: "0 0 80px rgba(0,229,153,0.12), 0 0 16px rgba(0,229,153,0.06)" }}
+            style={{ textShadow: "0 0 80px rgba(6,182,212,0.12), 0 0 16px rgba(6,182,212,0.06)" }}
           >
             构建下一代云原生金融基础设施
           </h1>
@@ -96,7 +96,7 @@ export default function ProductsPage() {
         <ScrollReveal delay={0.2}>
           <ChevronDown
             size={20}
-            className="mx-auto text-accent-green/40 animate-bounce"
+            className="mx-auto text-cyan-500/40 animate-bounce"
             strokeWidth={1.5}
           />
         </ScrollReveal>
@@ -127,7 +127,7 @@ export default function ProductsPage() {
               >
                 {/* Text column */}
                 <div className={`space-y-8 ${isReversed ? "lg:order-2" : "lg:order-1"}`}>
-                  <span className="inline-block text-accent-green text-2xs font-mono tracking-widest px-2 py-0.5 rounded-sm bg-accent-green/5 border border-accent-green/10">
+                  <span className="inline-block text-cyan-500 text-2xs font-mono tracking-widest px-2 py-0.5 rounded-sm bg-cyan-500/5 border border-cyan-500/10">
                     {exhibit.tag}
                   </span>
                   <h2 className="text-3xl md:text-4xl font-bold text-text-primary">
@@ -139,7 +139,7 @@ export default function ProductsPage() {
                   <ul className="space-y-5">
                     {exhibit.bullets.map((b) => (
                       <li key={b} className="flex items-start gap-3 text-text-secondary text-sm leading-relaxed">
-                        <span className="mt-1.5 w-1 h-1 rounded-full bg-accent-green/50 shrink-0" />
+                        <span className="mt-1.5 w-1 h-1 rounded-full bg-cyan-500/50 shrink-0" />
                         {b}
                       </li>
                     ))}
