@@ -57,7 +57,7 @@ const codeLines = Array.from({ length: 18 }, (_, i) => {
 
 function CodeBackground() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none select-none opacity-[0.06] blur-[1px]">
+    <div className="absolute inset-0 z-[0] overflow-hidden pointer-events-none select-none opacity-[0.06] blur-[1px]">
       <div className="font-mono text-[clamp(7px,0.9vw,10px)] text-gray-400 leading-relaxed whitespace-pre">
         {codeLines.map((line, i) => (
           <div key={i} className="ml-[clamp(4%,8vw,10%)]">
@@ -72,8 +72,20 @@ function CodeBackground() {
 
 export default function CoreProducts() {
   return (
-    <section className="relative mx-auto max-w-7xl px-6 py-24 md:py-32 border-t border-white/5 overflow-hidden bg-[#0A1018]/60">
+    <section className="relative z-[10] mx-auto max-w-7xl px-6 py-32 border-t border-white/5 overflow-hidden">
       <CodeBackground />
+
+      {/* Engineering grid texture */}
+      <div
+        className="absolute inset-0 z-[0] pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)",
+          backgroundSize: "4rem 4rem",
+          maskImage: "linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)",
+        }}
+      />
 
       {/* Header */}
       <motion.div
@@ -81,7 +93,7 @@ export default function CoreProducts() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="relative z-10 mb-12"
+        className="relative z-10 mb-16"
       >
         <p className="text-cyan-500 text-[clamp(10px,1.2vw,12px)] font-bold tracking-widest uppercase mb-3">
           Core Products
@@ -102,9 +114,9 @@ export default function CoreProducts() {
             transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
           >
             <Link href={p.href}>
-              <div className="group relative bg-blue-950/10 backdrop-blur-sm border border-blue-900/30 border-t-2 border-t-blue-600/50 rounded-2xl p-8 transition-all duration-500 hover:-translate-y-1.5 hover:border-cyan-500/50 hover:bg-gradient-to-br hover:from-blue-900/30 hover:to-cyan-900/10 hover:shadow-[0_15px_30px_-15px_rgba(6,182,212,0.25)] cursor-pointer h-full flex flex-col">
+              <div className="group relative !bg-white/[0.02] !backdrop-blur-xl !border !border-white/10 rounded-2xl p-8 transition-all duration-500 hover:-translate-y-1.5 hover:!bg-white/[0.06] hover:!border-cyan-500/30 hover:shadow-[0_15px_30px_-15px_rgba(6,182,212,0.25)] cursor-pointer h-full flex flex-col">
                 {/* Title */}
-                <h3 className="text-[clamp(16px,1.8vw,20px)] font-bold bg-gradient-to-r from-blue-500 via-cyan-400 to-cyan-300 bg-clip-text text-transparent mb-1.5 leading-tight">
+                <h3 className="text-[clamp(16px,1.8vw,20px)] !font-bold !inline-block tracking-wide !bg-gradient-to-r !from-blue-400 !to-cyan-300 !bg-clip-text !text-transparent mb-1.5 leading-tight">
                   {p.title}
                 </h3>
 

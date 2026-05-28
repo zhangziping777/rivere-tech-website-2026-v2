@@ -45,7 +45,7 @@
 
   /* Dropdown container */
   .dropdown-panel {
-    @apply absolute top-full left-0 mt-2 bg-brand-elevated border border-brand-border rounded-sm shadow-2xl shadow-black/40 backdrop-blur-xl w-max py-2 z-50;
+    @apply absolute top-full left-0 mt-2 bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-sm shadow-2xl shadow-black/40 w-max py-2 z-50;
   }
 
   .dropdown-item {

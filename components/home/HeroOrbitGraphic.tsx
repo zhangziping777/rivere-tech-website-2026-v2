@@ -150,7 +150,7 @@ export default function HeroOrbitGraphic() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="w-[90px] h-[62px] rounded-[50%] bg-[#0B0F19]/60 border-2 backdrop-blur-md flex items-center justify-center text-[12px] font-bold cursor-default transition-all duration-300 hover:scale-110"
+                className="w-[90px] h-[62px] rounded-[50%] !bg-white/[0.02] !backdrop-blur-xl border-2 flex items-center justify-center text-[12px] font-bold cursor-default transition-all duration-300 hover:scale-110"
                 style={{
                   borderColor: "rgba(34,211,238,0.55)",
                   color: "#22D3EE",
@@ -185,7 +185,7 @@ export default function HeroOrbitGraphic() {
               "0 0 40px -10px rgba(34,211,238,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
             ]} : false}
             transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-            className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-xl px-8 py-6 max-w-[280px] w-fit mx-auto flex flex-col items-center"
+            className="!bg-white/[0.02] !backdrop-blur-xl border border-white/10 rounded-xl px-8 py-6 max-w-[280px] w-fit mx-auto flex flex-col items-center"
             style={{
               boxShadow: "0 0 40px -10px rgba(34,211,238,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
             }}

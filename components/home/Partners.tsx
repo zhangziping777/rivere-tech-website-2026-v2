@@ -42,7 +42,7 @@ function LogoImg({ file }: { file: string }) {
       <img
         src={`/images/clients/${file}`}
         alt={file.replace(/\.[^.]+$/, "")}
-        className="h-8 w-auto max-w-[120px] object-contain grayscale opacity-50 contrast-125 hover:opacity-100 hover:grayscale-0 transition-all duration-300"
+        className="h-8 w-auto max-w-[120px] object-contain mix-blend-screen opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
       />
     </div>
   );
@@ -50,8 +50,12 @@ function LogoImg({ file }: { file: string }) {
 
 export default function Partners() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 md:py-32 border-t border-white/5">
-      <div className="mb-12 text-center">
+    <section className="relative z-[10] mx-auto max-w-7xl px-6 py-32 border-t border-white/5">
+      {/* Deep space ambient radial gradient */}
+      <div className="absolute inset-0 z-[0] pointer-events-none overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-[radial-gradient(ellipse,rgba(59,130,246,0.03)_0%,transparent_70%)]" />
+      </div>
+      <div className="mb-16 text-center">
         <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-3">
           Our Clients
         </p>

@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="zh-CN" className="scroll-smooth">
       <body className="flex flex-col min-h-screen relative w-full overflow-x-hidden">
         {/* Deep space ambient glow — fixed background orbs */}
-        <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+        <div className="fixed inset-0 pointer-events-none z-[0] overflow-hidden">
           <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-blue-900/15 blur-[120px] rounded-full" />
           <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-cyan-900/10 blur-[150px] rounded-full" />
         </div>

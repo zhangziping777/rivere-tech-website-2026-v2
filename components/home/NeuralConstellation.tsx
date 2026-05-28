@@ -72,7 +72,7 @@ export default function NeuralConstellation() {
             initial={mounted ? { opacity: 0, scale: 0.6 } : false}
             animate={mounted ? { opacity: 1, scale: 1 } : false}
             transition={{ duration: 0.5, delay: 0.25 + i * 0.07, ease: "easeOut" }}
-            className="absolute w-24 h-24 -ml-12 -mt-12 bg-[#0B0F19]/60 border border-cyan-500/30 rounded-full flex items-center justify-center text-xs text-white backdrop-blur-md pointer-events-auto hover:border-cyan-500/80 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.1)]"
+            className="absolute w-24 h-24 -ml-12 -mt-12 !bg-white/[0.02] !backdrop-blur-xl border border-cyan-500/30 rounded-full flex items-center justify-center text-xs text-white pointer-events-auto hover:border-cyan-500/80 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.1)]"
             style={{ transform: `translate(${p.x}px, ${p.y}px)` }}
           >
             {p.label}
@@ -94,7 +94,7 @@ export default function NeuralConstellation() {
             "0 0 30px rgba(6,182,212,0.1)",
           ]} : false}
           transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-          className="bg-[#0B0F19]/80 border border-cyan-500/50 rounded-2xl p-6 shadow-[0_0_40px_rgba(6,182,212,0.2)] backdrop-blur-xl flex flex-col items-center"
+          className="!bg-white/[0.02] !backdrop-blur-xl border border-cyan-500/30 rounded-2xl p-6 shadow-[0_0_40px_rgba(6,182,212,0.2)] flex flex-col items-center"
         >
           <div className="text-cyan-500 font-serif text-4xl mb-2">R</div>
           <div className="text-gray-300 text-xs">科技 & 运营服务商</div>

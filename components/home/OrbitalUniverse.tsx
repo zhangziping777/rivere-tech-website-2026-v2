@@ -74,7 +74,7 @@ export default function OrbitalUniverse() {
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50"
         >
           <div
-            className="bg-black/85 border border-cyan-500/35 rounded-2xl flex flex-col items-center backdrop-blur-xl"
+            className="!bg-white/[0.02] !backdrop-blur-xl border border-cyan-500/30 rounded-2xl flex flex-col items-center"
             style={{
               padding: "clamp(12px,2.2vw,22px) clamp(14px,2.5vw,26px)",
               boxShadow: "0 0 40px rgba(6,182,212,0.2), 0 0 80px rgba(6,182,212,0.06)",
@@ -121,7 +121,7 @@ export default function OrbitalUniverse() {
               initial={mounted ? { opacity: 0, scale: 0 } : false}
               animate={mounted ? { opacity: 1, scale: 1 } : false}
               transition={{ duration: 0.45, delay: 0.35 + i * 0.06, ease: "easeOut" }}
-              className="rounded-full bg-[#0B0D17]/95 border border-cyan-500/40 backdrop-blur-md flex items-center justify-center text-white font-bold cursor-default -translate-x-1/2 -translate-y-1/2 transition-shadow duration-500"
+              className="rounded-full !bg-white/[0.02] !backdrop-blur-xl border border-cyan-500/30 flex items-center justify-center text-white font-bold cursor-default -translate-x-1/2 -translate-y-1/2 transition-shadow duration-500"
               style={{
                 width: "clamp(52px,8vw,88px)",
                 height: "clamp(52px,8vw,88px)",

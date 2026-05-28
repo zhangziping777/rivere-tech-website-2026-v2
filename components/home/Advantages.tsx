@@ -31,8 +31,12 @@ const advantages = [
 
 export default function Advantages() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 md:py-32 border-t border-white/5 bg-[#0A1018]/60">
-      <ScrollReveal className="mb-12">
+    <section className="relative z-[10] mx-auto max-w-7xl px-6 py-32 border-t border-white/5">
+      {/* Deep space ambient radial gradient */}
+      <div className="absolute inset-0 z-[0] pointer-events-none overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse,rgba(6,182,212,0.04)_0%,transparent_70%)]" />
+      </div>
+      <ScrollReveal className="mb-16">
         <p className="text-cyan-500 text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-3">
           Why Choose Us
         </p>
@@ -44,7 +48,7 @@ export default function Advantages() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {advantages.map((item, i) => (
           <ScrollReveal key={item.title} delay={i * 0.08}>
-            <div className="group flex flex-col rounded-2xl bg-white/[0.06] border border-white/10 p-6 backdrop-blur-xl transition-all duration-500 ease-out hover:border-slate-500/60 hover:bg-white/[0.09] hover:-translate-y-1">
+            <div className="group flex flex-col rounded-2xl !bg-white/[0.02] !backdrop-blur-xl !border !border-white/10 p-6 transition-all duration-500 ease-out hover:!bg-white/[0.06] hover:!border-cyan-500/30 hover:-translate-y-1">
               {/* Title */}
               <h4 className="text-[clamp(13px,1.5vw,14px)] font-semibold text-white mb-1.5">
                 {item.title}
@@ -60,7 +64,7 @@ export default function Advantages() {
                 <div className="text-5xl md:text-6xl font-black leading-none bg-gradient-to-br from-blue-500 via-cyan-400 to-cyan-300 bg-clip-text text-transparent">
                   {item.stat}
                 </div>
-                <div className="text-sm text-slate-400 font-medium mt-2">
+                <div className="text-sm text-slate-300 font-medium mt-2">
                   {item.statLabel}
                 </div>
               </div>

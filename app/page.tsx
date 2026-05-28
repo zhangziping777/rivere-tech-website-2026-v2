@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* ── Hero Section ── */}
-      <section className="relative w-full min-h-[82vh] overflow-hidden bg-transparent">
+      <section className="relative z-[10] w-full min-h-[82vh] overflow-hidden bg-transparent">
         <HeroCanvasBackground />
 
         {/* Content: centered container with flex layout */}
@@ -40,7 +40,7 @@ export default function Home() {
               <div className="flex gap-4 mt-8">
                 <a
                   href="/products"
-                  className="inline-flex items-center px-6 py-3 rounded-sm bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-[clamp(12px,1.3vw,14px)] font-bold hover:bg-cyan-500/20 hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-300"
+                  className="inline-flex items-center px-6 py-3 rounded-sm bg-cyan-500/10 border border-cyan-500/40 text-cyan-400 text-[clamp(12px,1.3vw,14px)] font-bold hover:bg-cyan-500/20 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300"
                 >
                   探索产品
                 </a>

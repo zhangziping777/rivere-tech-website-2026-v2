@@ -113,8 +113,8 @@ function ServiceCard({
   return (
     <ScrollReveal delay={delay}>
       <motion.div
-        className="group/card relative overflow-hidden bg-white/[0.02] border border-white/[0.05] rounded-3xl p-6 backdrop-blur-xl transition-all duration-500
-                   hover:border-cyan-500/30 hover:bg-white/[0.04] hover:shadow-[0_0_40px_-10px_rgba(34,211,238,0.1)] hover:-translate-y-1"
+        className="group/card relative overflow-hidden !bg-white/[0.02] !border !border-white/10 rounded-3xl p-6 !backdrop-blur-xl transition-all duration-500
+                   hover:!border-cyan-500/30 hover:!bg-white/[0.06] hover:shadow-[0_0_40px_-10px_rgba(34,211,238,0.1)] hover:-translate-y-1"
         whileHover={{ y: -2 }}
         transition={{ duration: 0.2 }}
       >
@@ -159,7 +159,7 @@ export default function BusinessOperationsPage() {
       {/* ═══════════════════════════════════════════════════════════
           Hero Section
           ═══════════════════════════════════════════════════════════ */}
-      <section className="relative w-full overflow-hidden bg-[#070B14]">
+      <section className="relative w-full overflow-hidden">
         {/* Aurora glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute top-20 right-0 w-[400px] h-[400px] bg-[#0284C7]/4 blur-[100px] rounded-full pointer-events-none" />
@@ -227,7 +227,7 @@ export default function BusinessOperationsPage() {
       {/* ═══════════════════════════════════════════════════════════
           Impact Section
           ═══════════════════════════════════════════════════════════ */}
-      <section className="relative w-full overflow-hidden bg-[#070B14] border-y border-white/[0.04]">
+      <section className="relative w-full overflow-hidden border-y border-white/[0.04]">
         {/* Subtle radial glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-cyan-500/4 blur-[100px] rounded-full pointer-events-none" />
 
@@ -258,8 +258,8 @@ export default function BusinessOperationsPage() {
               return (
                 <ScrollReveal key={stat.label} delay={0.1 + i * 0.08}>
                   <motion.div
-                    className="group/stats relative bg-white/[0.02] border border-white/[0.05] rounded-3xl p-6 backdrop-blur-xl transition-all duration-500
-                               hover:border-cyan-500/30 hover:bg-white/[0.04] hover:shadow-[0_0_40px_-10px_rgba(34,211,238,0.1)] hover:-translate-y-1"
+                    className="group/stats relative !bg-white/[0.02] !border !border-white/10 rounded-3xl p-6 !backdrop-blur-xl transition-all duration-500
+                               hover:!border-cyan-500/30 hover:!bg-white/[0.06] hover:shadow-[0_0_40px_-10px_rgba(34,211,238,0.1)] hover:-translate-y-1"
                     whileHover={{ y: -2 }}
                     transition={{ duration: 0.2 }}
                   >

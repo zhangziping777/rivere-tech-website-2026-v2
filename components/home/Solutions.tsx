@@ -26,7 +26,12 @@ const solutions = [
 
 export default function Solutions() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+    <section className="relative z-[10] mx-auto max-w-7xl px-6 py-32">
+      {/* Cosmic horizon line */}
+      <div className="absolute top-1/2 left-0 w-full z-[0] -translate-y-1/2 pointer-events-none">
+        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent shadow-[0_0_30px_rgba(6,182,212,0.15)]" />
+      </div>
+
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
@@ -81,11 +86,7 @@ export default function Solutions() {
             transition={{ delay: i * 0.12, duration: 0.55, ease: "easeOut" }}
           >
             <Link href={s.href}>
-              <div className="group relative bg-white/[0.06] border border-white/10 rounded-3xl p-10 backdrop-blur-xl transition-all duration-500 hover:border-slate-500/60 hover:bg-white/[0.09] hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col">
-                {/* ── Giant number watermark ── */}
-                <span className="absolute -bottom-4 -right-4 text-8xl md:text-[10rem] font-black leading-none select-none pointer-events-none z-0 text-white/[0.03]">
-                  {s.num}
-                </span>
+              <div className="group relative !bg-white/[0.02] !backdrop-blur-xl !border !border-white/10 rounded-3xl p-10 transition-all duration-500 hover:!bg-white/[0.06] hover:!border-cyan-500/30 hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col">
 
                 <div className="relative z-10 flex flex-col h-full">
                   {/* Title */}
@@ -99,7 +100,7 @@ export default function Solutions() {
                   </p>
 
                   {/* Arrow on hover */}
-                  <span className="inline-flex items-center gap-1 mt-5 text-slate-400 text-[clamp(11px,1.2vw,13px)] font-medium opacity-0 translate-x-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
+                  <span className="inline-flex items-center gap-1 mt-5 text-slate-300 text-[clamp(11px,1.2vw,13px)] font-medium opacity-0 translate-x-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
                     了解更多 <span className="text-base leading-none">&rarr;</span>
                   </span>
                 </div>
