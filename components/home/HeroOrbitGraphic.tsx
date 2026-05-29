@@ -150,7 +150,7 @@ export default function HeroOrbitGraphic() {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="w-[90px] h-[62px] rounded-[50%] !bg-white/[0.02] !backdrop-blur-xl border-2 flex items-center justify-center text-[12px] font-bold cursor-default transition-all duration-300 hover:scale-110"
+                className="w-[90px] h-[62px] rounded-[50%] !bg-white/5 !backdrop-blur-md border-2 flex items-center justify-center text-[12px] font-bold cursor-default transition-all duration-300 hover:scale-110"
                 style={{
                   borderColor: "rgba(34,211,238,0.55)",
                   color: "#22D3EE",
@@ -185,7 +185,7 @@ export default function HeroOrbitGraphic() {
               "0 0 40px -10px rgba(34,211,238,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
             ]} : false}
             transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-            className="!bg-white/[0.02] !backdrop-blur-xl border border-white/10 rounded-xl px-8 py-6 max-w-[280px] w-fit mx-auto flex flex-col items-center"
+            className="!bg-white/5 !backdrop-blur-md border border-white/10 rounded-xl px-8 py-6 max-w-[280px] w-fit mx-auto flex flex-col items-center"
             style={{
               boxShadow: "0 0 40px -10px rgba(34,211,238,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
             }}
@@ -193,7 +193,7 @@ export default function HeroOrbitGraphic() {
             <h2 className="text-xl font-extrabold tracking-widest text-center whitespace-nowrap bg-gradient-to-r from-blue-500 via-cyan-400 to-cyan-300 bg-clip-text text-transparent">
               信用卡 · 智能零售信贷
             </h2>
-            <div className="h-[1px] w-4/5 bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent my-5" />
+            <div className="h-[1px] w-4/5 bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent my-5" />
             <p className="text-sm font-medium tracking-wide text-white/70">
               科技 & 运营服务商
             </p>

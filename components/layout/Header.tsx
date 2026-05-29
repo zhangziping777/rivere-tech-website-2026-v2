@@ -134,7 +134,7 @@ export default function Header() {
         {/* CTA */}
         <Link
           href="/about#contact"
-          className="hidden md:inline-flex items-center px-4 py-2 rounded-sm border border-cyan-500/50 text-cyan-500 text-sm font-medium hover:bg-cyan-500/10 transition-colors duration-200"
+          className="hidden md:inline-flex items-center px-4 py-2 rounded-sm border border-cyan-400/50 text-cyan-400 text-sm font-medium hover:bg-cyan-400/10 transition-colors duration-200"
         >
           立即咨询
         </Link>

@@ -1,113 +1,414 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import {
+  Cpu,
+  Database,
+  Shield,
+  Globe,
+  Workflow,
+  Server,
+  BarChart3,
+  Layers,
+  type LucideIcon,
+} from "lucide-react";
 
+type IconName = "Cpu" | "Database" | "Shield" | "Globe" | "Workflow" | "Server" | "BarChart3" | "Layers";
+const iconMap: Record<IconName, LucideIcon> = { Cpu, Database, Shield, Globe, Workflow, Server, BarChart3, Layers };
+
+interface NodeDef {
+  label: string;
+  sub: string;
+  icon: IconName;
+}
+
+interface PosNode extends NodeDef {
+  top: string;
+  left: string;
+}
+
+/* ── Default 4-node layout offsets ── */
+const defaultPositions = [
+  { left: "10%", top: "22%" },
+  { left: "62%", top: "22%" },
+  { left: "10%", top: "70%" },
+  { left: "62%", top: "70%" },
+];
+
+function toPosNodes(nodes: NodeDef[]): PosNode[] {
+  return nodes.map((n, i) => ({ ...n, top: defaultPositions[i].top, left: defaultPositions[i].left }));
+}
+
+/* ═══════════════════════════════════════════════════════════
+   SOLUTIONS DATA
+   ═══════════════════════════════════════════════════════════ */
 const solutions = [
   {
-    num: "01",
-    title: "信用卡发卡解决方案",
-    desc: "基于 TXA 理念，覆盖申请、审批、发卡到核算全生命周期，助力银行快速搭建新一代信用卡核心体系。",
+    id: "issuing",
+    title: "发卡业务解决方案",
+    desc: "数字化信用卡全生命周期管理",
     href: "/solutions/issuing",
+    metrics: ["全生命周期", "模块化装配", "亿级账户"],
+    nodes: [
+      // Top — 4 nodes, 8% gaps, centered
+      { label: "申卡管理", sub: "Application", icon: "Server" as IconName, top: "20%", left: "15%" },
+      { label: "授信管理", sub: "Credit Line", icon: "Shield" as IconName, top: "20%", left: "34.5%" },
+      { label: "审批处理", sub: "Approval", icon: "Workflow" as IconName, top: "20%", left: "54%" },
+      { label: "交易受理", sub: "Transaction", icon: "Globe" as IconName, top: "20%", left: "73.5%" },
+      // Middle — 2 nodes, symmetric around center 50%
+      { label: "运营操作", sub: "Operations", icon: "Cpu" as IconName, top: "42%", left: "15%" },
+      { label: "开放API", sub: "Open API", icon: "Layers" as IconName, top: "42%", left: "74%" },
+      // Bottom row 1 — 6 cards, 3.5% gaps, centered
+      { label: "卡片管理", sub: "Card Mgmt", icon: "Database" as IconName, top: "74%", left: "7%" },
+      { label: "账户管理", sub: "Account", icon: "Database" as IconName, top: "74%", left: "22%" },
+      { label: "客户管理", sub: "Customer", icon: "Database" as IconName, top: "74%", left: "37%" },
+      { label: "额度管理", sub: "Credit Limit", icon: "Database" as IconName, top: "74%", left: "52%" },
+      { label: "授权处理", sub: "Auth", icon: "Database" as IconName, top: "74%", left: "67%" },
+      { label: "账单管理", sub: "Billing", icon: "Database" as IconName, top: "74%", left: "82%" },
+      // Bottom row 2 — 5 cards, same 3.5% gaps, centered
+      { label: "分期管理", sub: "Installment", icon: "Layers" as IconName, top: "90%", left: "14%" },
+      { label: "会计管理", sub: "Accounting", icon: "Layers" as IconName, top: "90%", left: "29%" },
+      { label: "对账管理", sub: "Recon", icon: "Layers" as IconName, top: "90%", left: "44%" },
+      { label: "报送管理", sub: "Reporting", icon: "Layers" as IconName, top: "90%", left: "59%" },
+      { label: "催收管理", sub: "Collection", icon: "Layers" as IconName, top: "90%", left: "74%" },
+    ],
   },
   {
-    num: "02",
-    title: "零售信贷一体化解决方案",
-    desc: "灵活支撑消费贷、现金贷等多种信贷产品，秒级审批与智能风控驱动业务快速增长。",
+    id: "acquiring",
+    title: "收单业务解决方案",
+    desc: "全渠道、多场景聚合支付结算",
+    href: "/solutions/acquiring",
+    metrics: ["全渠道接入", "多场景聚合", "实时结算"],
+    nodes: toPosNodes([
+      { label: "POS收单", sub: "POS Terminal", icon: "Server" },
+      { label: "线上支付", sub: "Online Pay", icon: "Globe" },
+      { label: "聚合路由", sub: "Smart Route", icon: "Workflow" },
+      { label: "清分对账", sub: "Settlement", icon: "BarChart3" },
+    ]),
+  },
+  {
+    id: "retail-credit",
+    title: "零售信贷业务解决方案",
+    desc: "线上化、自动化的零售资产引擎",
     href: "/solutions/retail-credit",
+    metrics: ["秒级审批", "多产品适配", "智能定价"],
+    nodes: toPosNodes([
+      { label: "消费贷", sub: "Consumer Loan", icon: "Server" },
+      { label: "现金贷", sub: "Cash Advance", icon: "Database" },
+      { label: "联合贷", sub: "Syndicated", icon: "Workflow" },
+      { label: "助贷通道", sub: "Lending API", icon: "Globe" },
+    ]),
   },
   {
-    num: "03",
-    title: "Web3 融合支付解决方案",
-    desc: "打通传统支付与稳定币生态，实现无缝连接的全球化清结算，抢占下一代支付先机。",
+    id: "risk-control",
+    title: "交易反欺诈解决方案",
+    desc: "实时 AI 风险识别与资金保护",
+    href: "/solutions/risk-control",
+    metrics: ["毫秒级响应", "多维图谱", "亿级并发"],
+    nodes: toPosNodes([
+      { label: "反欺诈", sub: "Anti-Fraud", icon: "Shield" },
+      { label: "信用评估", sub: "Credit Score", icon: "BarChart3" },
+      { label: "贷后预警", sub: "Post-Loan", icon: "Server" },
+      { label: "模型工厂", sub: "Model Factory", icon: "Cpu" },
+    ]),
+  },
+  {
+    id: "collection",
+    title: "实时智能催收解决方案",
+    desc: "数据驱动的资产回收与清收管理",
+    href: "/solutions/collection",
+    metrics: ["智能分案", "策略自调优", "全链路追踪"],
+    nodes: toPosNodes([
+      { label: "策略引擎", sub: "Strategy Engine", icon: "Cpu" },
+      { label: "智能外呼", sub: "Auto Calling", icon: "Server" },
+      { label: "案件管理", sub: "Case Mgmt", icon: "Database" },
+      { label: "合规审计", sub: "Compliance", icon: "Shield" },
+    ]),
+  },
+  {
+    id: "marketing",
+    title: "智能营销解决方案",
+    desc: "全闭环的信托数字化营销增长",
+    href: "/solutions/marketing",
+    metrics: ["精准画像", "全闭环", "实时触达"],
+    nodes: toPosNodes([
+      { label: "用户画像", sub: "User Profile", icon: "Database" },
+      { label: "策略编排", sub: "Campaign", icon: "Workflow" },
+      { label: "实时触达", sub: "Real-Time", icon: "Globe" },
+      { label: "效果分析", sub: "Analytics", icon: "BarChart3" },
+    ]),
+  },
+  {
+    id: "gateway",
+    title: "支付网关解决方案",
+    desc: "高并发、极稳健的支付枢纽",
     href: "/solutions/gateway",
+    metrics: ["高并发", "极稳健", "多协议适配"],
+    nodes: toPosNodes([
+      { label: "协议转换", sub: "ISO 8583", icon: "Server" },
+      { label: "智能路由", sub: "Smart Route", icon: "Workflow" },
+      { label: "限流熔断", sub: "Rate Limit", icon: "Shield" },
+      { label: "监控大盘", sub: "Dashboard", icon: "BarChart3" },
+    ]),
   },
 ];
 
-export default function Solutions() {
+/* ═══════════════════════════════════════════════════════════
+   TOPOLOGY CANVAS
+   ═══════════════════════════════════════════════════════════ */
+
+const ENGINE_CX = 50;
+const ENGINE_CY = 50;
+
+/* Card center offset: half card size as viewport % (w-[5rem]≈11.5%→6, h≈8%→4; w-40≈23%→11.5, h≈11%→5.5) */
+function toCenter(left: string, top: string, compact: boolean) {
+  return {
+    x: parseFloat(left) + (compact ? 6 : 11.5),
+    y: parseFloat(top)  + (compact ? 4 : 5.5),
+  };
+}
+
+function TopologyCanvas({ nodes }: { nodes: PosNode[] }) {
+  const compact = nodes.length > 4;
+  const centers = nodes.map((n) => toCenter(n.left, n.top, compact));
+
   return (
-    <section className="relative z-[10] mx-auto max-w-7xl px-6 py-32">
-      {/* Cosmic horizon line */}
-      <div className="absolute top-1/2 left-0 w-full z-[0] -translate-y-1/2 pointer-events-none">
-        <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent shadow-[0_0_30px_rgba(6,182,212,0.15)]" />
+    <div className="absolute inset-0 z-[1]">
+      {/* ── SVG Bezier Curves ── */}
+      <svg
+        className="absolute inset-0 w-full h-full z-0 pointer-events-none"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <linearGradient id="cyanGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#22D3EE" stopOpacity="0" />
+            <stop offset="50%" stopColor="#22D3EE" stopOpacity="0.8" />
+            <stop offset="100%" stopColor="#22D3EE" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+
+        {centers.map((s, i) => (
+          <g key={i}>
+            <path
+              d={`M${s.x},${s.y} C${(ENGINE_CX + s.x) / 2},${s.y} ${(ENGINE_CX + s.x) / 2},${ENGINE_CY} ${ENGINE_CX},${ENGINE_CY}`}
+              stroke="rgba(255,255,255,0.10)"
+              strokeWidth="0.3"
+              fill="none"
+            />
+            <path
+              d={`M${s.x},${s.y} C${(ENGINE_CX + s.x) / 2},${s.y} ${(ENGINE_CX + s.x) / 2},${ENGINE_CY} ${ENGINE_CX},${ENGINE_CY}`}
+              stroke="url(#cyanGrad)"
+              strokeWidth="0.4"
+              strokeDasharray="2 8"
+              fill="none"
+            >
+              <animate
+                attributeName="stroke-dashoffset"
+                from="20" to="0"
+                dur={`${2 + i * 0.3}s`}
+                repeatCount="indefinite"
+              />
+            </path>
+            <circle r="0.45" fill="#22D3EE" opacity="0.95">
+              <animateMotion
+                dur={`${2 + i * 0.3}s`}
+                repeatCount="indefinite"
+                path={`M${s.x},${s.y} C${(ENGINE_CX + s.x) / 2},${s.y} ${(ENGINE_CX + s.x) / 2},${ENGINE_CY} ${ENGINE_CX},${ENGINE_CY}`}
+              />
+            </circle>
+          </g>
+        ))}
+      </svg>
+
+      {/* ── Engine rear glow orb ── */}
+      <div
+        className="absolute z-[-1] rounded-full bg-cyan-500/10 blur-[80px] pointer-events-none"
+        style={{
+          left: "50%", top: "50%", transform: "translate(-50%, -50%)",
+          width: "14rem", height: "14rem",
+        }}
+      />
+
+      {/* ── Central Engine Node ── */}
+      <div
+        className="absolute z-20 flex items-center gap-3 px-5 py-3.5 rounded-xl border-cyan-500/50 shadow-[0_0_24px_rgba(6,182,212,0.25)] bg-slate-800/50 backdrop-blur-md border"
+        style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
+      >
+        <div className="w-8 h-8 rounded-lg bg-cyan-400/15 border border-cyan-400/30 flex items-center justify-center shrink-0">
+          <Cpu size={16} className="text-cyan-400" />
+        </div>
+        <div className="flex flex-col min-w-0">
+          <span className="text-white text-sm font-bold tracking-wide whitespace-nowrap">核心引擎</span>
+          <span className="text-cyan-400/60 text-[10px] font-mono tracking-wider whitespace-nowrap">TXA ENGINE</span>
+        </div>
       </div>
 
-      {/* Header */}
+      {/* ── Satellite Nodes ── */}
+      {nodes.map((n, i) => {
+        const Icon = iconMap[n.icon];
+        return compact ? (
+          <div
+            key={i}
+            className="absolute z-10 bg-slate-800/40 backdrop-blur-md border border-white/10 rounded-lg p-2 flex items-center gap-2 shadow-lg w-[5rem] transition-all duration-500 hover:border-cyan-400/30 hover:bg-slate-800/60"
+            style={{ left: n.left, top: n.top }}
+          >
+            <Icon size={11} className="text-cyan-400/60 shrink-0" />
+            <div className="flex flex-col min-w-0 leading-tight">
+              <span className="text-white text-[10px] font-semibold tracking-wide whitespace-nowrap">{n.label}</span>
+              <span className="text-cyan-400/45 text-[7px] font-mono tracking-wider whitespace-nowrap uppercase">{n.sub}</span>
+            </div>
+          </div>
+        ) : (
+          <div
+            key={i}
+            className="absolute z-10 bg-slate-800/40 backdrop-blur-md border border-white/10 rounded-xl p-3 flex items-center gap-3 shadow-lg w-40 transition-all duration-500 hover:border-cyan-400/30 hover:bg-slate-800/60"
+            style={{ left: n.left, top: n.top }}
+          >
+            <div className="w-7 h-7 rounded-md bg-white/[0.04] border border-white/10 flex items-center justify-center shrink-0">
+              <Icon size={13} className="text-cyan-400/70" />
+            </div>
+            <div className="flex flex-col min-w-0">
+              <span className="text-white text-xs font-semibold tracking-wide whitespace-nowrap">{n.label}</span>
+              <span className="text-cyan-400/45 text-[9px] font-mono tracking-wider whitespace-nowrap uppercase">{n.sub}</span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════
+   METRICS BAR
+   ═══════════════════════════════════════════════════════════ */
+function MetricsBar({ metrics, href }: { metrics: string[]; href: string }) {
+  return (
+    <div className="absolute bottom-0 inset-x-0 border-t border-white/5 bg-white/[0.01] backdrop-blur-md flex items-center justify-between px-8 py-5 z-20">
+      <div className="flex gap-6">
+        {metrics.map((m, i) => (
+          <div
+            key={i}
+            className="px-4 py-2 rounded-lg border border-white/10 bg-white/[0.02] text-cyan-400 text-xs font-mono tracking-wider whitespace-nowrap"
+          >
+            {m}
+          </div>
+        ))}
+      </div>
+      <Link
+        href={href}
+        className="text-cyan-400 hover:text-cyan-300 hover:drop-shadow-[0_0_8px_rgba(6,182,212,0.8)] transition-all flex items-center gap-2 text-sm font-semibold tracking-wider shrink-0"
+      >
+        了解详情 <span className="text-base leading-none">&rarr;</span>
+      </Link>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MAIN COMPONENT
+   ═══════════════════════════════════════════════════════════ */
+export default function Solutions() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = solutions[activeIndex];
+
+  return (
+    <section className="relative z-[10] mx-auto max-w-7xl px-6 py-32 border-t border-white/5">
+      <div className="absolute inset-0 z-[0] pointer-events-none overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-[radial-gradient(ellipse,rgba(6,182,212,0.04)_0%,transparent_70%)]" />
+      </div>
+
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="mb-16"
+        className="mb-16 text-left"
       >
-        <p className="text-cyan-500 text-[clamp(10px,1.2vw,12px)] font-bold tracking-widest uppercase mb-3">
+        <p className="text-cyan-400 text-[clamp(10px,1.2vw,12px)] font-bold tracking-widest uppercase mb-3">
           Industry Solutions
         </p>
         <h2 className="text-[clamp(22px,3vw,30px)] md:text-[clamp(28px,3.5vw,36px)] font-bold text-text-primary">
-          端到端的业务赋能
+          端到端的系统解决方案
         </h2>
       </motion.div>
 
-      {/* ── Top connector: dashed line + flowchart nodes ── */}
-      <div className="relative mb-8">
-        {/* Horizontal dashed line */}
-        <div
-          className="absolute top-1/2 left-[8%] right-[8%] h-px pointer-events-none"
-          style={{
-            backgroundImage: "repeating-linear-gradient(90deg, rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.12) 6px, transparent 6px, transparent 12px)",
-          }}
-        />
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
 
-        {/* Flowchart nodes placed above each card column */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-          {solutions.map((s, i) => (
-            <div key={s.num} className="flex justify-center">
-              <div className="flex flex-col items-center">
-                {/* Node dot */}
-                <div className="w-3 h-3 rounded-full bg-cyan-500/40 border border-cyan-500/60 z-10" />
-                {/* Tiny label */}
-                <span className="text-[clamp(8px,0.9vw,10px)] text-text-muted mt-2 tracking-widest uppercase">
-                  {i === 0 ? "Acquire" : i === 1 ? "Process" : "Settle"}
+        {/* ═══ LEFT ═══ */}
+        <div className="lg:col-span-4 flex flex-col w-full relative">
+          {solutions.map((s, i) => {
+            const isActive = i === activeIndex;
+            return (
+              <button
+                key={s.id}
+                onClick={() => setActiveIndex(i)}
+                className={`text-left border-l-2 py-5 px-6 cursor-pointer transition-all duration-300 ${
+                  isActive
+                    ? "border-cyan-500 bg-gradient-to-r from-cyan-500/10 to-transparent text-white"
+                    : "border-transparent text-slate-400 hover:bg-white/[0.02] hover:text-slate-200"
+                }`}
+              >
+                <span className="text-xs font-mono text-cyan-400/60 tracking-widest mr-3">
+                  {String(i + 1).padStart(2, "0")}
                 </span>
-              </div>
-            </div>
-          ))}
+                <span className={`text-lg font-bold tracking-wide ${isActive ? "text-white" : "text-current"}`}>
+                  {s.title}
+                </span>
+              </button>
+            );
+          })}
         </div>
-      </div>
 
-      {/* ── 3 cards ── */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {solutions.map((s, i) => (
-          <motion.div
-            key={s.num}
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ delay: i * 0.12, duration: 0.55, ease: "easeOut" }}
-          >
-            <Link href={s.href}>
-              <div className="group relative !bg-white/[0.02] !backdrop-blur-xl !border !border-white/10 rounded-3xl p-10 transition-all duration-500 hover:!bg-white/[0.06] hover:!border-cyan-500/30 hover:-translate-y-2 overflow-hidden cursor-pointer h-full flex flex-col">
+        {/* ═══ RIGHT ═══ */}
+        <div className="lg:col-span-8">
+          <div className="sticky top-24 w-full aspect-[4/3] lg:aspect-[16/10] bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-2xl relative overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.05)]">
 
-                <div className="relative z-10 flex flex-col h-full">
-                  {/* Title */}
-                  <h3 className="text-[clamp(17px,1.9vw,20px)] font-bold text-white mb-3">
-                    {s.title}
-                  </h3>
+            <div className="absolute top-0 left-0 w-48 h-48 bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-56 h-56 bg-cyan-500/8 blur-[100px] rounded-full pointer-events-none" />
 
-                  {/* Description */}
-                  <p className="text-slate-300 text-[clamp(13px,1.5vw,15px)] leading-relaxed flex-1">
-                    {s.desc}
-                  </p>
+            <div
+              className="absolute inset-0 z-[0] pointer-events-none"
+              style={{
+                backgroundImage: "radial-gradient(circle, rgba(34,211,238,0.10) 1px, transparent 1px)",
+                backgroundSize: "22px 22px",
+              }}
+            />
 
-                  {/* Arrow on hover */}
-                  <span className="inline-flex items-center gap-1 mt-5 text-slate-300 text-[clamp(11px,1.2vw,13px)] font-medium opacity-0 translate-x-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300">
-                    了解更多 <span className="text-base leading-none">&rarr;</span>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="absolute inset-0 bottom-[28%]"
+              >
+                <TopologyCanvas nodes={active.nodes} />
+
+                <div className="absolute top-4 left-4 z-10 max-w-[60%]">
+                  <span className="text-white/85 text-base md:text-lg leading-relaxed">
+                    {active.desc}
                   </span>
                 </div>
-              </div>
-            </Link>
-          </motion.div>
-        ))}
+              </motion.div>
+            </AnimatePresence>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`metrics-${active.id}`}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 6 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                <MetricsBar metrics={active.metrics} href={active.href} />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
     </section>
   );

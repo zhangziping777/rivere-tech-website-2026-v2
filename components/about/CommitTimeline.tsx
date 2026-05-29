@@ -103,7 +103,7 @@ function TimelineCard({
 
   return (
     <div
-      className={`bg-white/[0.02] border border-white/[0.05] rounded-2xl p-5 md:p-6 ${alignClass}`}
+      className={`!bg-white/5 !backdrop-blur-md !border !border-white/10 rounded-2xl p-5 md:p-6 ${alignClass}`}
     >
       {children}
     </div>
@@ -136,7 +136,7 @@ export default function CommitTimeline() {
                       <h3 className="text-base font-semibold text-text-primary">
                         {m.title}
                       </h3>
-                      <span className="inline-flex px-2 py-0.5 rounded-sm bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 text-2xs font-mono tracking-wider shrink-0">
+                      <span className="inline-flex px-2 py-0.5 rounded-sm bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-2xs font-mono tracking-wider shrink-0">
                         {m.year}
                       </span>
                     </div>
@@ -152,7 +152,7 @@ export default function CommitTimeline() {
                 {!isLeft && (
                   <TimelineCard side="right">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="inline-flex px-2 py-0.5 rounded-sm bg-cyan-500/10 border border-cyan-500/20 text-cyan-500 text-2xs font-mono tracking-wider shrink-0">
+                      <span className="inline-flex px-2 py-0.5 rounded-sm bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-2xs font-mono tracking-wider shrink-0">
                         {m.year}
                       </span>
                       <h3 className="text-base font-semibold text-text-primary">
@@ -171,13 +171,13 @@ export default function CommitTimeline() {
                 <div
                   className={`flex items-center justify-center w-7 h-7 rounded-full border-2 shrink-0 ${
                     isFirst
-                      ? "bg-cyan-500/15 border-cyan-500 shadow-[0_0_12px_rgba(6,182,212,0.3)]"
-                      : "bg-brand-bg border-cyan-500/50"
+                      ? "bg-cyan-400/15 border-cyan-400 shadow-[0_0_12px_rgba(6,182,212,0.3)]"
+                      : "!bg-white/5 border-cyan-400/50"
                   }`}
                 >
                   <Icon
                     size={13}
-                    className="text-cyan-500"
+                    className="text-cyan-400"
                   />
                 </div>
               </div>

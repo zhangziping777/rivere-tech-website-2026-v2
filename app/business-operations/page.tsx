@@ -113,8 +113,8 @@ function ServiceCard({
   return (
     <ScrollReveal delay={delay}>
       <motion.div
-        className="group/card relative overflow-hidden !bg-white/[0.02] !border !border-white/10 rounded-3xl p-6 !backdrop-blur-xl transition-all duration-500
-                   hover:!border-cyan-500/30 hover:!bg-white/[0.06] hover:shadow-[0_0_40px_-10px_rgba(34,211,238,0.1)] hover:-translate-y-1"
+        className="group/card relative overflow-hidden !bg-white/5 !border !border-white/10 rounded-3xl p-6 !backdrop-blur-md transition-all duration-500
+                   hover:!border-cyan-400/30 hover:!bg-white/[0.06] hover:shadow-[0_0_40px_-10px_rgba(34,211,238,0.1)] hover:-translate-y-1"
         whileHover={{ y: -2 }}
         transition={{ duration: 0.2 }}
       >
@@ -131,8 +131,8 @@ function ServiceCard({
 
         <div className="relative z-10 flex flex-col h-full">
           {/* Icon */}
-          <div className="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4">
-            <Icon size={18} className="text-cyan-500" strokeWidth={1.5} />
+          <div className="w-9 h-9 rounded-lg bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center mb-4">
+            <Icon size={18} className="text-cyan-400" strokeWidth={1.5} />
           </div>
 
           {/* Title & Desc */}
@@ -142,7 +142,7 @@ function ServiceCard({
           {/* Sparkline at bottom */}
           <div className="mt-4 flex items-center justify-between">
             <Sparkline data={sparkline} />
-            <span className="text-cyan-500/30 text-lg group-hover/card:text-cyan-500 group-hover/card:translate-x-1 transition-all duration-300">
+            <span className="text-cyan-400/30 text-lg group-hover/card:text-cyan-400 group-hover/card:translate-x-1 transition-all duration-300">
               &rarr;
             </span>
           </div>
@@ -161,7 +161,7 @@ export default function BusinessOperationsPage() {
           ═══════════════════════════════════════════════════════════ */}
       <section className="relative w-full overflow-hidden">
         {/* Aurora glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-500/5 blur-[120px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-400/5 blur-[120px] rounded-full pointer-events-none" />
         <div className="absolute top-20 right-0 w-[400px] h-[400px] bg-[#0284C7]/4 blur-[100px] rounded-full pointer-events-none" />
 
         {/* Code grid texture */}
@@ -179,7 +179,7 @@ export default function BusinessOperationsPage() {
         {/* Content */}
         <div className="relative z-10 mx-auto max-w-7xl px-6 pt-44 pb-28 md:pt-52 md:pb-32 text-center">
           <ScrollReveal>
-            <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-6">
+            <p className="text-cyan-400 text-xs font-medium tracking-widest uppercase mb-6">
               Business Operations
             </p>
           </ScrollReveal>
@@ -202,10 +202,10 @@ export default function BusinessOperationsPage() {
       {/* ═══════════════════════════════════════════════════════════
           Core Services Matrix
           ═══════════════════════════════════════════════════════════ */}
-      <section className="mx-auto max-w-7xl px-6 py-20 md:py-28">
+      <section className="mx-auto max-w-7xl px-6 py-32">
         {/* Section header */}
         <div className="mb-14">
-          <p className="text-cyan-500 text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-3">
+          <p className="text-cyan-400 text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-3">
             Core Services
           </p>
           <h2 className="text-[clamp(22px,3vw,30px)] font-bold text-text-primary">
@@ -229,13 +229,13 @@ export default function BusinessOperationsPage() {
           ═══════════════════════════════════════════════════════════ */}
       <section className="relative w-full overflow-hidden border-y border-white/[0.04]">
         {/* Subtle radial glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-cyan-500/4 blur-[100px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-cyan-400/4 blur-[100px] rounded-full pointer-events-none" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:py-28">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-32">
           {/* Section header */}
           <div className="text-center mb-16">
             <ScrollReveal>
-              <p className="text-cyan-500 text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-3">
+              <p className="text-cyan-400 text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-3">
                 Measurable Impact
               </p>
             </ScrollReveal>
@@ -258,14 +258,14 @@ export default function BusinessOperationsPage() {
               return (
                 <ScrollReveal key={stat.label} delay={0.1 + i * 0.08}>
                   <motion.div
-                    className="group/stats relative !bg-white/[0.02] !border !border-white/10 rounded-3xl p-6 !backdrop-blur-xl transition-all duration-500
-                               hover:!border-cyan-500/30 hover:!bg-white/[0.06] hover:shadow-[0_0_40px_-10px_rgba(34,211,238,0.1)] hover:-translate-y-1"
+                    className="group/stats relative !bg-white/5 !border !border-white/10 rounded-3xl p-6 !backdrop-blur-md transition-all duration-500
+                               hover:!border-cyan-400/30 hover:!bg-white/[0.06] hover:shadow-[0_0_40px_-10px_rgba(34,211,238,0.1)] hover:-translate-y-1"
                     whileHover={{ y: -2 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <StatIcon size={20} className="text-cyan-500/60 mb-4" strokeWidth={1.5} />
+                    <StatIcon size={20} className="text-cyan-400/60 mb-4" strokeWidth={1.5} />
                     <div
-                      className="text-[clamp(28px,3vw,40px)] font-extrabold text-cyan-500 mb-1"
+                      className="text-[clamp(28px,3vw,40px)] font-extrabold text-cyan-400 mb-1"
                       style={{ textShadow: "0 0 20px rgba(6,182,212,0.35)" }}
                     >
                       {stat.value}
@@ -285,9 +285,9 @@ export default function BusinessOperationsPage() {
       {/* ═══════════════════════════════════════════════════════════
           CTA Section
           ═══════════════════════════════════════════════════════════ */}
-      <section className="mx-auto max-w-7xl px-6 py-20 md:py-28 text-center">
+      <section className="mx-auto max-w-7xl px-6 py-32 text-center">
         <ScrollReveal>
-          <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-4">
+          <p className="text-cyan-400 text-xs font-medium tracking-widest uppercase mb-4">
             Let&apos;s Collaborate
           </p>
         </ScrollReveal>
@@ -304,7 +304,7 @@ export default function BusinessOperationsPage() {
         <ScrollReveal delay={0.16}>
           <a
             href="/about#contact"
-            className="inline-flex items-center px-6 py-3 rounded-sm bg-cyan-500 text-black text-sm font-bold hover:bg-cyan-500/90 transition-colors duration-200"
+            className="inline-flex items-center px-6 py-3 rounded-sm bg-cyan-400 text-black text-sm font-bold hover:bg-cyan-400/90 transition-colors duration-200"
           >
             立即联系
           </a>

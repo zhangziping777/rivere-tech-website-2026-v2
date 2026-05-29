@@ -61,7 +61,7 @@ function CodeBackground() {
       <div className="font-mono text-[clamp(7px,0.9vw,10px)] text-gray-400 leading-relaxed whitespace-pre">
         {codeLines.map((line, i) => (
           <div key={i} className="ml-[clamp(4%,8vw,10%)]">
-            <span className="text-cyan-500/30 mr-3">{String(i + 1).padStart(2, "0")}</span>
+            <span className="text-cyan-400/30 mr-3">{String(i + 1).padStart(2, "0")}</span>
             {line}
           </div>
         ))}
@@ -95,11 +95,11 @@ export default function CoreProducts() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="relative z-10 mb-16"
       >
-        <p className="text-cyan-500 text-[clamp(10px,1.2vw,12px)] font-bold tracking-widest uppercase mb-3">
+        <p className="text-cyan-400 text-[clamp(10px,1.2vw,12px)] font-bold tracking-widest uppercase mb-3">
           Core Products
         </p>
         <h2 className="text-[clamp(22px,3vw,30px)] md:text-[clamp(28px,3.5vw,36px)] font-bold text-text-primary">
-          下一代数字金融引擎
+          下一代零售金融科技引擎
         </h2>
       </motion.div>
 
@@ -114,9 +114,9 @@ export default function CoreProducts() {
             transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
           >
             <Link href={p.href}>
-              <div className="group relative !bg-white/[0.02] !backdrop-blur-xl !border !border-white/10 rounded-2xl p-8 transition-all duration-500 hover:-translate-y-1.5 hover:!bg-white/[0.06] hover:!border-cyan-500/30 hover:shadow-[0_15px_30px_-15px_rgba(6,182,212,0.25)] cursor-pointer h-full flex flex-col">
+              <div className="group relative !bg-white/5 !backdrop-blur-md !border !border-white/10 rounded-2xl p-8 transition-all duration-500 hover:-translate-y-1.5 hover:!bg-white/[0.06] hover:!border-cyan-400/30 hover:shadow-[0_15px_30px_-15px_rgba(6,182,212,0.25)] cursor-pointer h-full flex flex-col">
                 {/* Title */}
-                <h3 className="text-[clamp(16px,1.8vw,20px)] !font-bold !inline-block tracking-wide !bg-gradient-to-r !from-blue-400 !to-cyan-300 !bg-clip-text !text-transparent mb-1.5 leading-tight">
+                <h3 className="text-[clamp(16px,1.8vw,20px)] !font-bold !inline-block tracking-wide !bg-gradient-to-r !from-white !via-cyan-200 !to-blue-500 !bg-clip-text !text-transparent mb-1.5 leading-tight">
                   {p.title}
                 </h3>
 

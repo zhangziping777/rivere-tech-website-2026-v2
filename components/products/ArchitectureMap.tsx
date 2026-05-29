@@ -287,7 +287,7 @@ export default function ArchitectureMap() {
   }
 
   return (
-    <div className="relative w-full aspect-[16/10] min-h-[520px] max-w-5xl mx-auto rounded-xl border border-white/10 bg-[#0B0D17]/90 backdrop-blur-md overflow-hidden select-none shadow-2xl">
+    <div className="relative w-full aspect-[16/10] min-h-[520px] max-w-5xl mx-auto rounded-xl !bg-white/5 !backdrop-blur-md !border !border-white/10 overflow-hidden select-none shadow-2xl">
       {/* Grid background */}
       <div
         className="absolute inset-0 opacity-[0.04]"
@@ -383,7 +383,7 @@ export default function ArchitectureMap() {
             transform: "translate(-50%, 0)",
           }}
         >
-          <span className="inline-block px-2.5 py-0.5 rounded-full border border-white/25 bg-white/10 text-[clamp(7px,0.9vw,10px)] font-mono text-gray-200 tracking-wide whitespace-nowrap backdrop-blur-sm">
+          <span className="inline-block px-2.5 py-0.5 rounded-full border border-white/25 !bg-white/5 text-[clamp(7px,0.9vw,10px)] font-mono text-gray-200 tracking-wide whitespace-nowrap backdrop-blur-sm">
             [{pill.label}]
           </span>
         </div>
@@ -411,8 +411,8 @@ export default function ArchitectureMap() {
             <motion.div
               className={`rounded-lg border transition-colors duration-300 cursor-default ${
                 isHovered
-                  ? "border-cyan-500/40 bg-cyan-500/[0.06]"
-                  : "border-white/25 bg-black/70"
+                  ? "border-cyan-400/40 bg-cyan-400/[0.06]"
+                  : "border-white/25 !bg-white/5"
               }`}
               style={{ padding: "clamp(6px, 0.8vw, 12px) clamp(8px, 1vw, 14px)" }}
               animate={{
@@ -425,7 +425,7 @@ export default function ArchitectureMap() {
               <div className="flex items-center gap-2 mb-2">
                 <Icon
                   size={18}
-                  className={`shrink-0 transition-colors duration-300 ${isHovered ? "text-cyan-500" : "text-cyan-500/70"}`}
+                  className={`shrink-0 transition-colors duration-300 ${isHovered ? "text-cyan-400" : "text-cyan-400/70"}`}
                   strokeWidth={1.5}
                 />
                 <div className="min-w-0">
@@ -439,8 +439,8 @@ export default function ArchitectureMap() {
                     key={b}
                     className={`inline-block leading-none rounded-sm border transition-colors duration-300 text-[clamp(6px,0.7vw,8px)] whitespace-nowrap ${
                       isHovered
-                        ? "border-cyan-500/25 text-cyan-500/70 bg-cyan-500/[0.04]"
-                        : "border-cyan-500/25 text-cyan-500 bg-cyan-500/5"
+                        ? "border-cyan-400/25 text-cyan-400/70 bg-cyan-400/[0.04]"
+                        : "border-cyan-400/25 text-cyan-400 bg-cyan-400/5"
                     }`}
                     style={{ padding: "clamp(1px, 0.15vw, 2px) clamp(3px, 0.4vw, 6px)" }}
                   >

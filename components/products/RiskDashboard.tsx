@@ -8,15 +8,15 @@ export default function RiskDashboard() {
 
   return (
     <div className="relative w-full max-w-md mx-auto">
-      <div className="rounded-xl border border-brand-border bg-brand-surface/30 p-6">
+      <div className="rounded-xl !bg-white/5 !backdrop-blur-md !border !border-white/10 p-6">
         {/* Dashboard header */}
         <div className="flex items-center justify-between mb-6">
-          <span className="text-cyan-500 text-2xs font-mono tracking-widest uppercase">
+          <span className="text-cyan-400 text-2xs font-mono tracking-widest uppercase">
             Live Risk Monitor
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
-            <span className="text-cyan-500 text-2xs font-mono">ONLINE</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="text-cyan-400 text-2xs font-mono">ONLINE</span>
           </span>
         </div>
 
@@ -25,7 +25,7 @@ export default function RiskDashboard() {
           {gauges.map((g) => (
             <div
               key={g.label}
-              className="rounded-lg border border-brand-border bg-brand-bg/50 p-3"
+              className="rounded-lg !bg-white/5 !border !border-white/[0.06] p-3"
             >
               <p className="text-text-muted text-2xs font-mono mb-2">{g.label}</p>
               <div className="flex items-end gap-2">
@@ -54,7 +54,7 @@ export default function RiskDashboard() {
             <div
               key={i}
               className={`w-1.5 h-1.5 rounded-full ${
-                i <= 6 ? "bg-cyan-500/60" : "bg-red-500/40"
+                i <= 6 ? "bg-cyan-400/60" : "bg-red-500/40"
               }`}
             />
           ))}
@@ -70,13 +70,13 @@ export default function RiskDashboard() {
               </span>
               <div className="flex-1 h-1 rounded-full bg-brand-border overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-cyan-500/25"
+                  className="h-full rounded-full bg-cyan-400/25"
                   style={{ width: `${w}%` }}
                 />
               </div>
               <span className="text-text-muted text-2xs font-mono w-8 text-right tabular-nums">
                 {w > 60 ? (
-                  <span className="text-cyan-500/60">{w}ms</span>
+                  <span className="text-cyan-400/60">{w}ms</span>
                 ) : (
                   <span>{w}ms</span>
                 )}

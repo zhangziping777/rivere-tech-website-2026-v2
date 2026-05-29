@@ -2,13 +2,13 @@ export default function TerminalJSON() {
   return (
     <div className="relative w-full max-w-lg mx-auto">
       {/* Terminal window chrome */}
-      <div className="rounded-xl overflow-hidden border border-brand-border bg-[#0d1117] shadow-2xl">
+      <div className="rounded-xl overflow-hidden !bg-white/5 !backdrop-blur-md !border !border-white/10 shadow-2xl">
         {/* Title bar */}
-        <div className="flex items-center gap-2 px-4 py-3 bg-brand-surface/80 border-b border-brand-border">
+        <div className="flex items-center gap-2 px-4 py-3 !bg-white/5 !border-b !border-white/10">
           <div className="flex gap-1.5">
             <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
             <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-            <div className="w-2.5 h-2.5 rounded-full bg-cyan-500/60" />
+            <div className="w-2.5 h-2.5 rounded-full bg-cyan-400/60" />
           </div>
           <span className="text-text-muted text-2xs font-mono ml-2">txa-transaction.json</span>
         </div>
@@ -91,12 +91,12 @@ export default function TerminalJSON() {
 
         {/* Blinking cursor */}
         <div className="px-5 pb-4">
-          <span className="inline-block w-2 h-4 bg-cyan-500/70 animate-pulse" />
+          <span className="inline-block w-2 h-4 bg-cyan-400/70 animate-pulse" />
         </div>
       </div>
 
       {/* Bottom reflection */}
-      <div className="absolute -bottom-4 left-4 right-4 h-8 bg-cyan-500/3 blur-xl rounded-full" />
+      <div className="absolute -bottom-4 left-4 right-4 h-8 bg-cyan-400/3 blur-xl rounded-full" />
     </div>
   );
 }

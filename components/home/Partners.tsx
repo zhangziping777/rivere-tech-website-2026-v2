@@ -30,23 +30,18 @@ const clients = [
   "07-01 WPXJ.png",
   "99-01 DCS.png",
   "99-02 SEA.png",
+  "99-03 KTC.png",
+  "99-04 KUN.png",
 ];
 
-const mid = Math.ceil(clients.length / 2);
-const ROW1 = clients.slice(0, mid);
-const ROW2 = clients.slice(mid);
-
-function LogoImg({ file }: { file: string }) {
-  return (
-    <div className="flex items-center justify-center shrink-0 px-6">
-      <img
-        src={`/images/clients/${file}`}
-        alt={file.replace(/\.[^.]+$/, "")}
-        className="h-8 w-auto max-w-[120px] object-contain mix-blend-screen opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-      />
-    </div>
-  );
-}
+const anchors = clients.filter((f) => {
+  const pfx = f.split("-")[0];
+  return pfx === "01" || pfx === "02" || pfx === "99";
+});
+const ecosystem = clients.filter((f) => {
+  const pfx = f.split("-")[0];
+  return pfx === "04" || pfx === "05" || pfx === "06" || pfx === "07";
+});
 
 export default function Partners() {
   return (
@@ -55,29 +50,47 @@ export default function Partners() {
       <div className="absolute inset-0 z-[0] pointer-events-none overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-[radial-gradient(ellipse,rgba(59,130,246,0.03)_0%,transparent_70%)]" />
       </div>
+
       <div className="mb-16 text-center">
-        <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-3">
+        <p className="text-cyan-400 text-xs font-medium tracking-widest uppercase mb-3">
           Our Clients
         </p>
         <h2 className="text-3xl font-bold text-text-primary">合作客户</h2>
       </div>
 
-      {/* Row 1 — scrolls left */}
-      <div className="relative w-full overflow-hidden">
-        <div className="flex animate-marquee">
-          {[...ROW1, ...ROW1].map((file, i) => (
-            <LogoImg key={`r1-${file}-${i}`} file={file} />
-          ))}
-        </div>
+      {/* ═══ Tier 1: The Anchors — 国有大行 · 股份制 · 全球化 ═══ */}
+      <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 items-center justify-items-center mb-10">
+        {anchors.map((file) => (
+          <div
+            key={file}
+            className="w-full h-24 bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center p-4 hover:bg-white/[0.08] hover:border-cyan-400/30 hover:-translate-y-1 shadow-lg transition-all duration-500"
+          >
+            <img
+              src={`/images/clients/${file}`}
+              alt={file.replace(/\.[^.]+$/, "")}
+              className="w-full h-full object-contain transition-all duration-500"
+            />
+          </div>
+        ))}
       </div>
 
-      {/* Row 2 — scrolls right */}
-      <div className="relative w-full overflow-hidden mt-4">
-        <div className="flex animate-marquee-reverse">
-          {[...ROW2, ...ROW2].map((file, i) => (
-            <LogoImg key={`r2-${file}-${i}`} file={file} />
-          ))}
-        </div>
+      {/* Divider */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent my-10" />
+
+      {/* ═══ Tier 2: The Ecosystem — 农商 · 城商 · 互联网 · 非银 ═══ */}
+      <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 items-center justify-items-center">
+        {ecosystem.map((file) => (
+          <div
+            key={file}
+            className="w-full h-16 bg-white/[0.02] border border-white/5 rounded-xl flex items-center justify-center p-3 hover:bg-white/[0.05] transition-all duration-500"
+          >
+            <img
+              src={`/images/clients/${file}`}
+              alt={file.replace(/\.[^.]+$/, "")}
+              className="w-full h-full object-contain transition-all duration-500"
+            />
+          </div>
+        ))}
       </div>
     </section>
   );

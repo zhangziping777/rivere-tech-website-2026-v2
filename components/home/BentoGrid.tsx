@@ -21,8 +21,8 @@ function SideCard({
 }) {
   const content = (
     <motion.div
-      className="group flex flex-col !bg-white/[0.02] !backdrop-blur-xl !border !border-white/10 rounded-3xl p-6 transition-all duration-500
-                 hover:!bg-white/[0.06] hover:!border-cyan-500/30 hover:-translate-y-1 relative h-full"
+      className="group flex flex-col !bg-white/5 !backdrop-blur-md !border !border-white/10 rounded-3xl p-6 transition-all duration-500
+                 hover:!bg-white/[0.06] hover:!border-cyan-400/30 hover:-translate-y-1 relative h-full"
       whileHover={{ y: -2 }}
       transition={{ duration: 0.2 }}
     >
@@ -37,11 +37,11 @@ function SideCard({
           {desc}
         </p>
         {ctaLabel ? (
-          <span className="inline-flex items-center px-4 py-2 mt-4 rounded-sm border border-blue-900/50 text-slate-300 text-xs font-medium hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(6,182,212,0.2)] hover:text-cyan-400 transition-all duration-300 w-fit">
+          <span className="inline-flex items-center px-4 py-2 mt-4 rounded-sm border border-blue-900/50 text-slate-300 text-xs font-medium hover:border-cyan-400/50 hover:shadow-[0_0_15px_rgba(6,182,212,0.2)] hover:text-cyan-400 transition-all duration-300 w-fit">
             {ctaLabel}
           </span>
         ) : (
-          <span className="inline-flex items-center px-4 py-2 mt-4 rounded-sm border border-blue-900/50 text-slate-300 text-xs font-medium hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(6,182,212,0.2)] hover:text-cyan-400 transition-all duration-300 w-fit">
+          <span className="inline-flex items-center px-4 py-2 mt-4 rounded-sm border border-blue-900/50 text-slate-300 text-xs font-medium hover:border-cyan-400/50 hover:shadow-[0_0_15px_rgba(6,182,212,0.2)] hover:text-cyan-400 transition-all duration-300 w-fit">
             了解更多
           </span>
         )}
@@ -62,12 +62,12 @@ export default function BentoGrid() {
       {/* Ambient glow orbs */}
       <div className="absolute inset-0 z-[0] pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-600/10 blur-[150px] rounded-full" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-500/8 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-400/8 blur-[120px] rounded-full" />
       </div>
 
       {/* Section header */}
       <div className="mb-16">
-        <p className="text-cyan-500 text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-3">
+        <p className="text-cyan-400 text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-3">
           Our Businesses
         </p>
         <h2 className="text-[clamp(22px,3vw,30px)] font-bold text-text-primary">
@@ -83,7 +83,7 @@ export default function BentoGrid() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="col-span-1 lg:col-span-8 relative overflow-hidden !bg-white/[0.02] !backdrop-blur-xl !border !border-white/10 rounded-3xl p-8 min-h-[380px] flex flex-col group hover:!bg-white/[0.06] hover:!border-cyan-500/30 transition-all duration-500"
+          className="col-span-1 lg:col-span-8 relative overflow-hidden !bg-white/5 !backdrop-blur-md !border !border-white/10 rounded-3xl p-8 min-h-[380px] flex flex-col group hover:!bg-white/[0.06] hover:!border-cyan-400/30 transition-all duration-500"
         >
           {/* Subtle grid pattern background */}
           <div

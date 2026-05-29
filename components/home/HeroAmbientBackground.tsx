@@ -25,7 +25,7 @@ function makeLayer(count: number, seed: number, rMin: number, rMax: number) {
 function starCircles(stars: ReturnType<typeof makeLayer>, offsetY: number) {
   return stars.map((s, i) => (
     <circle key={i} cx={s.cx} cy={s.cy + offsetY} r={s.r}
-      fill={s.isGreen ? "#06B6D4" : "white"} opacity={s.opacity} />
+      fill={s.isGreen ? "#22D3EE" : "white"} opacity={s.opacity} />
   ));
 }
 
@@ -48,7 +48,7 @@ export default function HeroAmbientBackground() {
         transition={{ duration: 13, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
-        className="absolute bottom-[-18%] right-[-12%] w-[55vw] h-[55vw] bg-cyan-500/22 blur-[140px] rounded-full mix-blend-screen"
+        className="absolute bottom-[-18%] right-[-12%] w-[55vw] h-[55vw] bg-cyan-400/22 blur-[140px] rounded-full mix-blend-screen"
         animate={{ scale: [1, 1.06, 1], opacity: [0.6, 1, 0.6], x: [12, -18, 12], y: [12, -12, 12] }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
       />

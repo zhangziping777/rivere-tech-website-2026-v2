@@ -4,7 +4,8 @@ import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
 export const viewport: Viewport = {
-  width: 1280,
+  width: "device-width",
+  initialScale: 1,
 };
 
 export const metadata: Metadata = {
@@ -23,14 +24,33 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-CN" className="scroll-smooth">
-      <body className="flex flex-col min-h-screen relative w-full overflow-x-hidden">
+      <body className="flex flex-col min-h-screen relative w-full">
         {/* Deep space ambient glow — fixed background orbs */}
         <div className="fixed inset-0 pointer-events-none z-[0] overflow-hidden">
-          <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-blue-900/15 blur-[120px] rounded-full" />
-          <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-cyan-900/10 blur-[150px] rounded-full" />
+          <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-blue-900/30 blur-[120px] rounded-full" />
+          <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] bg-cyan-900/20 blur-[150px] rounded-full" />
         </div>
         <Header />
-        <div className="flex-1">{children}</div>
+        <div className="flex-1 relative">
+          {/* Deep blue nebula glows — site-wide bottom layer */}
+          <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+            <div
+              className="absolute top-[10%] left-[-15%] w-[65vw] h-[60vh]"
+              style={{
+                background:
+                  "radial-gradient(ellipse, rgba(30,64,175,0.30) 0%, rgba(30,64,175,0.12) 40%, transparent 70%)",
+              }}
+            />
+            <div
+              className="absolute bottom-[10%] right-[-10%] w-[60vw] h-[60vh]"
+              style={{
+                background:
+                  "radial-gradient(ellipse, rgba(8,145,178,0.22) 0%, rgba(8,145,178,0.08) 35%, transparent 70%)",
+              }}
+            />
+          </div>
+          <div className="relative z-[1]">{children}</div>
+        </div>
         <Footer />
       </body>
     </html>

@@ -12,7 +12,7 @@ export default function StrategicPartners() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse,rgba(6,182,212,0.04)_0%,transparent_70%)]" />
       </div>
       <div className="mb-16 text-center">
-        <p className="text-cyan-500 text-xs font-medium tracking-widest uppercase mb-3">
+        <p className="text-cyan-400 text-xs font-medium tracking-widest uppercase mb-3">
           Strategic Partners
         </p>
         <h2 className="text-3xl font-bold text-text-primary mb-4">
@@ -23,16 +23,16 @@ export default function StrategicPartners() {
         </p>
       </div>
 
-      <div className="flex flex-wrap justify-center items-center gap-16 lg:gap-24">
+      <div className="grid grid-cols-3 gap-6 items-center justify-items-center max-w-2xl mx-auto">
         {partners.map((p) => (
           <div
             key={p.file}
-            className="flex items-center justify-center"
+            className="w-full h-24 bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-2xl flex items-center justify-center p-4 hover:bg-white/[0.08] hover:border-cyan-400/30 hover:-translate-y-1 shadow-lg transition-all duration-500"
           >
             <img
               src={`/images/partners/${p.file}`}
               alt={p.alt}
-              className="h-10 w-auto max-w-[160px] object-contain mix-blend-screen opacity-50 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+              className="w-full h-full object-contain transition-all duration-500"
             />
           </div>
         ))}

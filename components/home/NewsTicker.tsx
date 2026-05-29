@@ -40,11 +40,11 @@ export default function NewsTicker() {
 
   return (
     <div
-      className="w-full h-12 border-t border-b border-slate-800/60 bg-blue-950/10 overflow-hidden"
+      className="w-full bg-white/[0.02] backdrop-blur-md border-y border-white/5 py-3 relative z-20 overflow-hidden"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="max-w-7xl mx-auto h-full flex items-center px-6 md:px-10">
+      <div className="max-w-7xl mx-auto flex items-center px-6 md:px-10">
         {/* Pulse dot + Badge */}
         <span className="flex items-center gap-2 shrink-0">
           <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
@@ -79,7 +79,7 @@ export default function NewsTicker() {
           </div>
 
           {/* Arrow — visible on hover */}
-          <span className="ml-2 text-cyan-500 opacity-0 -translate-x-1 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-sm shrink-0">
+          <span className="ml-2 text-cyan-400 opacity-0 -translate-x-1 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300 text-sm shrink-0">
             &rarr;
           </span>
         </Link>

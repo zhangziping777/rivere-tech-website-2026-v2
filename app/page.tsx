@@ -16,12 +16,15 @@ export default function Home() {
       <section className="relative z-[10] w-full min-h-[82vh] overflow-hidden bg-transparent">
         <HeroCanvasBackground />
 
+        {/* Bottom fade: blend canvas into global #030712 */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#030712] pointer-events-none z-[5]" />
+
         {/* Content: centered container with flex layout */}
         <div className="relative z-10 max-w-7xl mx-auto w-full min-h-[82vh] px-6 md:px-10 flex items-center">
           {/* Left: Hero text — 1/2 */}
           <div className="w-1/2">
             <ScrollReveal>
-              <p className="text-cyan-500 text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-4">
+              <p className="text-cyan-400 text-[clamp(10px,1.2vw,12px)] font-medium tracking-widest uppercase mb-4">
                 Riveretech Technology
               </p>
             </ScrollReveal>
@@ -40,13 +43,13 @@ export default function Home() {
               <div className="flex gap-4 mt-8">
                 <a
                   href="/products"
-                  className="inline-flex items-center px-6 py-3 rounded-sm bg-cyan-500/10 border border-cyan-500/40 text-cyan-400 text-[clamp(12px,1.3vw,14px)] font-bold hover:bg-cyan-500/20 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300"
+                  className="inline-flex items-center px-6 py-3 rounded-sm bg-cyan-400/10 border border-cyan-400/40 text-cyan-400 text-[clamp(12px,1.3vw,14px)] font-bold hover:bg-cyan-400/20 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300"
                 >
                   探索产品
                 </a>
                 <a
                   href="/about#contact"
-                  className="inline-flex items-center px-6 py-3 rounded-sm border border-white/20 text-white text-[clamp(12px,1.3vw,14px)] font-medium hover:border-cyan-500/40 hover:bg-white/5 transition-all duration-300"
+                  className="inline-flex items-center px-6 py-3 rounded-sm border border-white/20 text-white text-[clamp(12px,1.3vw,14px)] font-medium hover:border-cyan-400/40 hover:bg-white/5 transition-all duration-300"
                 >
                   联系我们
                 </a>
