@@ -111,25 +111,17 @@ export default function RiskControlGraphic() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 rounded-full animate-pulse" style={{background:"radial-gradient(circle,rgba(6,182,212,0.18) 0%,rgba(6,182,212,0.04) 50%,transparent 70%)"}}/>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 rounded-full animate-[pulse_2.5s_ease-in-out_0.4s_infinite]" style={{background:"radial-gradient(circle,rgba(6,182,212,0.25) 0%,rgba(6,182,212,0.06) 40%,transparent 60%)"}}/>
 
-        {/* Glass body */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900/60 backdrop-blur-md border border-cyan-500/30"
-          style={{width:"120px",height:"144px",clipPath:"polygon(50% 0%,100% 16.7%,96% 54.2%,50% 100%,4% 54.2%,0% 16.7%)"}}/>
-
-        {/* SVG outline */}
-        <svg viewBox="0 0 100 120" width="120" height="144" className="relative" style={{filter:"drop-shadow(0 0 30px rgba(6,182,212,0.3))"}}>
-          <defs>
-            <linearGradient id="rcStroke" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.8"/><stop offset="50%" stopColor="#06b6d4" stopOpacity="0.5"/><stop offset="100%" stopColor="#0891b2" stopOpacity="0.6"/>
-            </linearGradient>
-            <linearGradient id="rcHl" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="rgba(6,182,212,0.15)"/><stop offset="100%" stopColor="transparent"/>
-            </linearGradient>
-          </defs>
-          <polygon points="50,2 100,20 96,65 50,118 4,65 0,20" fill="none" stroke="url(#rcStroke)" strokeWidth="1.5"/>
-          <polygon points="50,2 100,20 96,65 50,118 4,65 0,20" fill="rgba(6,182,212,0.04)"/>
-          <polygon points="50,2 100,20 96,65 50,50 30,35" fill="url(#rcHl)"/>
-          <line x1="50" y1="8" x2="50" y2="105" stroke="rgba(6,182,212,0.06)" strokeWidth="0.5"/>
-        </svg>
+        {/* Modern Semi-Transparent Shield SVG */}
+        <div className="relative flex items-center justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            className="w-24 h-24 text-cyan-400 drop-shadow-[0_0_20px_rgba(6,182,212,0.8)] relative z-10"
+          >
+            <path fill="currentColor" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" opacity="0.2"/>
+            <path fill="currentColor" d="M12 22c0 0-8-4-8-10V5l8-3v20z" opacity="0.9"/>
+          </svg>
+        </div>
 
         <div className="absolute left-1/2 -translate-x-1/2 text-center" style={{top:"158px"}}>
           <p className="font-mono text-cyan-400 text-[11px] tracking-[0.2em] font-bold" style={{textShadow:"0 0 16px rgba(34,211,238,0.5)"}}>AnyEAST</p>
