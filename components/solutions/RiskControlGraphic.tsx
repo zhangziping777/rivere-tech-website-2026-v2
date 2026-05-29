@@ -2,30 +2,34 @@
 
 import { useState } from "react";
 
+/* ── Golden-ratio center: 38% from top ── */
+const CX = 400;
+const CY = 152; // 400 × 0.38
+const RX = 250;
+const RY = 120;
+
 interface NodeDef {
   label: string;
   sub: string;
   className: string;
 }
 
-/* ── Ellipse params: cx=400 cy=200 rx=250 ry=120 ── */
 const NODES: NodeDef[] = [
-  { label: "数据采集", sub: "Collection",  className: "top-[calc(50%-120px)] left-1/2" },
-  { label: "特征工程", sub: "Features",    className: "top-[calc(50%-60px)] left-[calc(50%+216.5px)]" },
-  { label: "模型评分", sub: "Scoring",     className: "top-[calc(50%+60px)] left-[calc(50%+216.5px)]" },
-  { label: "策略决策", sub: "Strategy",    className: "top-[calc(50%+120px)] left-1/2" },
-  { label: "实时监控", sub: "Monitor",     className: "top-[calc(50%+60px)] left-[calc(50%-216.5px)]" },
-  { label: "处置响应", sub: "Response",    className: "top-[calc(50%-60px)] left-[calc(50%-216.5px)]" },
+  { label: "数据采集", sub: "Collection",  className: "top-[calc(38%-120px)] left-1/2" },
+  { label: "特征工程", sub: "Features",    className: "top-[calc(38%-60px)] left-[calc(50%+216.5px)]" },
+  { label: "模型评分", sub: "Scoring",     className: "top-[calc(38%+60px)] left-[calc(50%+216.5px)]" },
+  { label: "策略决策", sub: "Strategy",    className: "top-[calc(38%+120px)] left-1/2" },
+  { label: "实时监控", sub: "Monitor",     className: "top-[calc(38%+60px)] left-[calc(50%-216.5px)]" },
+  { label: "处置响应", sub: "Response",    className: "top-[calc(38%-60px)] left-[calc(50%-216.5px)]" },
 ];
 
-/* SVG line endpoints: ellipse cx=400 cy=200 rx=250 ry=120 */
 const LINE_ENDS = [
-  { x: 400,   y: 80  },  // θ=-90°  top
-  { x: 616.5, y: 140 },  // θ=-30°  upper right
-  { x: 616.5, y: 260 },  // θ= 30°  lower right
-  { x: 400,   y: 320 },  // θ= 90°  bottom
-  { x: 183.5, y: 260 },  // θ=150°  lower left
-  { x: 183.5, y: 140 },  // θ=210°  upper left
+  { x: 400,   y: 32  },  // top
+  { x: 616.5, y: 92  },  // upper right
+  { x: 616.5, y: 212 },  // lower right
+  { x: 400,   y: 272 },  // bottom
+  { x: 183.5, y: 212 },  // lower left
+  { x: 183.5, y: 92  },  // upper left
 ];
 
 export default function RiskControlGraphic() {
@@ -33,7 +37,7 @@ export default function RiskControlGraphic() {
 
   return (
     <div className="absolute inset-0">
-      {/* ── Pixel-aligned grid: px-based, mask-faded at edges ── */}
+      {/* ── Pixel grid ── */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -43,12 +47,12 @@ export default function RiskControlGraphic() {
           `,
           backgroundSize: "24px 24px",
           backgroundPosition: "0 0",
-          maskImage: "radial-gradient(ellipse 65% 70% at 50% 50%, black 25%, transparent 100%)",
-          WebkitMaskImage: "radial-gradient(ellipse 65% 70% at 50% 50%, black 25%, transparent 100%)",
+          maskImage: "radial-gradient(ellipse 65% 70% at 50% 38%, black 25%, transparent 100%)",
+          WebkitMaskImage: "radial-gradient(ellipse 65% 70% at 50% 38%, black 25%, transparent 100%)",
         }}
       />
 
-      {/* ── SVG layer: ellipse orbit + radial lines ── */}
+      {/* ── SVG orbit layer ── */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none"
         viewBox="0 0 800 400"
@@ -64,18 +68,18 @@ export default function RiskControlGraphic() {
           </filter>
         </defs>
 
-        {/* Dashed base elliptical track */}
+        {/* Dashed base track */}
         <ellipse
-          cx="400" cy="200" rx="250" ry="120"
+          cx={CX} cy={CY} rx={RX} ry={RY}
           fill="none"
           stroke="rgba(255,255,255,0.05)"
           strokeWidth="2"
           strokeDasharray="4 6"
         />
 
-        {/* Flowing glow arc on the elliptical track */}
+        {/* Flowing glow arc */}
         <ellipse
-          cx="400" cy="200" rx="250" ry="120"
+          cx={CX} cy={CY} rx={RX} ry={RY}
           fill="none"
           stroke="#06b6d4"
           strokeWidth="2"
@@ -84,13 +88,13 @@ export default function RiskControlGraphic() {
           className="animate-[dash-flow_5s_linear_infinite]"
         />
 
-        {/* Radial lines center → each node */}
+        {/* Radial lines */}
         {LINE_ENDS.map((pt, i) => {
           const active = hovered === i;
           return (
             <line
               key={i}
-              x1="400" y1="200"
+              x1={CX} y1={CY}
               x2={pt.x} y2={pt.y}
               stroke={active ? "#06b6d4" : "rgba(255,255,255,0.05)"}
               strokeWidth={active ? 1.5 : 0.5}
@@ -102,7 +106,7 @@ export default function RiskControlGraphic() {
         })}
       </svg>
 
-      {/* ── Glassmorphic node cards ── */}
+      {/* ── Node cards ── */}
       {NODES.map((node, i) => (
         <div
           key={i}
@@ -127,42 +131,52 @@ export default function RiskControlGraphic() {
         </div>
       ))}
 
-      {/* ── Center shield core ── */}
-      <div className="absolute top-1/2 left-1/2 z-20" style={{ transform: "translate(-50%, -50%)" }}>
-        {/* Shield container */}
-        <div className="relative flex items-center justify-center w-24 h-24 bg-cyan-500/10 rounded-full border border-cyan-500/25 shadow-[0_0_50px_rgba(6,182,212,0.5)]">
-          {/* Inner glow balls — layered for depth */}
-          <div className="absolute inset-0 bg-cyan-400/20 rounded-full blur-lg animate-pulse" />
-          <div className="absolute inset-2 bg-cyan-300/15 rounded-full blur-md animate-[pulse_2.5s_ease-in-out_0.5s_infinite]" />
+      {/* ═══════════════════════════════════════════
+          CENTER: Cyberpunk Shield Core
+          ═══════════════════════════════════════════ */}
+      <div className="absolute z-20" style={{ top: "38%", left: "50%", transform: "translate(-50%, -50%)" }}>
+        {/* ── Layer 1: 150px glow sphere ── */}
+        <div
+          className="absolute rounded-full animate-pulse"
+          style={{
+            width: "150px",
+            height: "150px",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            background: "radial-gradient(circle, rgba(6,182,212,0.25) 0%, rgba(6,182,212,0.08) 40%, transparent 70%)",
+          }}
+        />
+        {/* Secondary wider glow ring */}
+        <div
+          className="absolute rounded-full animate-[pulse_3s_ease-in-out_1s_infinite]"
+          style={{
+            width: "200px",
+            height: "200px",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            background: "radial-gradient(circle, rgba(6,182,212,0.10) 0%, transparent 65%)",
+          }}
+        />
 
-          {/* SVG shield icon */}
-          <svg viewBox="0 0 48 48" className="relative w-14 h-14 z-10" fill="none">
-            <path
-              d="M24 6 L38 10 L38 24 C38 34 24 42 24 42 C24 42 10 34 10 24 L10 10 Z"
-              stroke="#67e8f9"
-              strokeWidth="1.5"
-              fill="rgba(6,182,212,0.15)"
-            />
-            <path
-              d="M18 23 L22 27 L30 19"
-              stroke="#67e8f9"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+        {/* ── Layer 2: Glassmorphic shield body ── */}
+        <div
+          className="relative w-[88px] h-[104px] bg-slate-950/80 backdrop-blur-xl border border-cyan-500/40 shadow-[0_0_60px_rgba(6,182,212,0.35)]"
+          style={{ clipPath: "polygon(50% 0%, 100% 20%, 95% 65%, 50% 100%, 5% 65%, 0% 20%)" }}
+        >
+          <div className="absolute inset-0 bg-cyan-400/5" />
         </div>
       </div>
 
-      {/* ── Center label below shield ── */}
+      {/* ── Center label below core ── */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-        <div className="text-center" style={{ marginTop: "96px" }}>
-          <p className="text-white/70 text-xs tracking-[0.15em] font-semibold">ANYEAST</p>
-          <p className="text-white/40 text-[10px] tracking-wide mt-1">智能风控核心</p>
+        <div className="text-center" style={{ marginTop: "calc(38% + 80px)" }}>
+          <p className="font-mono text-cyan-400 text-[10px] tracking-[0.2em] font-bold">AnyEAST</p>
+          <p className="text-cyan-400/40 text-[9px] tracking-wide mt-1">智能风控核心</p>
         </div>
       </div>
 
-      {/* ── Inline keyframe for dash-flow animation ── */}
       <style jsx>{`
         @keyframes dash-flow {
           0%   { stroke-dashoffset: 0; }
