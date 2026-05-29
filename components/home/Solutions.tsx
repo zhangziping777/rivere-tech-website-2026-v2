@@ -405,10 +405,10 @@ export default function Solutions() {
         </h2>
       </motion.div>
 
-      <div className="w-full max-w-7xl mx-auto flex gap-6 items-start">
+      <div className="w-full max-w-7xl mx-auto flex gap-5 items-stretch">
 
         {/* ═══ LEFT ═══ */}
-        <div className="w-[380px] shrink-0 flex flex-col relative">
+        <div className="w-[300px] shrink-0 flex flex-col">
           {solutions.map((s, i) => {
             const isActive = i === activeIndex;
             return (
@@ -433,8 +433,8 @@ export default function Solutions() {
         </div>
 
         {/* ═══ RIGHT ═══ */}
-        <div className="flex-1 min-w-0">
-          <div className="sticky top-24 w-full aspect-[4/3] lg:aspect-[16/10] bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-2xl relative overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.05)]">
+        <div className="flex-1 min-w-0 pr-4">
+          <div className="h-full w-full bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-2xl relative overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.05)]">
 
             <div className="absolute top-0 left-0 w-48 h-48 bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-56 h-56 bg-cyan-500/8 blur-[100px] rounded-full pointer-events-none" />
