@@ -72,7 +72,7 @@ function CodeBackground() {
 
 export default function CoreProducts() {
   return (
-    <section className="relative z-[10] mx-auto max-w-7xl px-6 py-32 border-t border-white/5 overflow-hidden">
+    <section data-snap-section className="relative z-[10] mx-auto max-w-7xl px-6 py-32 border-t border-white/5 overflow-hidden">
       <CodeBackground />
 
       {/* Engineering grid texture */}

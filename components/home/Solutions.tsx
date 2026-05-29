@@ -385,7 +385,7 @@ export default function Solutions() {
   const active = solutions[activeIndex];
 
   return (
-    <section className="relative z-[10] mx-auto max-w-7xl px-6 py-32 border-t border-white/5">
+    <section data-snap-section className="relative z-[10] mx-auto max-w-7xl px-6 py-32 border-t border-white/5">
       <div className="absolute inset-0 z-[0] pointer-events-none overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-[radial-gradient(ellipse,rgba(6,182,212,0.04)_0%,transparent_70%)]" />
       </div>

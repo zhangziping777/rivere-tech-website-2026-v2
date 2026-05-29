@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* ── Hero Section ── */}
-      <section className="relative z-[10] w-full min-h-[82vh] overflow-hidden bg-transparent">
+      <section data-snap-section className="relative z-[10] w-full min-h-[82vh] overflow-hidden bg-transparent">
         <HeroCanvasBackground />
 
         {/* Bottom fade: blend canvas into global #030712 */}

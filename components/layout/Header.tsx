@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -44,7 +45,7 @@ const navItems: NavItem[] = [
   { label: "联系我们", href: "/about#contact" },
 ];
 
-function Dropdown({ items }: { items: SubItem[] }) {
+function Dropdown({ items, pathname }: { items: SubItem[]; pathname: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: -8 }}
@@ -53,16 +54,24 @@ function Dropdown({ items }: { items: SubItem[] }) {
       transition={{ duration: 0.15, ease: "easeOut" }}
       className="dropdown-panel"
     >
-      {items.map((item) => (
-        <Link key={item.label} href={item.href} className="dropdown-item block">
+      {items.map((item) => {
+        const itemPath = item.href.split("#")[0];
+        const active = pathname.startsWith(itemPath);
+        return (
+        <Link
+          key={item.label}
+          href={item.href}
+          className={`dropdown-item block ${active ? "!text-cyan-400 !bg-white/5" : ""}`}
+        >
           {item.label}
         </Link>
-      ))}
+      )})}
     </motion.div>
   );
 }
 
 export default function Header() {
+  const pathname = usePathname();
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -80,6 +89,17 @@ export default function Header() {
     }, 150);
   }, []);
 
+  function isActive(item: NavItem): boolean {
+    if (item.href && !item.children) {
+      if (item.href === "/") return pathname === "/";
+      return pathname.startsWith(item.href.split("#")[0]);
+    }
+    if (item.children) {
+      return item.children.some((c) => pathname.startsWith(c.href.split("#")[0]));
+    }
+    return false;
+  }
+
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-brand-bg/80 backdrop-blur-md border-subtle-b">
       <div className="mx-auto max-w-7xl flex items-center justify-between px-6 h-16">
@@ -94,7 +114,9 @@ export default function Header() {
 
         {/* Navigation */}
         <nav className="flex items-center gap-1">
-          {navItems.map((item) => (
+          {navItems.map((item) => {
+            const active = isActive(item);
+            return (
             <div
               key={item.label}
               className="relative"
@@ -102,12 +124,26 @@ export default function Header() {
               onMouseLeave={() => item.children && handleMouseLeave()}
             >
               {item.href && !item.children ? (
-                <Link href={item.href} className="nav-link px-3 py-2 block">
+                <Link
+                  href={item.href}
+                  className={`relative px-3 py-2 block text-sm font-medium transition-colors duration-200 ${
+                    active
+                      ? "text-cyan-400"
+                      : "text-text-secondary hover:text-text-primary"
+                  }`}
+                >
                   {item.label}
+                  {active && (
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-[2px] bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(34,211,238,0.6)]" />
+                  )}
                 </Link>
               ) : (
                 <button
-                  className="nav-link px-3 py-2 flex items-center gap-1"
+                  className={`relative px-3 py-2 flex items-center gap-1 text-sm font-medium transition-colors duration-200 ${
+                    active
+                      ? "text-cyan-400"
+                      : "text-text-secondary hover:text-text-primary"
+                  }`}
                   onClick={() =>
                     setOpenMenu(openMenu === item.label ? null : item.label)
                   }
@@ -116,19 +152,22 @@ export default function Header() {
                   <ChevronDown
                     size={14}
                     className={`transition-transform duration-200 ${
-                      openMenu === item.label ? "rotate-180" : ""
-                    }`}
+                      active ? "text-cyan-400" : ""
+                    } ${openMenu === item.label ? "rotate-180" : ""}`}
                   />
+                  {active && (
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-[2px] bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(34,211,238,0.6)]" />
+                  )}
                 </button>
               )}
 
               <AnimatePresence>
                 {item.children && openMenu === item.label && (
-                  <Dropdown items={item.children} />
+                  <Dropdown items={item.children} pathname={pathname} />
                 )}
               </AnimatePresence>
             </div>
-          ))}
+          )})}
         </nav>
 
         {/* CTA */}

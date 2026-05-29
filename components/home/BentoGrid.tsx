@@ -58,7 +58,7 @@ function SideCard({
 /* ── Main grid ── */
 export default function BentoGrid() {
   return (
-    <section className="relative z-[10] mx-auto max-w-7xl px-6 py-32">
+    <section data-snap-section className="relative z-[10] mx-auto max-w-7xl px-6 py-32">
       {/* Ambient glow orbs */}
       <div className="absolute inset-0 z-[0] pointer-events-none overflow-hidden">
         <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-blue-600/10 blur-[150px] rounded-full" />

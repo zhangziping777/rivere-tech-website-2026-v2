@@ -45,7 +45,7 @@ const ecosystem = clients.filter((f) => {
 
 export default function Partners() {
   return (
-    <section className="relative z-[10] mx-auto max-w-7xl px-6 py-32 border-t border-white/5">
+    <section data-snap-section className="relative z-[10] mx-auto max-w-7xl px-6 py-32 border-t border-white/5">
       {/* Deep space ambient radial gradient */}
       <div className="absolute inset-0 z-[0] pointer-events-none overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-[radial-gradient(ellipse,rgba(59,130,246,0.03)_0%,transparent_70%)]" />

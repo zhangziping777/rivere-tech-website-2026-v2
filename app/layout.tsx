@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SmoothSnap from "@/components/ui/SmoothSnap";
 import "./globals.css";
 
 export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
+  width: 1280,
 };
 
 export const metadata: Metadata = {
@@ -25,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN" className="scroll-smooth">
       <body className="flex flex-col min-h-screen relative w-full">
+        <SmoothSnap />
         {/* Deep space ambient glow — fixed background orbs */}
         <div className="fixed inset-0 pointer-events-none z-[0] overflow-hidden">
           <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-blue-900/30 blur-[120px] rounded-full" />
