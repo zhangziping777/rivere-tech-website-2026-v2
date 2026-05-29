@@ -11,16 +11,16 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-[800px]">
       {/* ── Hero Section ── */}
-      <section data-snap-section className="relative z-[10] w-full min-h-[82vh] overflow-hidden bg-transparent">
+      <section data-snap-section className="relative z-[10] w-full h-[640px] overflow-hidden bg-transparent">
         <HeroCanvasBackground />
 
         {/* Bottom fade: blend canvas into global #030712 */}
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-[#030712] pointer-events-none z-[5]" />
 
         {/* Content: centered container with flex layout */}
-        <div className="relative z-10 max-w-7xl mx-auto w-full min-h-[82vh] px-6 md:px-10 flex items-center">
+        <div className="relative z-10 max-w-7xl mx-auto w-full h-[640px] px-6 md:px-10 flex items-center">
           {/* Left: Hero text — 1/2 */}
           <div className="w-1/2">
             <ScrollReveal>

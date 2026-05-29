@@ -75,15 +75,15 @@ export default function BentoGrid() {
         </h2>
       </div>
 
-      {/* Asymmetric Bento Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-16">
-        {/* ── Left hero card (span 8): 信用卡核心系统 ── */}
+      {/* Asymmetric Bento Grid — explicit pixel widths for guaranteed stability */}
+      <div className="flex gap-6 mt-16">
+        {/* ── Left hero card: 805px ── */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="col-span-1 lg:col-span-8 relative overflow-hidden !bg-white/5 !backdrop-blur-md !border !border-white/10 rounded-3xl p-8 min-h-[380px] flex flex-col group hover:!bg-white/[0.06] hover:!border-cyan-400/30 transition-all duration-500"
+          className="w-[805px] shrink-0 relative overflow-hidden !bg-white/5 !backdrop-blur-md !border !border-white/10 rounded-3xl p-8 min-h-[380px] flex flex-col group hover:!bg-white/[0.06] hover:!border-cyan-400/30 transition-all duration-500"
         >
           {/* Subtle grid pattern background */}
           <div
@@ -108,10 +108,10 @@ export default function BentoGrid() {
             </p>
           </div>
 
-          {/* Two-block layout: Core Products | Solutions — full-width bottom area */}
-          <div className="relative z-10 mt-10 w-full grid grid-cols-12 gap-16">
-            {/* ── Core Products block — 5/12 ── */}
-            <div className="col-span-5">
+          {/* Two-block layout: Core Products | Solutions — explicit widths */}
+          <div className="relative z-10 mt-10 w-full flex gap-8">
+            {/* ── Core Products block — 295px ── */}
+            <div className="w-[295px] shrink-0">
               <h4 className="text-slate-300 text-sm font-semibold tracking-wider uppercase mb-5">
                 核心产品
               </h4>
@@ -135,8 +135,8 @@ export default function BentoGrid() {
               </ul>
             </div>
 
-            {/* ── Solutions block — 7/12, with left divider ── */}
-            <div className="col-span-7 pl-10 border-l border-white/10">
+            {/* ── Solutions block — 414px, with left divider ── */}
+            <div className="w-[414px] shrink-0 pl-6 border-l border-white/10">
               <h4 className="text-slate-300 text-sm font-semibold tracking-wider uppercase mb-5">
                 解决方案
               </h4>
@@ -165,8 +165,8 @@ export default function BentoGrid() {
 
         </motion.div>
 
-        {/* ── Right column (span 4): two stacked cards ── */}
-        <div className="col-span-1 lg:col-span-4 flex flex-col gap-6">
+        {/* ── Right column: 403px ── */}
+        <div className="w-[403px] shrink-0 flex flex-col gap-6">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}

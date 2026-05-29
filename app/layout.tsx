@@ -2,14 +2,11 @@ import type { Metadata, Viewport } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import SmoothSnap from "@/components/ui/SmoothSnap";
+import ViewportScaler from "@/components/ui/ViewportScaler";
 import "./globals.css";
 
 export const viewport: Viewport = {
   width: 1280,
-  initialScale: 0.3,
-  minimumScale: 0.1,
-  maximumScale: 1.0,
-  userScalable: true,
 };
 
 export const metadata: Metadata = {
@@ -28,8 +25,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-CN" className="scroll-smooth">
-      <body className="flex flex-col min-h-screen relative w-full">
+      <body className="flex flex-col min-h-[800px] relative w-full">
         <SmoothSnap />
+        <ViewportScaler />
         {/* Deep space ambient glow — fixed background orbs */}
         <div className="fixed inset-0 pointer-events-none z-[0] overflow-hidden">
           <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-blue-900/30 blur-[120px] rounded-full" />
@@ -40,14 +38,14 @@ export default function RootLayout({
           {/* Deep blue nebula glows — site-wide bottom layer */}
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
             <div
-              className="absolute top-[10%] left-[-15%] w-[65vw] h-[60vh]"
+              className="absolute top-[10%] left-[-15%] w-[65vw] h-[500px]"
               style={{
                 background:
                   "radial-gradient(ellipse, rgba(30,64,175,0.30) 0%, rgba(30,64,175,0.12) 40%, transparent 70%)",
               }}
             />
             <div
-              className="absolute bottom-[10%] right-[-10%] w-[60vw] h-[60vh]"
+              className="absolute bottom-[10%] right-[-10%] w-[60vw] h-[500px]"
               style={{
                 background:
                   "radial-gradient(ellipse, rgba(8,145,178,0.22) 0%, rgba(8,145,178,0.08) 35%, transparent 70%)",

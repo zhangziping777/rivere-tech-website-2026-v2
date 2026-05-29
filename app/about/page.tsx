@@ -5,7 +5,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-[800px]">
       {/* ── Hero ── */}
       <section className="mx-auto max-w-7xl px-6 pt-28 pb-20 md:pt-40 md:pb-32 text-center">
         <ScrollReveal>

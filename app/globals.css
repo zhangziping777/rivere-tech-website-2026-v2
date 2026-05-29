@@ -29,7 +29,15 @@
     width: 1280px !important;
     min-width: 1280px !important;
     overflow-x: hidden !important;
-    min-height: 100vh;
+    min-height: 800px;
+  }
+
+  /* ── Sub-1280px window: transform-scale entire body to fit ── */
+  @media screen and (max-width: 1280px) {
+    body {
+      transform: scale(var(--body-scale, 1));
+      transform-origin: top left;
+    }
   }
 
   main {

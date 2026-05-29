@@ -72,7 +72,7 @@ const exhibits: Exhibit[] = [
 
 export default function ProductsPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-[800px]">
       {/* ── Hero ── */}
       <section className="mx-auto max-w-7xl px-6 pt-28 pb-16 md:pt-44 md:pb-24 text-center">
         <ScrollReveal>

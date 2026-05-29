@@ -155,7 +155,7 @@ function ServiceCard({
 /* ── Page ── */
 export default function BusinessOperationsPage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-[800px]">
       {/* ═══════════════════════════════════════════════════════════
           Hero Section
           ═══════════════════════════════════════════════════════════ */}

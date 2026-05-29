@@ -21,7 +21,7 @@ export default async function SolutionPage({ params }: PageProps) {
   if (!data) notFound();
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-[800px]">
       {/* ── Hero ── */}
       <SolutionHero
         name={data.name}
