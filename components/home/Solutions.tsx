@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import RiskControlGraphic from "@/components/solutions/RiskControlGraphic";
 import {
   Cpu,
   Database,
@@ -136,12 +137,37 @@ const solutions = [
     desc: "实时 AI 风险识别与资金保护",
     href: "/solutions/risk-control",
     metrics: ["毫秒级响应", "多维图谱", "亿级并发"],
-    nodes: toPosNodes([
-      { label: "反欺诈", sub: "Anti-Fraud", icon: "Shield" },
-      { label: "信用评估", sub: "Credit Score", icon: "BarChart3" },
-      { label: "贷后预警", sub: "Post-Loan", icon: "Server" },
-      { label: "模型工厂", sub: "Model Factory", icon: "Cpu" },
-    ]),
+    nodes: [
+      // Top — 5 nodes, same layout as issuing
+      { label: "数据采集", sub: "Data Collect", icon: "Server" as IconName, top: "20%", left: "18%" },
+      { label: "特征加工", sub: "Feature Eng", icon: "Cpu" as IconName, top: "20%", left: "31%" },
+      { label: "模型计算", sub: "Model Scoring", icon: "Shield" as IconName, top: "20%", left: "44%" },
+      { label: "策略决策", sub: "Strategy", icon: "Workflow" as IconName, top: "20%", left: "57%" },
+      { label: "处置联动", sub: "Response", icon: "BarChart3" as IconName, top: "20%", left: "70%" },
+      // Middle — 2 nodes
+      { label: "名单服务", sub: "List Service", icon: "Database" as IconName, top: "42%", left: "15%" },
+      { label: "事件总线", sub: "Event Bus", icon: "Layers" as IconName, top: "42%", left: "74%" },
+      // Bottom row 1 — 6 cards
+      { label: "设备指纹", sub: "Device ID", icon: "Database" as IconName, top: "74%", left: "7%" },
+      { label: "关联图谱", sub: "Link Graph", icon: "Database" as IconName, top: "74%", left: "22%" },
+      { label: "行为分析", sub: "Behavior", icon: "Database" as IconName, top: "74%", left: "37%" },
+      { label: "规则引擎", sub: "Rule Engine", icon: "Database" as IconName, top: "74%", left: "52%" },
+      { label: "风险评分", sub: "Risk Score", icon: "Database" as IconName, top: "74%", left: "67%" },
+      { label: "案件管理", sub: "Case Mgmt", icon: "Database" as IconName, top: "74%", left: "82%" },
+      // Bottom row 2 — 5 cards
+      { label: "机器学习", sub: "ML Platform", icon: "Layers" as IconName, top: "90%", left: "14%" },
+      { label: "实时计算", sub: "Real-Time", icon: "Layers" as IconName, top: "90%", left: "29%" },
+      { label: "离线分析", sub: "Offline", icon: "Layers" as IconName, top: "90%", left: "44%" },
+      { label: "报告报表", sub: "Reports", icon: "Layers" as IconName, top: "90%", left: "59%" },
+      { label: "配置中心", sub: "Config", icon: "Layers" as IconName, top: "90%", left: "74%" },
+    ],
+    externalChannels: [
+      { label: "交易系统", sub: "Txn System", top: "27%", left: "88%" },
+      { label: "账户系统", sub: "Account Sys", top: "37%", left: "88%" },
+      { label: "风控平台", sub: "Risk Platform", top: "47%", left: "88%" },
+      { label: "监管报送", sub: "Regulatory", top: "57%", left: "88%" },
+    ],
+    externalAnchor: { left: "74%", top: "42%" },
   },
   {
     id: "collection",
@@ -149,12 +175,37 @@ const solutions = [
     desc: "数据驱动的资产回收与清收管理",
     href: "/solutions/collection",
     metrics: ["智能分案", "策略自调优", "全链路追踪"],
-    nodes: toPosNodes([
-      { label: "策略引擎", sub: "Strategy Engine", icon: "Cpu" },
-      { label: "智能外呼", sub: "Auto Calling", icon: "Server" },
-      { label: "案件管理", sub: "Case Mgmt", icon: "Database" },
-      { label: "合规审计", sub: "Compliance", icon: "Shield" },
-    ]),
+    nodes: [
+      // Top — 5 nodes
+      { label: "策略引擎", sub: "Strategy Engine", icon: "Cpu" as IconName, top: "20%", left: "18%" },
+      { label: "智能外呼", sub: "Auto Calling", icon: "Server" as IconName, top: "20%", left: "31%" },
+      { label: "案件管理", sub: "Case Mgmt", icon: "Workflow" as IconName, top: "20%", left: "44%" },
+      { label: "合规审计", sub: "Compliance", icon: "Shield" as IconName, top: "20%", left: "57%" },
+      { label: "绩效分析", sub: "Performance", icon: "BarChart3" as IconName, top: "20%", left: "70%" },
+      // Middle — 2 nodes
+      { label: "数据接入", sub: "Data Ingest", icon: "Database" as IconName, top: "42%", left: "15%" },
+      { label: "消息中心", sub: "Msg Center", icon: "Layers" as IconName, top: "42%", left: "74%" },
+      // Bottom row 1 — 6 cards
+      { label: "客户分群", sub: "Segmentation", icon: "Database" as IconName, top: "74%", left: "7%" },
+      { label: "策略配置", sub: "Strategy Cfg", icon: "Database" as IconName, top: "74%", left: "22%" },
+      { label: "外呼管理", sub: "Call Mgmt", icon: "Database" as IconName, top: "74%", left: "37%" },
+      { label: "还款追踪", sub: "Pay Tracking", icon: "Database" as IconName, top: "74%", left: "52%" },
+      { label: "纠纷处理", sub: "Disputes", icon: "Database" as IconName, top: "74%", left: "67%" },
+      { label: "报表统计", sub: "Statistics", icon: "Database" as IconName, top: "74%", left: "82%" },
+      // Bottom row 2 — 5 cards
+      { label: "自动分案", sub: "Auto Assign", icon: "Layers" as IconName, top: "90%", left: "14%" },
+      { label: "队列管理", sub: "Queue Mgmt", icon: "Layers" as IconName, top: "90%", left: "29%" },
+      { label: "录音质检", sub: "Recording QC", icon: "Layers" as IconName, top: "90%", left: "44%" },
+      { label: "委外管理", sub: "Outsource", icon: "Layers" as IconName, top: "90%", left: "59%" },
+      { label: "系统配置", sub: "Settings", icon: "Layers" as IconName, top: "90%", left: "74%" },
+    ],
+    externalChannels: [
+      { label: "核心系统", sub: "Core System", top: "27%", left: "88%" },
+      { label: "短信通道", sub: "SMS Gateway", top: "37%", left: "88%" },
+      { label: "CTI平台", sub: "CTI Platform", top: "47%", left: "88%" },
+      { label: "监管报送", sub: "Regulatory", top: "57%", left: "88%" },
+    ],
+    externalAnchor: { left: "74%", top: "42%" },
   },
   {
     id: "marketing",
@@ -162,12 +213,37 @@ const solutions = [
     desc: "全闭环的信托数字化营销增长",
     href: "/solutions/marketing",
     metrics: ["精准画像", "全闭环", "实时触达"],
-    nodes: toPosNodes([
-      { label: "用户画像", sub: "User Profile", icon: "Database" },
-      { label: "策略编排", sub: "Campaign", icon: "Workflow" },
-      { label: "实时触达", sub: "Real-Time", icon: "Globe" },
-      { label: "效果分析", sub: "Analytics", icon: "BarChart3" },
-    ]),
+    nodes: [
+      // Top — 5 nodes
+      { label: "用户画像", sub: "User Profile", icon: "Database" as IconName, top: "20%", left: "18%" },
+      { label: "策略编排", sub: "Campaign", icon: "Workflow" as IconName, top: "20%", left: "31%" },
+      { label: "实时触达", sub: "Real-Time", icon: "Globe" as IconName, top: "20%", left: "44%" },
+      { label: "效果分析", sub: "Analytics", icon: "BarChart3" as IconName, top: "20%", left: "57%" },
+      { label: "A/B测试", sub: "A/B Testing", icon: "Cpu" as IconName, top: "20%", left: "70%" },
+      // Middle — 2 nodes
+      { label: "数据平台", sub: "Data Platform", icon: "Server" as IconName, top: "42%", left: "15%" },
+      { label: "事件引擎", sub: "Event Engine", icon: "Layers" as IconName, top: "42%", left: "74%" },
+      // Bottom row 1 — 6 cards
+      { label: "客群管理", sub: "Audience", icon: "Database" as IconName, top: "74%", left: "7%" },
+      { label: "活动管理", sub: "Campaigns", icon: "Database" as IconName, top: "74%", left: "22%" },
+      { label: "渠道管理", sub: "Channels", icon: "Database" as IconName, top: "74%", left: "37%" },
+      { label: "优惠券", sub: "Coupons", icon: "Database" as IconName, top: "74%", left: "52%" },
+      { label: "积分管理", sub: "Points", icon: "Database" as IconName, top: "74%", left: "67%" },
+      { label: "转化分析", sub: "Conversion", icon: "Database" as IconName, top: "74%", left: "82%" },
+      // Bottom row 2 — 5 cards
+      { label: "标签体系", sub: "Tag System", icon: "Layers" as IconName, top: "90%", left: "14%" },
+      { label: "推荐引擎", sub: "Recommend", icon: "Layers" as IconName, top: "90%", left: "29%" },
+      { label: "内容管理", sub: "Content", icon: "Layers" as IconName, top: "90%", left: "44%" },
+      { label: "投放优化", sub: "Delivery", icon: "Layers" as IconName, top: "90%", left: "59%" },
+      { label: "系统设置", sub: "Settings", icon: "Layers" as IconName, top: "90%", left: "74%" },
+    ],
+    externalChannels: [
+      { label: "用户中心", sub: "User Center", top: "27%", left: "88%" },
+      { label: "推送通道", sub: "Push API", top: "37%", left: "88%" },
+      { label: "数据分析", sub: "Analytics", top: "47%", left: "88%" },
+      { label: "第三方平台", sub: "3rd Party", top: "57%", left: "88%" },
+    ],
+    externalAnchor: { left: "74%", top: "42%" },
   },
   {
     id: "gateway",
@@ -175,12 +251,37 @@ const solutions = [
     desc: "高并发、极稳健的支付枢纽",
     href: "/solutions/gateway",
     metrics: ["高并发", "极稳健", "多协议适配"],
-    nodes: toPosNodes([
-      { label: "协议转换", sub: "ISO 8583", icon: "Server" },
-      { label: "智能路由", sub: "Smart Route", icon: "Workflow" },
-      { label: "限流熔断", sub: "Rate Limit", icon: "Shield" },
-      { label: "监控大盘", sub: "Dashboard", icon: "BarChart3" },
-    ]),
+    nodes: [
+      // Top — 5 nodes
+      { label: "协议转换", sub: "ISO 8583", icon: "Server" as IconName, top: "20%", left: "18%" },
+      { label: "智能路由", sub: "Smart Route", icon: "Workflow" as IconName, top: "20%", left: "31%" },
+      { label: "限流熔断", sub: "Rate Limit", icon: "Shield" as IconName, top: "20%", left: "44%" },
+      { label: "监控大盘", sub: "Dashboard", icon: "BarChart3" as IconName, top: "20%", left: "57%" },
+      { label: "安全认证", sub: "Security", icon: "Cpu" as IconName, top: "20%", left: "70%" },
+      // Middle — 2 nodes
+      { label: "配置中心", sub: "Config", icon: "Database" as IconName, top: "42%", left: "15%" },
+      { label: "日志服务", sub: "Log Service", icon: "Layers" as IconName, top: "42%", left: "74%" },
+      // Bottom row 1 — 6 cards
+      { label: "通道管理", sub: "Channel Mgmt", icon: "Database" as IconName, top: "74%", left: "7%" },
+      { label: "交易处理", sub: "Txn Process", icon: "Database" as IconName, top: "74%", left: "22%" },
+      { label: "对账清算", sub: "Settlement", icon: "Database" as IconName, top: "74%", left: "37%" },
+      { label: "异常处理", sub: "Exception", icon: "Database" as IconName, top: "74%", left: "52%" },
+      { label: "性能监控", sub: "Perf Monitor", icon: "Database" as IconName, top: "74%", left: "67%" },
+      { label: "报警通知", sub: "Alerting", icon: "Database" as IconName, top: "74%", left: "82%" },
+      // Bottom row 2 — 5 cards
+      { label: "报文解析", sub: "Msg Parser", icon: "Layers" as IconName, top: "90%", left: "14%" },
+      { label: "签名验签", sub: "Sign/Verify", icon: "Layers" as IconName, top: "90%", left: "29%" },
+      { label: "流量控制", sub: "Throttling", icon: "Layers" as IconName, top: "90%", left: "44%" },
+      { label: "缓存管理", sub: "Cache", icon: "Layers" as IconName, top: "90%", left: "59%" },
+      { label: "运维管理", sub: "Operations", icon: "Layers" as IconName, top: "90%", left: "74%" },
+    ],
+    externalChannels: [
+      { label: "银联系统", sub: "UnionPay", top: "27%", left: "88%" },
+      { label: "网联系统", sub: "NetsUnion", top: "37%", left: "88%" },
+      { label: "国际卡组", sub: "Intl Schemes", top: "47%", left: "88%" },
+      { label: "第三方支付", sub: "3rd Party", top: "57%", left: "88%" },
+    ],
+    externalAnchor: { left: "74%", top: "42%" },
   },
 ];
 
@@ -439,13 +540,15 @@ export default function Solutions() {
             <div className="absolute top-0 left-0 w-48 h-48 bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-56 h-56 bg-cyan-500/8 blur-[100px] rounded-full pointer-events-none" />
 
-            <div
-              className="absolute inset-0 z-[0] pointer-events-none"
-              style={{
-                backgroundImage: "radial-gradient(circle, rgba(34,211,238,0.10) 1px, transparent 1px)",
-                backgroundSize: "22px 22px",
-              }}
-            />
+            {active.id !== "risk-control" && (
+              <div
+                className="absolute inset-0 z-[0] pointer-events-none"
+                style={{
+                  backgroundImage: "radial-gradient(circle, rgba(34,211,238,0.10) 1px, transparent 1px)",
+                  backgroundSize: "22px 22px",
+                }}
+              />
+            )}
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -454,9 +557,13 @@ export default function Solutions() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="absolute inset-0 bottom-[28%]"
+                className={active.id === "risk-control" ? "absolute inset-0" : "absolute inset-0 bottom-[28%]"}
               >
-                <TopologyCanvas nodes={active.nodes} externalNodes={(active as any).externalChannels} externalAnchor={(active as any).externalAnchor} />
+                {active.id === "risk-control" ? (
+                  <RiskControlGraphic />
+                ) : (
+                  <TopologyCanvas nodes={active.nodes} externalNodes={(active as any).externalChannels} externalAnchor={(active as any).externalAnchor} />
+                )}
 
                 <div className="absolute top-4 left-4 z-10 max-w-[60%]">
                   <span className="text-white/85 text-base md:text-lg leading-relaxed">
