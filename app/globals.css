@@ -88,16 +88,6 @@
     animation: pulse-slow 8s ease-in-out infinite;
   }
 
-  @keyframes snap-glow-pulse {
-    0%   { box-shadow: inset 0 0 0 0 rgba(34,211,238,0); }
-    20%  { box-shadow: inset 0 2px 20px 0 rgba(34,211,238,0.18), 0 0 40px 0 rgba(34,211,238,0.06); }
-    100% { box-shadow: inset 0 0 0 0 rgba(34,211,238,0), 0 0 0 0 rgba(34,211,238,0); }
-  }
-
-  .snap-glow-active {
-    animation: snap-glow-pulse 1s ease-out;
-  }
-
   @keyframes starfield-drift {
     0%   { transform: translate(0, 0); opacity: 0.4; }
     50%  { opacity: 0.7; }

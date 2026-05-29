@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import SmoothSnap from "@/components/ui/SmoothSnap";
 import ViewportScaler from "@/components/ui/ViewportScaler";
 import "./globals.css";
 
@@ -26,7 +25,6 @@ export default function RootLayout({
   return (
     <html lang="zh-CN" className="scroll-smooth">
       <body className="flex flex-col min-h-[800px] relative w-full">
-        <SmoothSnap />
         <ViewportScaler />
         {/* Deep space ambient glow — fixed background orbs */}
         <div className="fixed inset-0 pointer-events-none z-[0] overflow-hidden">
