@@ -29,6 +29,13 @@ interface PosNode extends NodeDef {
   left: string;
 }
 
+interface ExtNode {
+  label: string;
+  sub: string;
+  top: string;
+  left: string;
+}
+
 /* ── Default 4-node layout offsets ── */
 const defaultPositions = [
   { left: "10%", top: "22%" },
@@ -52,11 +59,12 @@ const solutions = [
     href: "/solutions/issuing",
     metrics: ["全生命周期", "模块化装配", "亿级账户"],
     nodes: [
-      // Top — 4 nodes, 8% gaps, centered
-      { label: "申卡管理", sub: "Application", icon: "Server" as IconName, top: "20%", left: "15%" },
-      { label: "授信管理", sub: "Credit Line", icon: "Shield" as IconName, top: "20%", left: "34.5%" },
-      { label: "审批处理", sub: "Approval", icon: "Workflow" as IconName, top: "20%", left: "54%" },
-      { label: "交易受理", sub: "Transaction", icon: "Globe" as IconName, top: "20%", left: "73.5%" },
+      // Top — 5 nodes, visual center at 50% (left = card edge, center ≈ left+6%)
+      { label: "申卡管理", sub: "Application", icon: "Server" as IconName, top: "20%", left: "18%" },
+      { label: "授信管理", sub: "Credit Line", icon: "Shield" as IconName, top: "20%", left: "31%" },
+      { label: "审批处理", sub: "Approval", icon: "Workflow" as IconName, top: "20%", left: "44%" },
+      { label: "交易受理", sub: "Transaction", icon: "Globe" as IconName, top: "20%", left: "57%" },
+      { label: "清算对账", sub: "Clearing", icon: "BarChart3" as IconName, top: "20%", left: "70%" },
       // Middle — 2 nodes, symmetric around center 50%
       { label: "运营操作", sub: "Operations", icon: "Cpu" as IconName, top: "42%", left: "15%" },
       { label: "开放API", sub: "Open API", icon: "Layers" as IconName, top: "42%", left: "74%" },
@@ -74,6 +82,13 @@ const solutions = [
       { label: "报送管理", sub: "Reporting", icon: "Layers" as IconName, top: "90%", left: "59%" },
       { label: "催收管理", sub: "Collection", icon: "Layers" as IconName, top: "90%", left: "74%" },
     ],
+    externalChannels: [
+      { label: "客服渠道", sub: "CS Channel", top: "27%", left: "88%" },
+      { label: "APP渠道", sub: "App Channel", top: "37%", left: "88%" },
+      { label: "三方渠道", sub: "3rd Party", top: "47%", left: "88%" },
+      { label: "关联系统", sub: "Linked Sys", top: "57%", left: "88%" },
+    ],
+    externalAnchor: { left: "74%", top: "42%" },
   },
   {
     id: "acquiring",
@@ -81,12 +96,26 @@ const solutions = [
     desc: "全渠道、多场景聚合支付结算",
     href: "/solutions/acquiring",
     metrics: ["全渠道接入", "多场景聚合", "实时结算"],
-    nodes: toPosNodes([
-      { label: "POS收单", sub: "POS Terminal", icon: "Server" },
-      { label: "线上支付", sub: "Online Pay", icon: "Globe" },
-      { label: "聚合路由", sub: "Smart Route", icon: "Workflow" },
-      { label: "清分对账", sub: "Settlement", icon: "BarChart3" },
-    ]),
+    nodes: [
+      // Top — 4 nodes, same layout as issuing
+      { label: "商户注册", sub: "Merchant Reg", icon: "Globe" as IconName, top: "20%", left: "15%" },
+      { label: "多机构管理", sub: "Multi-Institution", icon: "Server" as IconName, top: "20%", left: "34.5%" },
+      { label: "交易受理", sub: "Transaction", icon: "Workflow" as IconName, top: "20%", left: "54%" },
+      { label: "风险管理", sub: "Risk Mgmt", icon: "Shield" as IconName, top: "20%", left: "73.5%" },
+      // Bottom row 1 — 6 cards
+      { label: "商户管理", sub: "Merchant Mgmt", icon: "Database" as IconName, top: "74%", left: "7%" },
+      { label: "赞助商管理", sub: "Sponsor Mgmt", icon: "Database" as IconName, top: "74%", left: "22%" },
+      { label: "终端管理", sub: "Terminal Mgmt", icon: "Database" as IconName, top: "74%", left: "37%" },
+      { label: "交易处理", sub: "Txn Processing", icon: "Database" as IconName, top: "74%", left: "52%" },
+      { label: "账户管理", sub: "Account Mgmt", icon: "Database" as IconName, top: "74%", left: "67%" },
+      { label: "账务处理", sub: "Accounting", icon: "Database" as IconName, top: "74%", left: "82%" },
+      // Bottom row 2 — 5 cards
+      { label: "分期管理", sub: "Installment", icon: "Layers" as IconName, top: "90%", left: "14%" },
+      { label: "账单管理", sub: "Billing", icon: "Layers" as IconName, top: "90%", left: "29%" },
+      { label: "清算处理", sub: "Clearing", icon: "Layers" as IconName, top: "90%", left: "44%" },
+      { label: "对账管理", sub: "Reconciliation", icon: "Layers" as IconName, top: "90%", left: "59%" },
+      { label: "会计管理", sub: "GL Accounting", icon: "Layers" as IconName, top: "90%", left: "74%" },
+    ],
   },
   {
     id: "retail-credit",
@@ -170,9 +199,11 @@ function toCenter(left: string, top: string, compact: boolean) {
   };
 }
 
-function TopologyCanvas({ nodes }: { nodes: PosNode[] }) {
+function TopologyCanvas({ nodes, externalNodes, externalAnchor }: { nodes: PosNode[]; externalNodes?: ExtNode[]; externalAnchor?: { left: string; top: string } }) {
   const compact = nodes.length > 4;
   const centers = nodes.map((n) => toCenter(n.left, n.top, compact));
+  const extCenters = externalNodes?.map((n) => toCenter(n.left, n.top, true)) ?? [];
+  const anchorCenter = externalAnchor ? toCenter(externalAnchor.left, externalAnchor.top, true) : null;
 
   return (
     <div className="absolute inset-0 z-[1]">
@@ -190,6 +221,7 @@ function TopologyCanvas({ nodes }: { nodes: PosNode[] }) {
           </linearGradient>
         </defs>
 
+        {/* Main node → Engine */}
         {centers.map((s, i) => (
           <g key={i}>
             <path
@@ -217,6 +249,26 @@ function TopologyCanvas({ nodes }: { nodes: PosNode[] }) {
                 dur={`${2 + i * 0.3}s`}
                 repeatCount="indefinite"
                 path={`M${s.x},${s.y} C${(ENGINE_CX + s.x) / 2},${s.y} ${(ENGINE_CX + s.x) / 2},${ENGINE_CY} ${ENGINE_CX},${ENGINE_CY}`}
+              />
+            </circle>
+          </g>
+        ))}
+
+        {/* External channel → Anchor (开放API) */}
+        {anchorCenter && extCenters.map((s, i) => (
+          <g key={`ext-${i}`}>
+            <path
+              d={`M${s.x},${s.y} C${(anchorCenter.x + s.x) / 2},${s.y} ${(anchorCenter.x + s.x) / 2},${anchorCenter.y} ${anchorCenter.x},${anchorCenter.y}`}
+              stroke="rgba(255,255,255,0.18)"
+              strokeWidth="0.3"
+              strokeDasharray="2 6"
+              fill="none"
+            />
+            <circle r="0.4" fill="rgba(255,255,255,0.7)">
+              <animateMotion
+                dur={`${2.5 + i * 0.25}s`}
+                repeatCount="indefinite"
+                path={`M${s.x},${s.y} C${(anchorCenter.x + s.x) / 2},${s.y} ${(anchorCenter.x + s.x) / 2},${anchorCenter.y} ${anchorCenter.x},${anchorCenter.y}`}
               />
             </circle>
           </g>
@@ -252,7 +304,7 @@ function TopologyCanvas({ nodes }: { nodes: PosNode[] }) {
         return compact ? (
           <div
             key={i}
-            className="absolute z-10 bg-slate-800/40 backdrop-blur-md border border-white/10 rounded-lg p-2 flex items-center gap-2 shadow-lg w-[5rem] transition-all duration-500 hover:border-cyan-400/30 hover:bg-slate-800/60"
+            className="absolute z-10 bg-slate-800/40 backdrop-blur-md border border-white/10 rounded-lg p-2 flex items-center gap-2 shadow-lg transition-all duration-500 hover:border-cyan-400/30 hover:bg-slate-800/60"
             style={{ left: n.left, top: n.top }}
           >
             <Icon size={11} className="text-cyan-400/60 shrink-0" />
@@ -277,6 +329,24 @@ function TopologyCanvas({ nodes }: { nodes: PosNode[] }) {
           </div>
         );
       })}
+
+      {/* ── External Channel Nodes ── */}
+      {externalNodes && externalNodes.length > 0 && (
+        <>
+          {externalNodes.map((n, i) => (
+            <div
+              key={`ext-${i}`}
+              className="absolute z-10 bg-slate-800/30 backdrop-blur-sm border border-dashed border-white/10 rounded-md px-2 py-1.5 flex items-center shadow-lg w-20 transition-all duration-300 hover:border-white/25"
+              style={{ left: n.left, top: n.top }}
+            >
+              <div className="flex flex-col min-w-0 leading-tight w-full text-center">
+                <span className="text-slate-300 text-[10px] font-semibold tracking-wide whitespace-nowrap">{n.label}</span>
+                <span className="text-slate-400 text-[7px] font-mono tracking-wider whitespace-nowrap uppercase">{n.sub}</span>
+              </div>
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 }
@@ -386,7 +456,7 @@ export default function Solutions() {
                 transition={{ duration: 0.35, ease: "easeOut" }}
                 className="absolute inset-0 bottom-[28%]"
               >
-                <TopologyCanvas nodes={active.nodes} />
+                <TopologyCanvas nodes={active.nodes} externalNodes={(active as any).externalChannels} externalAnchor={(active as any).externalAnchor} />
 
                 <div className="absolute top-4 left-4 z-10 max-w-[60%]">
                   <span className="text-white/85 text-base md:text-lg leading-relaxed">

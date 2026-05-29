@@ -185,7 +185,7 @@ export default function HeroOrbitGraphic() {
               "0 0 40px -10px rgba(34,211,238,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
             ]} : false}
             transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-            className="!bg-white/5 !backdrop-blur-md border border-white/10 rounded-xl px-8 py-6 max-w-[280px] w-fit mx-auto flex flex-col items-center"
+            className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-xl px-8 py-6 max-w-[280px] w-fit mx-auto flex flex-col items-center"
             style={{
               boxShadow: "0 0 40px -10px rgba(34,211,238,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
             }}

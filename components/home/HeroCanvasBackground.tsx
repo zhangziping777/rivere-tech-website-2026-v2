@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 const N = 100;               // particle count
 const MAX_DIST = 250;        // max connection distance (px)
-const MAX_SPEED = 0.18;      // max drift speed (px/frame)
+const MAX_SPEED = 0.28;      // max drift speed (px/frame)
 
 interface Particle {
   x: number;
@@ -100,7 +100,7 @@ export default function HeroCanvasBackground() {
           const dy = a.y - b.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < MAX_DIST) {
-            const alpha = (1 - dist / MAX_DIST) * 0.08;
+            const alpha = (1 - dist / MAX_DIST) * 0.14;
             ctx!.strokeStyle = `rgba(34,211,238,${alpha.toFixed(3)})`;
             ctx!.lineWidth = 0.5;
             ctx!.beginPath();
