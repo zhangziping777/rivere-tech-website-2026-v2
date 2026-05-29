@@ -185,16 +185,17 @@ export default function HeroOrbitGraphic() {
               "0 0 40px -10px rgba(34,211,238,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
             ]} : false}
             transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-            className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-xl px-8 py-6 max-w-[280px] w-fit mx-auto flex flex-col items-center"
+            className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-xl w-fit mx-auto flex flex-col items-center"
             style={{
+              padding: "clamp(10px, 4%, 24px) clamp(14px, 5.3%, 32px)",
               boxShadow: "0 0 40px -10px rgba(34,211,238,0.08), 0 8px 32px 0 rgba(0,0,0,0.36), inset 0 1px 0 0 rgba(255,255,255,0.04)",
             }}
           >
-            <h2 className="text-xl font-extrabold tracking-widest text-center whitespace-nowrap bg-gradient-to-r from-blue-500 via-cyan-400 to-cyan-300 bg-clip-text text-transparent">
+            <h2 className="font-extrabold tracking-widest text-center whitespace-nowrap bg-gradient-to-r from-blue-500 via-cyan-400 to-cyan-300 bg-clip-text text-transparent" style={{ fontSize: "clamp(14px, 3.3vw, 20px)" }}>
               信用卡 · 智能零售信贷
             </h2>
             <div className="h-[1px] w-4/5 bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent my-5" />
-            <p className="text-sm font-medium tracking-wide text-white/70">
+            <p className="font-medium tracking-wide text-white/70" style={{ fontSize: "clamp(11px, 2.3vw, 14px)" }}>
               科技 & 运营服务商
             </p>
           </motion.div>
