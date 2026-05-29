@@ -11,18 +11,30 @@
     padding: 0;
   }
 
+  /* ── Brute-force physical width lock: no responsive shrinking ── */
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #030712;
-    min-width: 1280px;
-    overflow-x: hidden;
+    width: 1280px !important;
+    min-width: 1280px !important;
+    overflow-x: hidden !important;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
   }
 
   body {
     @apply bg-brand-bg text-text-primary font-sans;
+    width: 1280px !important;
+    min-width: 1280px !important;
+    overflow-x: hidden !important;
     min-height: 100vh;
+  }
+
+  main {
+    width: 1280px !important;
+    min-width: 1280px !important;
   }
 
   ::selection {

@@ -6,6 +6,10 @@ import "./globals.css";
 
 export const viewport: Viewport = {
   width: 1280,
+  initialScale: 0.3,
+  minimumScale: 0.1,
+  maximumScale: 1.0,
+  userScalable: true,
 };
 
 export const metadata: Metadata = {
