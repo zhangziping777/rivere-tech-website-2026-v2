@@ -137,37 +137,7 @@ const solutions = [
     desc: "实时 AI 风险识别与资金保护",
     href: "/solutions/risk-control",
     metrics: ["毫秒级响应", "多维图谱", "亿级并发"],
-    nodes: [
-      // Top — 5 nodes, same layout as issuing
-      { label: "数据采集", sub: "Data Collect", icon: "Server" as IconName, top: "20%", left: "18%" },
-      { label: "特征加工", sub: "Feature Eng", icon: "Cpu" as IconName, top: "20%", left: "31%" },
-      { label: "模型计算", sub: "Model Scoring", icon: "Shield" as IconName, top: "20%", left: "44%" },
-      { label: "策略决策", sub: "Strategy", icon: "Workflow" as IconName, top: "20%", left: "57%" },
-      { label: "处置联动", sub: "Response", icon: "BarChart3" as IconName, top: "20%", left: "70%" },
-      // Middle — 2 nodes
-      { label: "名单服务", sub: "List Service", icon: "Database" as IconName, top: "42%", left: "15%" },
-      { label: "事件总线", sub: "Event Bus", icon: "Layers" as IconName, top: "42%", left: "74%" },
-      // Bottom row 1 — 6 cards
-      { label: "设备指纹", sub: "Device ID", icon: "Database" as IconName, top: "74%", left: "7%" },
-      { label: "关联图谱", sub: "Link Graph", icon: "Database" as IconName, top: "74%", left: "22%" },
-      { label: "行为分析", sub: "Behavior", icon: "Database" as IconName, top: "74%", left: "37%" },
-      { label: "规则引擎", sub: "Rule Engine", icon: "Database" as IconName, top: "74%", left: "52%" },
-      { label: "风险评分", sub: "Risk Score", icon: "Database" as IconName, top: "74%", left: "67%" },
-      { label: "案件管理", sub: "Case Mgmt", icon: "Database" as IconName, top: "74%", left: "82%" },
-      // Bottom row 2 — 5 cards
-      { label: "机器学习", sub: "ML Platform", icon: "Layers" as IconName, top: "90%", left: "14%" },
-      { label: "实时计算", sub: "Real-Time", icon: "Layers" as IconName, top: "90%", left: "29%" },
-      { label: "离线分析", sub: "Offline", icon: "Layers" as IconName, top: "90%", left: "44%" },
-      { label: "报告报表", sub: "Reports", icon: "Layers" as IconName, top: "90%", left: "59%" },
-      { label: "配置中心", sub: "Config", icon: "Layers" as IconName, top: "90%", left: "74%" },
-    ],
-    externalChannels: [
-      { label: "交易系统", sub: "Txn System", top: "27%", left: "88%" },
-      { label: "账户系统", sub: "Account Sys", top: "37%", left: "88%" },
-      { label: "风控平台", sub: "Risk Platform", top: "47%", left: "88%" },
-      { label: "监管报送", sub: "Regulatory", top: "57%", left: "88%" },
-    ],
-    externalAnchor: { left: "74%", top: "42%" },
+    nodes: [],
   },
   {
     id: "collection",
@@ -535,19 +505,39 @@ export default function Solutions() {
 
         {/* ═══ RIGHT ═══ */}
         <div className="flex-1 min-w-0 pr-4">
-          <div className="h-full w-full bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-2xl relative overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.05)]">
+          <div className="h-full w-full backdrop-blur-xl border border-white/10 rounded-2xl relative overflow-hidden shadow-[0_0_50px_rgba(6,182,212,0.05)]">
 
-            <div className="absolute top-0 left-0 w-48 h-48 bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-56 h-56 bg-cyan-500/8 blur-[100px] rounded-full pointer-events-none" />
-
-            {active.id !== "risk-control" && (
-              <div
-                className="absolute inset-0 z-[0] pointer-events-none"
-                style={{
-                  backgroundImage: "radial-gradient(circle, rgba(34,211,238,0.10) 1px, transparent 1px)",
-                  backgroundSize: "22px 22px",
-                }}
-              />
+            {/* Grid & lighting — per-solution */}
+            {active.id === "risk-control" ? (
+              <>
+                {/* Ambient Light — bottom center energy base */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[300px] h-[300px] bg-gradient-to-t from-cyan-500/10 to-transparent rounded-full blur-[100px] pointer-events-none" />
+                {/* Micro-grid */}
+                <div
+                  className="absolute inset-0 z-[0] pointer-events-none"
+                  style={{
+                    backgroundImage: `
+                      linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px)
+                    `,
+                    backgroundSize: "28px 28px",
+                  }}
+                />
+              </>
+            ) : (
+              <>
+                {/* Corner accent glows */}
+                <div className="absolute top-0 left-0 w-48 h-48 bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none" />
+                <div className="absolute bottom-0 right-0 w-56 h-56 bg-cyan-500/8 blur-[100px] rounded-full pointer-events-none" />
+                {/* Dot grid */}
+                <div
+                  className="absolute inset-0 z-[0] pointer-events-none"
+                  style={{
+                    backgroundImage: "radial-gradient(circle, rgba(34,211,238,0.10) 1px, transparent 1px)",
+                    backgroundSize: "22px 22px",
+                  }}
+                />
+              </>
             )}
 
             <AnimatePresence mode="wait">
@@ -557,12 +547,12 @@ export default function Solutions() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className={active.id === "risk-control" ? "absolute inset-0" : "absolute inset-0 bottom-[28%]"}
+                className="absolute inset-0 bottom-[28%]"
               >
-                {active.id === "risk-control" ? (
-                  <RiskControlGraphic />
-                ) : (
+                {active.nodes.length > 0 ? (
                   <TopologyCanvas nodes={active.nodes} externalNodes={(active as any).externalChannels} externalAnchor={(active as any).externalAnchor} />
+                ) : (
+                  <RiskControlGraphic />
                 )}
 
                 <div className="absolute top-4 left-4 z-10 max-w-[60%]">
